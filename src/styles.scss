@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./variables.scss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  font-family: $Poppins;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $dark;
+}
+
+app-root {
+  height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
