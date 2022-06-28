@@ -1,0 +1,35 @@
+@import "../../../variables.scss";
+
+.footer {
+  background-color: $dark;
+  color: $light;
+  min-height: $footer-height;
+
+
+  &__container {
+    display: grid;
+
+    &--row {
+      display: flex;
+      flex-direction: column;
+      margin: 0.5rem 0.5rem;
+
+      @include breakpoint(md) {
+        flex-direction: row;
+      }
+    }
+
+    &--col {
+      margin: 0 auto;
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+    }
+
+    &--info {
+      margin: 0 auto;
+    }
+  }
+}
