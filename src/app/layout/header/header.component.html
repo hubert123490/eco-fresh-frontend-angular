@@ -1,35 +1,37 @@
-<header class="header">
+<header class="header" (window:resize)="onResize($event)">
     <div class="header__content">
       <a
         class="header__content--logo"
+        (click)="menuToggleHandler()"
       >
         navbar
     </a>
 
       <nav
-        class="header__content--nav" 
+        [ngClass]="getNavType()"
       >
         <ul>
           <li>
-            <a >
+            <a (click)="menuToggleHandler()">
               Page one
             </a>
           </li>
           <li>
-            <a >
+            <a (click)="menuToggleHandler()">
               Page two
             </a>
           </li>
           <li>
-            <a >
+            <a (click)="menuToggleHandler()">
               Page three
             </a>
           </li>
         </ul>
-        <Button class="button">CTA Page</Button>
+        <button class="button">CTA Page</button>
       </nav>
       <div class="header__content--toggle">
-        
+        <a *ngIf="!isMenuOpen" class="header__content--toggle" (click)="menuToggleHandler()">Burger</a>
+        <a *ngIf="isMenuOpen" class="header__content--toggle__close" (click)="menuToggleHandler()">Close</a>
       </div>
     </div>
   </header>
