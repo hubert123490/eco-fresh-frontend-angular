@@ -4,7 +4,7 @@
         class="header__content--logo"
         (click)="menuToggleHandler()"
       >
-        navbar
+        Eco Fresh
     </a>
 
       <nav
@@ -30,8 +30,8 @@
         <button class="button">CTA Page</button>
       </nav>
       <div class="header__content--toggle">
-        <a *ngIf="!isMenuOpen" class="header__content--toggle" (click)="menuToggleHandler()">Burger</a>
-        <a *ngIf="isMenuOpen" class="header__content--toggle__close" (click)="menuToggleHandler()">Close</a>
+        <a *ngIf="!isMenuOpen" class="header__content--toggle" (click)="menuToggleHandler()"><mat-icon>reorder</mat-icon></a>
+        <a *ngIf="isMenuOpen" class="header__content--toggle__close" (click)="menuToggleHandler()"><mat-icon>clear</mat-icon></a>
       </div>
     </div>
   </header>
