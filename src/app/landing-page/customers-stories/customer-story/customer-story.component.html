@@ -1,1 +1,9 @@
-<p>customer-story works!</p>
+<div class="story">
+  <app-customer-image *ngIf="isEven" ></app-customer-image>
+  <div [ngClass]="getAlignmentStyle()">
+    <h1 class="story__customer">{{customerName}}</h1>
+    <h2 class="story__subtitle">{{customerBio}}</h2>
+    <p class="project__text"><ng-content></ng-content></p>
+  </div>
+  <app-customer-image *ngIf="!isEven" ></app-customer-image>
+</div>
