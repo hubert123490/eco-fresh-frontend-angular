@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-query-button',
   templateUrl: './query-button.component.html',
-  styleUrls: ['./query-button.component.scss']
+  styleUrls: ['./query-button.component.scss'],
 })
 export class QueryButtonComponent implements OnInit {
+  @Input() text: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    this.text = '';
   }
 
+  ngOnInit(): void {}
 }
