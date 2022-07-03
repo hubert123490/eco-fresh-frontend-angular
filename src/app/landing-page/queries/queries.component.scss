@@ -1,0 +1,40 @@
+@import "../../../variables.scss";
+
+.queries {
+    background-color: $values;
+    min-height: 5rem;
+    color: $dark;
+    padding: 1rem;
+  
+    &__label {
+      text-align: center;
+  
+      @include breakpoint(md) {
+        font-size: 3rem;
+      }
+    }
+  
+    &__container {
+      display: flex;
+      flex-direction: column;
+  
+      @include breakpoint(md) {
+          flex-direction: row;
+      }
+  
+      &--query {
+        width: 100%;
+        text-align: center;
+        margin: 1rem 0;
+  
+        &__options {
+          padding: 1rem;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+        }
+      }
+    }
+  }

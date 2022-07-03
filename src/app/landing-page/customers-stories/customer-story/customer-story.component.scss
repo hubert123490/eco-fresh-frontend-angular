@@ -1,0 +1,49 @@
+@import "../../../../variables.scss";
+
+.story {
+  font-size: 1.2rem;
+  margin: 1rem;
+  width: 100%;
+
+  @include breakpoint(md) {
+    max-width: 1500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &__info--rightAlign {
+    text-align: right;
+    padding: 0.9rem;
+
+    @include breakpoint(md) {
+      width: 30%;
+    }
+  }
+
+  &__info--leftAlign {
+    text-align: left;
+    padding: 0.9rem;
+
+    @include breakpoint(md) {
+      width: 30%;
+    }
+  }
+
+  &__customer {
+    margin: 0.2rem;
+    color: $dark;
+    font-size: 2rem;
+  }
+
+  &__subtitle {
+    margin: 0.2rem;
+    font-size: 1.1rem;
+    color: gray;
+    opacity: 0.5;
+  }
+
+  &__text {
+    margin: 0.2rem;
+  }
+}

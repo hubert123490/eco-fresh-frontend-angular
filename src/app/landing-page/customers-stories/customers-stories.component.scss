@@ -1,0 +1,28 @@
+@import "../../../variables.scss";
+
+.stories {
+    background-color: lightgreen;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    .story {
+      font-size: 3rem !important;
+    }
+  
+    &__label {
+      margin: 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+  
+      @include breakpoint(md) {
+        h1 {
+          font-size: 3rem;
+        }
+  
+        font-size: 2rem;
+      }
+    }
+  }
