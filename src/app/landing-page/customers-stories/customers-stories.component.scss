@@ -2,11 +2,15 @@
 
 .stories {
     background-color: lightgreen;
-    padding: 2rem;
+    padding: 0rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @include breakpoint(md) {
+      padding: 2rem;
+    }
   
     .story {
       font-size: 3rem !important;
