@@ -17,7 +17,7 @@ describe('CompanyValuesComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create company values component', () => {
     expect(component).toBeTruthy();
   });
 });
