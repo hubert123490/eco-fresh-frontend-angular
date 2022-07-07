@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CustomerStoryComponent } from './customer-story/customer-story.component';
 
 import { CustomersStoriesComponent } from './customers-stories.component';
 
@@ -8,16 +9,15 @@ describe('CustomersStoriesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomersStoriesComponent ]
-    })
-    .compileComponents();
+      declarations: [CustomersStoriesComponent, CustomerStoryComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CustomersStoriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create customers stories component', () => {
     expect(component).toBeTruthy();
   });
 });
