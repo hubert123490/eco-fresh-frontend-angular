@@ -17,7 +17,16 @@ describe('CustomerImageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create customer image component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should set src and alt properties to img', () => {
+    component.src = 'test';
+    component.alt = 'test alt';
+    const img = fixture.nativeElement.querySelector('img');
+    fixture.detectChanges();
+    expect(img.alt).toEqual('test alt');
+    expect(img.src).toContain('test');
   });
 });
