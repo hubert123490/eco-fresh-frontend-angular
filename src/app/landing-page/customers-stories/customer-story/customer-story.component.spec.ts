@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CustomerImageComponent } from './customer-image/customer-image.component';
@@ -11,6 +12,7 @@ describe('CustomerStoryComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CustomerStoryComponent, CustomerImageComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(CustomerStoryComponent);

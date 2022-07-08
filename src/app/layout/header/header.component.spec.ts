@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { By } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { HeaderComponent } from './header.component';
 
@@ -12,6 +13,7 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
       imports: [MatIconModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
@@ -96,8 +98,12 @@ describe('HeaderComponent', () => {
     component.width = 500;
     component.height = 500;
     fixture.detectChanges();
-    expect(component.querySelector(".header__content--toggle__burger")).not.toBeNull();
-    expect(component.querySelector(".header__content--toggle__close")).toBeNull();
+    expect(
+      component.querySelector('.header__content--toggle__burger')
+    ).not.toBeNull();
+    expect(
+      component.querySelector('.header__content--toggle__close')
+    ).toBeNull();
   });
 
   it('should render close icon when menu is open (small screen)', () => {
@@ -106,7 +112,11 @@ describe('HeaderComponent', () => {
     component.width = 500;
     component.height = 500;
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.header__content--toggle__burger'))).toBeNull();
-    expect(fixture.debugElement.query(By.css('.header__content--toggle__close'))).not.toBeNull();
+    expect(
+      fixture.debugElement.query(By.css('.header__content--toggle__burger'))
+    ).toBeNull();
+    expect(
+      fixture.debugElement.query(By.css('.header__content--toggle__close'))
+    ).not.toBeNull();
   });
 });
