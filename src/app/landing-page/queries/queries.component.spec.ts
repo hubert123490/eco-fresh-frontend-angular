@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { QueriesComponent } from './queries.component';
@@ -10,6 +11,7 @@ describe('QueriesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [QueriesComponent, QueryButtonComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(QueriesComponent);
