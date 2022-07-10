@@ -1,5 +1,6 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FacebookSvgComponent } from './facebook-svg/facebook-svg.component';
 
 import { QueriesComponent } from './queries.component';
 import { QueryButtonComponent } from './query-button/query-button.component';
@@ -10,8 +11,12 @@ describe('QueriesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [QueriesComponent, QueryButtonComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      declarations: [
+        QueriesComponent,
+        QueryButtonComponent,
+        FacebookSvgComponent,
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(QueriesComponent);

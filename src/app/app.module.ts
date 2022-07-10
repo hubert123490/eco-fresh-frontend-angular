@@ -15,6 +15,7 @@ import { QueryButtonComponent } from './landing-page/queries/query-button/query-
 import { CustomersStoriesComponent } from './landing-page/customers-stories/customers-stories.component';
 import { CustomerStoryComponent } from './landing-page/customers-stories/customer-story/customer-story.component';
 import { CustomerImageComponent } from './landing-page/customers-stories/customer-story/customer-image/customer-image.component';
+import { FacebookSvgComponent } from './landing-page/queries/facebook-svg/facebook-svg.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CustomerImageComponent } from './landing-page/customers-stories/custome
     QueryButtonComponent,
     CustomersStoriesComponent,
     CustomerStoryComponent,
-    CustomerImageComponent
+    CustomerImageComponent,
+    FacebookSvgComponent
   ],
   imports: [
     BrowserModule,
