@@ -1,0 +1,20 @@
+<nav class="nav">
+  <form class="nav--form">
+    <input
+      class="nav--form__search"
+      type="text"
+      autocomplete="off"
+      placeholder="Tell us what you are looking for!"
+    />
+    <button class="nav--form__categories" type="button" (click)="toggleMenu()">
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <button class="nav--form__submit" type="button">Search</button>
+  </form>
+  <div class="nav--category" *ngIf="isMenuOpen">
+    <h2 class="nav--category__label">Categories</h2>
+    <div class="nav--category__items">
+      <span *ngFor="let item of categories">{{ item }}</span>
+    </div>
+  </div>
+</nav>
