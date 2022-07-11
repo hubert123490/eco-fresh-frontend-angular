@@ -16,6 +16,8 @@ import { CustomersStoriesComponent } from './landing-page/customers-stories/cust
 import { CustomerStoryComponent } from './landing-page/customers-stories/customer-story/customer-story.component';
 import { CustomerImageComponent } from './landing-page/customers-stories/customer-story/customer-image/customer-image.component';
 import { FacebookSvgComponent } from './landing-page/queries/facebook-svg/facebook-svg.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { TopSearchNavComponent } from './main-page/top-search-nav/top-search-nav.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { FacebookSvgComponent } from './landing-page/queries/facebook-svg/facebo
     CustomersStoriesComponent,
     CustomerStoryComponent,
     CustomerImageComponent,
-    FacebookSvgComponent
+    FacebookSvgComponent,
+    MainPageComponent,
+    TopSearchNavComponent
   ],
   imports: [
     BrowserModule,
