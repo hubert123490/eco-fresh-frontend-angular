@@ -7,11 +7,12 @@
       placeholder="Tell us what you are looking for!"
     />
     <button class="nav--form__categories" type="button" (click)="toggleMenu()">
-      <mat-icon>arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="!isMenuOpen">arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="isMenuOpen">arrow_drop_up</mat-icon>
     </button>
     <button class="nav--form__submit" type="button">Search</button>
   </form>
-  <div class="nav--category" *ngIf="isMenuOpen">
+  <div class="nav--category" *ngIf="isMenuOpen" [@inOutAnimation]>
     <h2 class="nav--category__label">Categories</h2>
     <div class="nav--category__items">
       <div *ngFor="let item of categories" class="nav--category__item">
