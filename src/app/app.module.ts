@@ -19,6 +19,7 @@ import { CustomerImageComponent } from './landing-page/customers-stories/custome
 import { FacebookSvgComponent } from './landing-page/queries/facebook-svg/facebook-svg.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { TopSearchNavComponent } from './main-page/top-search-nav/top-search-nav.component';
+import { LeftSearchNavComponent } from './main-page/left-search-nav/left-search-nav.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TopSearchNavComponent } from './main-page/top-search-nav/top-search-nav
     CustomerImageComponent,
     FacebookSvgComponent,
     MainPageComponent,
-    TopSearchNavComponent
+    TopSearchNavComponent,
+    LeftSearchNavComponent
   ],
   imports: [
     BrowserModule,
