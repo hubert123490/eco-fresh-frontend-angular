@@ -20,6 +20,8 @@ import { FacebookSvgComponent } from './landing-page/queries/facebook-svg/facebo
 import { MainPageComponent } from './main-page/main-page.component';
 import { TopSearchNavComponent } from './main-page/top-search-nav/top-search-nav.component';
 import { LeftSearchNavComponent } from './main-page/left-search-nav/left-search-nav.component';
+import { PriceRangeComponent } from './main-page/left-search-nav/price-range/price-range.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,13 +40,15 @@ import { LeftSearchNavComponent } from './main-page/left-search-nav/left-search-
     FacebookSvgComponent,
     MainPageComponent,
     TopSearchNavComponent,
-    LeftSearchNavComponent
+    LeftSearchNavComponent,
+    PriceRangeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
