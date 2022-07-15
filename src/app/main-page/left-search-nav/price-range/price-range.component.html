@@ -1,0 +1,38 @@
+<div class="price">
+    <div class="price--header">
+      <h2>Price Range</h2>
+      <p>Use slider or enter min and max price</p>
+    </div>
+    <div class="price--input">
+      <div class="price--input__field">
+        <span>Min</span>
+        <input type="number" class="input-min" [(ngModel)]="currMin"  (change)="minPriceHandler($event)"/>
+      </div>
+      <div class="price--input__separator">-</div>
+      <div class="price--input__field">
+        <span>Max</span>
+        <input type="number" class="input-max" [(ngModel)]="currMax" (change)="maxPriceHandler($event)"/>
+      </div>
+    </div>
+    <div class="price--slider">
+      <div class="price--slider__progress" [ngStyle]="sliderProgress()"></div>
+    </div>
+    <div class="price--range">
+      <input
+        type="range"
+        class="price--range__min"
+        [min]="minPrice"
+        [max]="maxPrice"
+        [(ngModel)]="currMin"
+        (change)="minPriceHandler($event)"
+      />
+      <input
+        type="range"
+        class="price--range__min"
+        [min]="minPrice"
+        [max]="maxPrice"
+        [(ngModel)]="currMax"
+        (change)="maxPriceHandler($event)"
+      />
+    </div>
+  </div>

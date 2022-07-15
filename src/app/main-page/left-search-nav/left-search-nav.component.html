@@ -14,42 +14,7 @@
         </option>
       </select>
     </div>
-    <div class="price">
-      <div class="price--header">
-        <h2>Price Range</h2>
-        <p>Use slider or enter min and max price</p>
-      </div>
-      <div class="price--input">
-        <div class="price--input__field">
-          <span>Min</span>
-          <input type="number" class="input-min" [value]="minPrice" />
-        </div>
-        <div class="price--input__separator">-</div>
-        <div class="price--input__field">
-          <span>Max</span>
-          <input type="number" class="input-max" [value]="maxPrice" />
-        </div>
-      </div>
-      <div class="price--slider">
-        <div class="price--slider__progress"></div>
-      </div>
-      <div class="price--range">
-        <input
-          type="range"
-          class="price--range__min"
-          [min]="minPrice"
-          [max]="maxPrice"
-          value="500"
-        />
-        <input
-          type="range"
-          class="price--range__min"
-          [min]="minPrice"
-          [max]="maxPrice"
-          value="2000"
-        />
-      </div>
-    </div>
+    <app-price-range></app-price-range>
     <div class="certifications">
       <label for="certifications--select" class="certifications--label"
         >Certifications:</label
