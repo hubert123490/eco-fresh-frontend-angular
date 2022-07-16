@@ -1,11 +1,29 @@
 @import "../../../variables.scss";
 
+aside {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @include breakpoint(md) {
+    width: 30%;
+  }
+}
+
+.label {
+  padding-top: 1rem
+}
+
 .categories,
 .certifications,
 .producers {
   width: 100%;
   padding: 0.5rem;
   padding-top: 1rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
 
   &--label {
     margin-right: 1rem;
