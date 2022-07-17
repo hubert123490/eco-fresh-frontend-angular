@@ -15,16 +15,16 @@ export class PriceRangeComponent implements OnInit {
 
   constructor() {
     this.minPrice = 0;
-    this.maxPrice = 10000;
+    this.maxPrice = 1000;
     this.currMin = 0;
-    this.currMax = 10000;
-    this.priceGap = 1000;
+    this.currMax = 1000;
+    this.priceGap = 50;
   }
 
   ngOnInit(): void {}
 
   minPriceHandler(event: any): void {
-    if (this.currMax - this.currMin < this.priceGap) {
+    if (this.currMax - parseInt(event.target.value) < this.priceGap) {
       this.currMin = +this.currMax - +this.priceGap;
     } else {
       this.currMin = parseInt(event.target.value);
@@ -32,7 +32,7 @@ export class PriceRangeComponent implements OnInit {
   }
 
   maxPriceHandler(event: any): void {
-    if (this.currMax - this.currMin < this.priceGap) {
+    if (parseInt(event.target.value) - this.currMin < this.priceGap) {
       this.currMax = +this.currMin + +this.priceGap;
     } else {
       this.currMax = parseInt(event.target.value);
