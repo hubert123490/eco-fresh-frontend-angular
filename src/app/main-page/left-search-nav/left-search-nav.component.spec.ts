@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LeftSearchNavComponent } from './left-search-nav.component';
@@ -9,6 +10,7 @@ describe('LeftSearchNavComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LeftSearchNavComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LeftSearchNavComponent);
