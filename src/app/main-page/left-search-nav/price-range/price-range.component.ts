@@ -26,6 +26,8 @@ export class PriceRangeComponent implements OnInit {
   minPriceHandler(event: any): void {
     if (this.currMax - parseInt(event.target.value) < this.priceGap) {
       this.currMin = +this.currMax - +this.priceGap;
+    } else if (parseInt(event.target.value) < this.minPrice) {
+      this.currMin = this.minPrice;
     } else {
       this.currMin = parseInt(event.target.value);
     }
@@ -34,6 +36,8 @@ export class PriceRangeComponent implements OnInit {
   maxPriceHandler(event: any): void {
     if (parseInt(event.target.value) - this.currMin < this.priceGap) {
       this.currMax = +this.currMin + +this.priceGap;
+    } else if (parseInt(event.target.value) > this.maxPrice) {
+      this.currMax = this.maxPrice;
     } else {
       this.currMax = parseInt(event.target.value);
     }
