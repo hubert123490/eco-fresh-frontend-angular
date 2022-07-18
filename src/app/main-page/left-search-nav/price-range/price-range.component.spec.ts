@@ -40,6 +40,14 @@ describe('PriceRangeComponent', () => {
     expect(component.currMin).toBe(component.currMax - component.priceGap);
   });
 
+  it('should set currMinPrice to minPrice when currMinPrice is lower than minPrice', () => {
+    const component = fixture.componentInstance;
+    const event = { target: { value: -100 } };
+    component.minPriceHandler(event);
+
+    expect(component.currMin).toBe(component.minPrice);
+  });
+
   it('should set currMaxPrice', () => {
     const component = fixture.componentInstance;
     const event = { target: { value: 800 } };
@@ -56,6 +64,15 @@ describe('PriceRangeComponent', () => {
     expect(component.currMax).toBe(component.currMin + component.priceGap);
   });
 
+  it('should set currMaxPrice to maxPrice when currMaxPrice is higher than maxPrice', () => {
+    const component = fixture.componentInstance;
+    component.maxPrice = 1000;
+    const event = { target: { value: 1500 } };
+    component.maxPriceHandler(event);
+
+    expect(component.currMax).toBe(component.maxPrice);
+  });
+
   it('should check if sliderProgress is updated', () => {
     const component = fixture.componentInstance;
     component.currMin = 300;
@@ -67,4 +84,6 @@ describe('PriceRangeComponent', () => {
       right: 100 - (component.currMax / component.maxPrice) * 100 + '%',
     });
   });
+
+  
 });
