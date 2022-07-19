@@ -4,11 +4,20 @@
       class="nav--form__search"
       type="text"
       autocomplete="off"
-      placeholder="Tell us what you are looking for!"
+      placeholder="Find product!"
     />
     <button class="nav--form__categories" type="button" (click)="toggleMenu()">
       <mat-icon *ngIf="!isMenuOpen">arrow_drop_down</mat-icon>
       <mat-icon *ngIf="isMenuOpen">arrow_drop_up</mat-icon>
+    </button>
+    <button
+      class="nav--form__filter"
+      type="button"
+      *ngIf="displayFilter()"
+      (click)="toggleFilter.emit()"
+    >
+      <mat-icon *ngIf="!isFilterOpen">filter_list</mat-icon>
+      <mat-icon *ngIf="isFilterOpen">arrow_drop_up</mat-icon>
     </button>
     <button class="nav--form__submit" type="button">Search</button>
   </form>

@@ -1,5 +1,6 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MainPageComponent } from './main-page.component';
 import { TopSearchNavComponent } from './top-search-nav/top-search-nav.component';
@@ -11,6 +12,7 @@ describe('MainPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ MainPageComponent, TopSearchNavComponent ],
+      imports: [BrowserAnimationsModule],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
