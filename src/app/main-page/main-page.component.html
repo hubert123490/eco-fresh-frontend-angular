@@ -1,2 +1,4 @@
-<app-top-search-nav></app-top-search-nav>
-<app-left-search-nav></app-left-search-nav>
+<div (window:resize)="onResize($event)">
+<app-top-search-nav [height]="height" [width]="width" (toggleFilter)="filterToggleHandler()" [isFilterOpen]="isFilterOpen"></app-top-search-nav>
+<app-left-search-nav *ngIf="isFilterOpen" [@inOutAnimation]></app-left-search-nav>
+</div>
