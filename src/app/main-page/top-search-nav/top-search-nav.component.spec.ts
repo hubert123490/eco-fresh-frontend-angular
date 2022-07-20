@@ -11,11 +11,10 @@ describe('TopSearchNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TopSearchNavComponent ],
+      declarations: [TopSearchNavComponent],
       imports: [BrowserAnimationsModule],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TopSearchNavComponent);
     component = fixture.componentInstance;
@@ -46,5 +45,37 @@ describe('TopSearchNavComponent', () => {
     expect(component.isMenuOpen).toBe(true);
     component.toggleMenu();
     expect(component.isMenuOpen).toBe(false);
+  });
+
+  it('check displayFilter() function', () => {
+    const component = fixture.componentInstance;
+    component.width = 500;
+    expect(component.displayFilter()).toBe(true);
+    component.width = 800;
+    expect(component.displayFilter()).toBe(false);
+
+  });
+  
+
+  it('should display filter button on small screens', () => {
+    const component = fixture.componentInstance;
+    component.width = 500;
+    fixture.detectChanges();
+    expect(fixture.debugElement.query(By.css('.nav--form__filter'))).not.toBeNull();
+  });
+
+  it('should not display filter button on wider screens', () => {
+    const component = fixture.componentInstance;
+    component.width = 800;
+    fixture.detectChanges();
+    expect(fixture.debugElement.query(By.css('.nav--form__filter'))).toBeNull();
+  });
+
+  it('should display filter button with filter icon', () => {
+    const component = fixture.componentInstance;
+    component.width = 500;
+    component.isFilterOpen = false;
+    fixture.detectChanges();
+    expect(fixture.debugElement.query(By.css('.nav--form__filter mat-icon'))).toBeDefined();
   });
 });
