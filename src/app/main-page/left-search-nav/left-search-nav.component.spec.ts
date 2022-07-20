@@ -18,7 +18,7 @@ describe('LeftSearchNavComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create left-search-nav', () => {
     expect(component).toBeTruthy();
   });
 });

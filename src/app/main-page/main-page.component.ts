@@ -42,7 +42,7 @@ export class MainPageComponent implements OnInit {
 
   filterToggleHandler(): void {
     this.isFilterOpen = !this.isFilterOpen;
-    if (this.width > 768 && this.isFilterOpen) {
+    if (this.width > 768) {
       this.isFilterOpen = true;
     }
   }
