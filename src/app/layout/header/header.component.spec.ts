@@ -46,7 +46,6 @@ describe('HeaderComponent', () => {
     const component = fixture.componentInstance;
     component.isMenuOpen = false;
     component.width = 500;
-    component.height = 500;
     expect(component.isMenuOpen).toBe(false);
 
     component.menuToggleHandler();
@@ -57,7 +56,6 @@ describe('HeaderComponent', () => {
     const component = fixture.componentInstance;
     component.isMenuOpen = true;
     component.width = 900;
-    component.height = 900;
     expect(component.isMenuOpen).toBe(true);
 
     component.menuToggleHandler();
@@ -70,7 +68,6 @@ describe('HeaderComponent', () => {
     const component = fixture.componentInstance;
     component.isMenuOpen = true;
     component.width = 500;
-    component.height = 500;
     expect(component.isMenuOpenAndSmallScreen()).toBe(true);
   });
 
@@ -78,7 +75,6 @@ describe('HeaderComponent', () => {
     const component = fixture.componentInstance;
     component.isMenuOpen = false;
     component.width = 500;
-    component.height = 500;
     expect(component.isMenuOpenAndSmallScreen()).toBe(false);
   });
 
@@ -86,7 +82,6 @@ describe('HeaderComponent', () => {
     const component = fixture.componentInstance;
     component.isMenuOpen = true;
     component.width = 800;
-    component.height = 800;
     expect(component.isMenuOpenAndSmallScreen()).toBe(false);
     component.isMenuOpen = false;
     expect(component.isMenuOpenAndSmallScreen()).toBe(false);
@@ -96,7 +91,6 @@ describe('HeaderComponent', () => {
     const component = fixture.nativeElement;
     component.isMenuOpen = false;
     component.width = 500;
-    component.height = 500;
     fixture.detectChanges();
     expect(
       component.querySelector('.header__content--toggle__burger')
@@ -110,7 +104,6 @@ describe('HeaderComponent', () => {
     const component = fixture.componentInstance;
     component.isMenuOpen = true;
     component.width = 500;
-    component.height = 500;
     fixture.detectChanges();
     expect(
       fixture.debugElement.query(By.css('.header__content--toggle__burger'))
