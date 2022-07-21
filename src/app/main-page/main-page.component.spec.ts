@@ -36,7 +36,7 @@ describe('MainPageComponent', () => {
 
   it('should set isFilterOpen while onResize function is called for wider screens', () => {
     const component = fixture.componentInstance;
-    component.width = 800;
+    window.innerWidth = 800;
     component.isFilterOpen = false;
     window.dispatchEvent(new Event('resize'));
     expect(component.isFilterOpen).toBe(true);
@@ -56,7 +56,6 @@ describe('MainPageComponent', () => {
     const component = fixture.componentInstance;
     component.isFilterOpen = true;
     component.width = 900;
-    component.height = 900;
     expect(component.isFilterOpen).toBe(true);
 
     component.filterToggleHandler();
@@ -79,7 +78,6 @@ describe('MainPageComponent', () => {
     const newFixture = TestBed.createComponent(MainPageComponent);
     const newComponent = newFixture.componentInstance;
     expect(newComponent.isFilterOpen).toBe(false);
-    window.innerWidth = 800;
     
   });
 });
