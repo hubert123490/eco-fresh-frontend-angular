@@ -6,10 +6,6 @@ nav {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  @include breakpoint(md) {
-    width: 30%;
-  }
 }
 
 .label {
