@@ -22,6 +22,8 @@ import { TopSearchNavComponent } from './main-page/top-search-nav/top-search-nav
 import { LeftSearchNavComponent } from './main-page/left-search-nav/left-search-nav.component';
 import { PriceRangeComponent } from './main-page/left-search-nav/price-range/price-range.component';
 import { FormsModule } from '@angular/forms';
+import { ProductsComponent } from './main-page/products/products.component';
+import { ProductComponent } from './main-page/products/product/product.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { FormsModule } from '@angular/forms';
     MainPageComponent,
     TopSearchNavComponent,
     LeftSearchNavComponent,
-    PriceRangeComponent
+    PriceRangeComponent,
+    ProductsComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
