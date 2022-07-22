@@ -1,0 +1,9 @@
+@import "../../../../variables.scss";
+
+.product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    height: 30rem;
+}
