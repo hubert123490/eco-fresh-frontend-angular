@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { LayoutComponent } from './layout/layout.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
@@ -24,6 +24,22 @@ import { PriceRangeComponent } from './main-page/left-search-nav/price-range/pri
 import { FormsModule } from '@angular/forms';
 import { ProductsComponent } from './main-page/products/products.component';
 import { ProductComponent } from './main-page/products/product/product.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: 'landing-page',
+    component: LandingPageComponent,
+  },
+  {
+    path: 'products',
+    component: MainPageComponent
+  },
+  {
+    path: '**',
+    component: MainPageComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -48,13 +64,14 @@ import { ProductComponent } from './main-page/products/product/product.component
     ProductComponent,
   ],
   imports: [
+    RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
