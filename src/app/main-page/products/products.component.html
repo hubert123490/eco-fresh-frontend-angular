@@ -1,5 +1,5 @@
 <section>
-    <div class="products">
-        <app-product [product]="product" *ngFor="let product of products"></app-product>
-    </div>
+    <a class="products">
+        <app-product [product]="product" *ngFor="let product of products" [routerLink]="['/products', product.productId]"></app-product>
+    </a>
 </section>

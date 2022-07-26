@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductsComponent } from './main-page/products/products.component';
 import { ProductComponent } from './main-page/products/product/product.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 const routes: Routes = [
   {
@@ -33,12 +34,16 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    component: MainPageComponent
+    component: MainPageComponent,
+  },
+  {
+    path: 'products/:productId',
+    component: ProductDetailsComponent,
   },
   {
     path: '**',
-    component: MainPageComponent
-  }
+    component: MainPageComponent,
+  },
 ];
 
 @NgModule({
@@ -62,9 +67,10 @@ const routes: Routes = [
     PriceRangeComponent,
     ProductsComponent,
     ProductComponent,
+    ProductDetailsComponent,
   ],
   imports: [
-    RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
