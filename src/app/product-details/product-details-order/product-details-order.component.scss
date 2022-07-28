@@ -1,0 +1,41 @@
+@import "../../../variables.scss";
+
+.order {
+    background-color: bisque;
+    padding: 1rem 0;
+    width: 100%;
+  
+    &--label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+
+}
+
+.quantity {
+  width: 100%;
+  padding: 0.5rem;
+  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  &--label {
+    margin-right: 1rem;
+  }
+
+  &--select {
+    padding: 0.2rem;
+    border-radius: $border-radius;
+    background-color: white;
+
+    &::selection {
+      background-color: white;
+    }
+
+    &:active {
+      background-color: white;
+    }
+  }
+}
