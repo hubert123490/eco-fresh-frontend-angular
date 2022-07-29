@@ -26,6 +26,10 @@ import { ProductsComponent } from './main-page/products/products.component';
 import { ProductComponent } from './main-page/products/product/product.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsImageComponent } from './product-details/product-details-image/product-details-image.component';
+import { ProductDetailsInfoComponent } from './product-details/product-details-info/product-details-info.component';
+import { ProductDetailsOrderComponent } from './product-details/product-details-order/product-details-order.component';
+import { ProductDetailsSummaryComponent } from './product-details/product-details-summary/product-details-summary.component';
 
 const routes: Routes = [
   {
@@ -68,6 +72,10 @@ const routes: Routes = [
     ProductsComponent,
     ProductComponent,
     ProductDetailsComponent,
+    ProductDetailsImageComponent,
+    ProductDetailsInfoComponent,
+    ProductDetailsOrderComponent,
+    ProductDetailsSummaryComponent,
   ],
   imports: [
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),

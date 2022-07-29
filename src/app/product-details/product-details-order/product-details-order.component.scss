@@ -1,0 +1,48 @@
+@import "../../../variables.scss";
+
+.order {
+    background-color: bisque;
+    padding: 1rem .5rem;
+    width: 100%;
+  
+    &--label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &--price {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      padding-top: 1rem;
+
+      &__label, &__data {
+          font-weight: bold;
+      }
+  }
+}
+
+.quantity, .kcal {
+  width: 100%;
+  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  &--label {
+    margin-right: 1rem;
+  }
+
+  &--select {
+    padding: 0.2rem;
+    border-radius: $border-radius;
+    background-color: white;
+
+    &::selection {
+      background-color: white;
+    }
+
+    &:active {
+      background-color: white;
+    }
+  }
+}
