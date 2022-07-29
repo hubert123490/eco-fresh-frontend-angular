@@ -1,24 +1,28 @@
 <div class="order">
   <div class="order--label"><h2>Fill your order</h2></div>
   <form>
+    <div class="kcal">
+      <label for="kcal--select" class="kcal--label">Kcal of meal:</label>
+      <select id="kcal--select" class="kcal--select">
+        <option class="kcal--select__option" value="2000">2000 (small)</option>
+        <option class="kcal--select__option" value="2500">2500 (medium)</option>
+        <option class="kcal--select__option" value="3000">3000 (large)</option>
+      </select>
+    </div>
     <div class="quantity">
       <label for="quantity--select" class="quantity--label"
         >Number of meals:</label
       >
       <select id="quantity--select" class="quantity--select">
-        <option
-          class="quantity--select__option"
-          value="1"
-        >
-          1
-        </option>
-        <option
-          class="quantity--select__option"
-          value="2"
-        >
-         2
-        </option>
+        <option class="quantity--select__option" value="1">1</option>
+        <option class="quantity--select__option" value="2">2</option>
+        <option class="quantity--select__option" value="3">3</option>
+        <option class="quantity--select__option" value="4">4</option>
       </select>
     </div>
   </form>
+  <div class="order--price">
+    <div class="order--price__label">Total price:</div>
+    <div class="order--price__data">33.33$</div>
+  </div>
 </div>

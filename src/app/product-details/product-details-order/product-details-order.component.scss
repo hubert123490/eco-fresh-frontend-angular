@@ -2,7 +2,7 @@
 
 .order {
     background-color: bisque;
-    padding: 1rem 0;
+    padding: 1rem .5rem;
     width: 100%;
   
     &--label {
@@ -11,12 +11,19 @@
       align-items: center;
     }
 
+    &--price {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      padding-top: 1rem;
 
+      &__label, &__data {
+          font-weight: bold;
+      }
+  }
 }
 
-.quantity {
+.quantity, .kcal {
   width: 100%;
-  padding: 0.5rem;
   padding-top: 1rem;
   display: grid;
   grid-template-columns: 50% 50%;
