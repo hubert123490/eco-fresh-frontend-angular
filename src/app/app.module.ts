@@ -29,6 +29,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductDetailsImageComponent } from './product-details/product-details-image/product-details-image.component';
 import { ProductDetailsInfoComponent } from './product-details/product-details-info/product-details-info.component';
 import { ProductDetailsOrderComponent } from './product-details/product-details-order/product-details-order.component';
+import { ProductDetailsSummaryComponent } from './product-details/product-details-summary/product-details-summary.component';
 
 const routes: Routes = [
   {
@@ -74,6 +75,7 @@ const routes: Routes = [
     ProductDetailsImageComponent,
     ProductDetailsInfoComponent,
     ProductDetailsOrderComponent,
+    ProductDetailsSummaryComponent,
   ],
   imports: [
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
