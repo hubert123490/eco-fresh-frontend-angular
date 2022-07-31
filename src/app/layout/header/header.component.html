@@ -1,33 +1,52 @@
 <header class="header" (window:resize)="onResize($event)">
-    <div class="header__content">
-      <a
-        class="header__content--logo"
-        routerLink="/landing-page"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-      >
-        Eco Fresh
+  <div class="header__content">
+    <a
+      class="header__content--logo"
+      routerLink="/landing-page"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      Eco Fresh
     </a>
 
-      <nav
-        [ngClass]="getNavType()"
-      >
-        <ul>
-          <li>
-            <a (click)="menuToggleHandler()"
+    <nav [ngClass]="getNavType()">
+      <ul>
+        <li>
+          <a
+            (click)="menuToggleHandler()"
             routerLink="/products"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
-            >
-              Order
-            </a>
-          </li>
-        </ul>
-        <button class="button">CTA Page</button>
-      </nav>
-      <div class="header__content--toggle">
-        <a *ngIf="!isMenuOpen" class="header__content--toggle__burger" (click)="menuToggleHandler()"><mat-icon>reorder</mat-icon></a>
-        <a *ngIf="isMenuOpen" class="header__content--toggle__close" (click)="menuToggleHandler()"><mat-icon>clear</mat-icon></a>
-      </div>
+          >
+            Order
+          </a>
+        </li>
+        <li>
+          <a
+            (click)="menuToggleHandler()"
+            routerLink="/shopping-cart"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            <mat-icon>shopping_cart</mat-icon>
+          </a>
+        </li>
+      </ul>
+      <button class="button">CTA Page</button>
+    </nav>
+    <div class="header__content--toggle">
+      <a
+        *ngIf="!isMenuOpen"
+        class="header__content--toggle__burger"
+        (click)="menuToggleHandler()"
+        ><mat-icon>reorder</mat-icon></a
+      >
+      <a
+        *ngIf="isMenuOpen"
+        class="header__content--toggle__close"
+        (click)="menuToggleHandler()"
+        ><mat-icon>clear</mat-icon></a
+      >
     </div>
-  </header>
+  </div>
+</header>
