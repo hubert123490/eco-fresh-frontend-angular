@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import ProductDetails from './ProductDetails';
+import { CartService } from '../services/cart.service';
+import { productsDetails } from './ProductsDetails';
 
 @Component({
   selector: 'app-product-details',
@@ -19,7 +21,7 @@ export class ProductDetailsComponent implements OnInit {
 
   // Find the product that correspond with the id provided in route.
   // TODO
-  this.productDetails = new ProductDetails();
+  this.productDetails = productsDetails.find(product => product.productId === productIdFromRoute);
   }
 
 }
