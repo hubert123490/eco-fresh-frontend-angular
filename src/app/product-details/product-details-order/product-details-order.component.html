@@ -1,6 +1,7 @@
 <div class="order">
   <div class="order--label"><h2>Fill your order</h2></div>
   <form>
+    <input type="hidden" [value]="product.productId" />
     <div class="kcal">
       <label for="kcal--select" class="kcal--label">Kcal of meal:</label>
       <select id="kcal--select" class="kcal--select">
