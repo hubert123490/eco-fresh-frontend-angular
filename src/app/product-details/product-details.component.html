@@ -4,7 +4,7 @@
     <app-product-details-info [product]="productDetails?.product"></app-product-details-info>
   </div>
   <div class="wrapper--main">
-    <app-product-details-order></app-product-details-order>
+    <app-product-details-order (addToCartEvent)="addToCart($event)" [product]="productDetails?.product"></app-product-details-order>
     <app-product-details-summary></app-product-details-summary>
   </div>
   
