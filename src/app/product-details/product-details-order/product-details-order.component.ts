@@ -18,6 +18,6 @@ export class ProductDetailsOrderComponent implements OnInit {
 
   addToCart() {
     let confirmed : boolean = confirm("Add to cart?");
-    if(confirmed && this.product) this.addToCartEvent.next(this.product);
+    if(confirmed && this.product) this.addToCartEvent.emit(this.product);
   }
 }
