@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import Product from 'src/app/main-page/products/product/Product';
 
 import { ProductDetailsOrderComponent } from './product-details-order.component';
 
@@ -19,5 +20,15 @@ describe('ProductDetailsOrderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should propagate adding to cart to parent service', () => {
+    const component = fixture.componentInstance;
+    spyOn(component.addToCartEvent, "emit");
+    spyOn(window, "confirm").and.returnValue(true);
+    component.addToCart();
+    fixture.detectChanges();
+
+    expect(component.addToCartEvent.emit).toHaveBeenCalled();
   });
 });

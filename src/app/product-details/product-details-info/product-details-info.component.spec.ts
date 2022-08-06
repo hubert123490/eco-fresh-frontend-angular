@@ -33,7 +33,7 @@ describe('ProductDetailsInfoComponent', () => {
 
   it('firstKcalRange - should return 0 when product kcal is undefined', () => {
     const component = fixture.componentInstance;
-    component.product = new Product();
+    component.product = undefined
     expect(component.getFirstKcalRange()).toBe("0");
   });
 
@@ -46,7 +46,7 @@ describe('ProductDetailsInfoComponent', () => {
 
   it('secondKcalRange - should return 0 when product kcal is undefined', () => {
     const component = fixture.componentInstance;
-    component.product = new Product();
+    component.product = undefined;
     expect(component.getSecondKcalRange()).toBe("0");
   });
 });
