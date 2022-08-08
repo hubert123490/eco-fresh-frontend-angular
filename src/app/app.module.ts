@@ -30,6 +30,9 @@ import { ProductDetailsImageComponent } from './product-details/product-details-
 import { ProductDetailsInfoComponent } from './product-details/product-details-info/product-details-info.component';
 import { ProductDetailsOrderComponent } from './product-details/product-details-order/product-details-order.component';
 import { ProductDetailsSummaryComponent } from './product-details/product-details-summary/product-details-summary.component';
+import { CartComponent } from './cart/cart.component';
+import { CartProductsComponent } from './cart/cart-products/cart-products.component';
+import { CartProductComponent } from './cart/cart-products/cart-product/cart-product.component';
 
 const routes: Routes = [
   {
@@ -43,6 +46,10 @@ const routes: Routes = [
   {
     path: 'products/:productId',
     component: ProductDetailsComponent,
+  },
+  {
+    path: 'shopping-cart',
+    component: CartComponent
   },
   {
     path: '**',
@@ -76,6 +83,9 @@ const routes: Routes = [
     ProductDetailsInfoComponent,
     ProductDetailsOrderComponent,
     ProductDetailsSummaryComponent,
+    CartComponent,
+    CartProductsComponent,
+    CartProductComponent,
   ],
   imports: [
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
