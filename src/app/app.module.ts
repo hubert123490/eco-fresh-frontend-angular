@@ -33,6 +33,7 @@ import { ProductDetailsSummaryComponent } from './product-details/product-detail
 import { CartComponent } from './cart/cart.component';
 import { CartProductsComponent } from './cart/cart-products/cart-products.component';
 import { CartProductComponent } from './cart/cart-products/cart-product/cart-product.component';
+import { CartOrderComponent } from './cart/cart-order/cart-order.component';
 
 const routes: Routes = [
   {
@@ -86,6 +87,7 @@ const routes: Routes = [
     CartComponent,
     CartProductsComponent,
     CartProductComponent,
+    CartOrderComponent,
   ],
   imports: [
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
