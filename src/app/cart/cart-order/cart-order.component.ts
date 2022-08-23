@@ -12,4 +12,7 @@ export class CartOrderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  submitOrder() : void {
+    alert("You submitted order!")
+  }
 }
