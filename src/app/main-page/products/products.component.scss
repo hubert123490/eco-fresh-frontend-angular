@@ -1,10 +1,14 @@
 @import "../../../variables.scss";
 
 .products {
-    display: grid;
-    grid-template-columns: 1fr;
+  display: grid;
+  grid-template-columns: 1fr;
 
-    @include breakpoint(md) {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+  @media (min-width: 55em) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 80em) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
