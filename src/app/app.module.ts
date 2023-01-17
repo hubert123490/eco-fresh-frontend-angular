@@ -34,6 +34,7 @@ import { CartComponent } from './cart/cart.component';
 import { CartProductsComponent } from './cart/cart-products/cart-products.component';
 import { CartProductComponent } from './cart/cart-products/cart-product/cart-product.component';
 import { CartOrderComponent } from './cart/cart-order/cart-order.component';
+import { CarouselComponent } from './shared/carousel/carousel.component';
 
 const routes: Routes = [
   {
@@ -88,6 +89,7 @@ const routes: Routes = [
     CartProductsComponent,
     CartProductComponent,
     CartOrderComponent,
+    CarouselComponent,
   ],
   imports: [
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
