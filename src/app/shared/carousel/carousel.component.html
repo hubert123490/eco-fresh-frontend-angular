@@ -1,12 +1,19 @@
-<div class="wrapper">
-  <div class="slider">
-    <div>
-      <div class="leftArrow">&lsaquo;</div>
-      <div class="rightArrow">&rsaquo;</div>
-    </div>
+<div class="slider">
+  <div>
+    <div class="leftArrow" (click)="goToPrevious()">&lsaquo;</div>
+    <div class="rightArrow" (click)="goToNext()">&rsaquo;</div>
+  </div>
+  <div
+    class="slide"
+    [ngStyle]="{ 'background-image': getCurrentSlideUrl() }"
+  ></div>
+  <div class="dotsContainer">
     <div
-      class="slide"
-      [ngStyle]="{ 'background-image': getCurrentSlideUrl() }"
-    ></div>
+      *ngFor="let slide of slides; let slideIndex = index"
+      class="dot"
+      (click)="goToSlide(slideIndex)"
+    >
+      &bull;
+    </div>
   </div>
 </div>
