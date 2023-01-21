@@ -6,6 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-details-image.component.scss']
 })
 export class ProductDetailsImageComponent implements OnInit {
+  slides =[{
+    url: './../../assets/main-page/products/chicken__soup.jpg',
+    title: "tmp"
+  },
+  {
+    url: './../../assets/landing-page/welcome.jpg',
+    title: "tmp"
+  }]
 
   constructor() { }
 
