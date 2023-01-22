@@ -1,22 +1,34 @@
 <div class="order">
   <table class="order--table">
-    <tr>
-      <td>Product name</td>
+    <tr class="order--table__header">
+      <td>Product</td>
       <td>Brief details</td>
       <td>Price</td>
     </tr>
-    <tr>
+    <tr class="order--table__body">
+      <td>Chicken soup</td>
+      <td>200g meat</td>
+      <td>33.33$</td>
+    </tr>
+    <tr class="order--table__body">
+      <td>Chicken soup</td>
+      <td>200g meat</td>
+      <td>33.33$</td>
+    </tr>
+    <tr class="order--table__body">
       <td>Chicken soup</td>
       <td>200g meat</td>
       <td>33.33$</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td>33.33$</td>
+      <td></td>
+      <td></td>
+      <td><strong>99.99$</strong></td>
     </tr>
   </table>
   <div class="order--submit">
-    <button class="order--submit__button" (click)="submitOrder()">Submit order</button>
+    <button class="order--submit__button" (click)="submitOrder()">
+      Checkout
+    </button>
   </div>
 </div>
