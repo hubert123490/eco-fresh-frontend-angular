@@ -32,7 +32,15 @@
           </a>
         </li>
       </ul>
-      <button class="button">CTA Page</button>
+      <button
+        class="button"
+        (click)="menuToggleHandler()"
+        routerLink="/login-page"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        Sign in
+      </button>
     </nav>
     <div class="header__content--toggle">
       <a
