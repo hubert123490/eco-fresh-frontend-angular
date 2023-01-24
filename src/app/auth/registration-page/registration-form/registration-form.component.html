@@ -1,0 +1,36 @@
+<div>
+  <form class="form">
+    <div class="form--row">
+      <label>Email address</label>
+      <input placeholder="Email address" type="email" name="email" required />
+    </div>
+    <div class="form--row">
+      <label>Password</label>
+      <input placeholder="Password" type="password" name="password" required />
+    </div>
+    <div class="form--row">
+      <label>Confirm password</label>
+      <input
+        placeholder="Password"
+        type="password"
+        name="passwordConfirmed"
+        required
+      />
+    </div>
+    <div class="form--submit">
+      <button type="submit" class="form--submit__button">Create account</button>
+    </div>
+    <div class="form--account">
+      <span
+        >Already have an account?
+        <a
+          href="#"
+          routerLink="/login-page"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Sign in</a
+        ></span
+      >
+    </div>
+  </form>
+</div>
