@@ -38,8 +38,8 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
 import { SignInComponent } from './auth/login-page/sign-in/sign-in.component';
 import { OAuthComponent } from './auth/o-auth/o-auth.component';
-// import { RegistrationPageComponent } from './auth/registration-page/registration-page.component';
-// import { RegistrationFormComponent } from './auth/registration-page/registration-form/registration-form.component';
+import { RegistrationPageComponent } from './auth/registration-page/registration-page.component';
+import { RegistrationFormComponent } from './auth/registration-page/registration-form/registration-form.component';
 
 const routes: Routes = [
   {
@@ -62,10 +62,10 @@ const routes: Routes = [
     path: 'login-page',
     component: LoginPageComponent,
   },
-  // {
-  //   path: 'registration-page',
-  //   component: RegistrationPageComponent,
-  // },
+  {
+    path: 'registration-page',
+    component: RegistrationPageComponent,
+  },
   {
     path: '**',
     component: MainPageComponent,
@@ -106,8 +106,8 @@ const routes: Routes = [
     LoginPageComponent,
     SignInComponent,
     OAuthComponent,
-    // RegistrationPageComponent,
-    // RegistrationFormComponent,
+    RegistrationPageComponent,
+    RegistrationFormComponent,
   ],
   imports: [
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
