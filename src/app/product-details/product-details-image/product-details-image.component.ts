@@ -7,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailsImageComponent implements OnInit {
   slides =[{
-    url: './../../assets/main-page/products/chicken__soup.jpg',
+    url: 'assets/main-page/products/chicken__soup.jpg',
     title: "tmp"
   },
   {
-    url: './../../assets/landing-page/welcome.jpg',
+    url: 'assets/landing-page/welcome.jpg',
     title: "tmp"
   }]
 
