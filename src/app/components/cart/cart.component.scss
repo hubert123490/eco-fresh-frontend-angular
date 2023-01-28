@@ -1,0 +1,18 @@
+@import "../../../variables.scss";
+
+.cart {
+    margin-top: 1rem;
+
+    &--label{
+        padding-top: .5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    @include breakpoint(md) {
+        width: 100%;
+        padding: 0 20%;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,24 @@
+@import "../../../../../variables.scss";
+
+.button {
+    background-color: rgb(125, 180, 206);
+    border: 0;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    transition: 0.1s;
+    cursor: pointer;
+  
+    & span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    &:hover {
+      background-color: rgb(87, 148, 177);
+      color: $light;
+    }
+  }

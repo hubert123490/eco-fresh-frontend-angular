@@ -1,0 +1,63 @@
+@import "../../../../variables.scss";
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.submit {
+  padding: 1rem 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+
+  &--search {
+    background-color: rgb(125, 180, 206);
+    width: 5rem;
+    border: 0;
+    font-weight: 700;
+    padding: 0.7rem 0.5rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    transition: 0.1s;
+    cursor: pointer;
+  
+    & span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    &:hover {
+      background-color: rgb(87, 148, 177);
+      color: $light;
+    }
+  }
+}
+
+.label {
+  padding-top: 1rem;
+}
+
+.categories,
+.certifications,
+.producers {
+  width: 100%;
+  padding: 0.5rem;
+  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  &--label {
+    margin-right: 1rem;
+  }
+
+  &--select {
+    padding: 0.2rem;
+    border-radius: $border-radius;
+  }
+}

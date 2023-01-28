@@ -1,0 +1,19 @@
+@import "../../../../variables.scss";
+
+.image--container {
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__carousel {
+    height: 20rem;
+    height: 80%;
+    width: 80%;
+  }
+
+  @include breakpoint(md) {
+    height: 100%;
+    width: 100%;
+  }
+}

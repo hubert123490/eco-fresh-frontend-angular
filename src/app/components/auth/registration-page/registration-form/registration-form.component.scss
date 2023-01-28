@@ -1,0 +1,63 @@
+@import "./../../../../../variables.scss";
+
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &--row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & label {
+      padding: 1rem;
+      padding-left: 0;
+      opacity: 0.6;
+    }
+
+    & input {
+      font-family: inherit;
+      border-style: none none solid;
+      padding: 1rem;
+    }
+  }
+  &--submit {
+    width: 100%;
+    display: flex;
+
+    @include breakpoint(md) {
+      justify-content: flex-end;
+    }
+
+    &__button {
+      margin-top: 1rem;
+      background-color: rgb(125, 180, 206);
+      border: 0;
+      font-weight: 700;
+      padding: 1rem 2rem;
+      width: 100%;
+      font-size: 1.2rem;
+      border-radius: 1rem;
+      transition: 0.1s;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgb(87, 148, 177);
+        color: $light;
+      }
+
+      @include breakpoint(md) {
+        width: 50%;
+        justify-content: end;
+      }
+    }
+  }
+
+  &--account {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+  }
+}

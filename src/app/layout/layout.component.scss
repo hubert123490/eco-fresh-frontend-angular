@@ -1,6 +1,0 @@
-@import "../../variables.scss";
-
-.container {
-    min-height: calc(100vh - (#{$header-height} + #{$footer-height}));
-    background: $background;
-}
