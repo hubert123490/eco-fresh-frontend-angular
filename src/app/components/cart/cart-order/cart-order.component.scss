@@ -1,0 +1,61 @@
+@import "../../../../variables.scss";
+
+.order {
+  display: block;
+  padding: 0.5rem;
+  width: 100%;
+
+  &--table {
+    width: 100%;
+
+    & tr {
+      display: grid;
+      grid-template-columns: 0.5fr 1fr 0.5fr;
+      text-align: center;
+
+      & td {
+        border: 0.5px solid rgb(138, 122, 122);
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &__header {
+      background-color: rgb(108, 143, 143, 0.2);
+    }
+
+    &__body {
+      background-color: bisque;
+    }
+  }
+
+  &--submit {
+    width: 100%;
+    padding-top: 1rem;
+    text-align: end;
+
+    & button {
+      font-weight: 700;
+      font-size: large;
+      border-radius: $border-radius;
+      border: 1px solid black;
+      padding: 0.5rem 2rem;
+      transition: 0.1s;
+      cursor: pointer;
+      background-color: limegreen;
+
+      & span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      &:hover {
+        color: $light;
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import "../../../../variables.scss";
+
+.info {
+    padding: 1rem .5rem;
+
+    &--label {
+        text-align: center;
+        padding-bottom: 1rem;
+
+        &__description {
+            text-align: center;
+            padding-top: .5rem;
+        }
+    }
+
+    &--details {
+        display: flex;
+        flex-direction: column;
+
+        &__row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+
+            & .label--price, .data--price {
+                font-weight: bold;
+            }
+        }
+    }
+
+    &--description {
+        text-align: justify;
+    }
+}

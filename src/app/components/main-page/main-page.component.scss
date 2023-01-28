@@ -1,0 +1,10 @@
+@import "../../../variables.scss";
+
+.main--layout {
+    display: grid;
+    grid-template-columns: 100%;
+
+    @include breakpoint(md) {
+        grid-template-columns: 30% 70%;
+    }
+}
