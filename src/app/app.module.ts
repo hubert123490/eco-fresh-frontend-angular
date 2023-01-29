@@ -40,6 +40,7 @@ import { SignInComponent } from './components/auth/login-page/sign-in/sign-in.co
 import { OAuthComponent } from './components/auth/o-auth/o-auth.component';
 import { RegistrationPageComponent } from './components/auth/registration-page/registration-page.component';
 import { RegistrationFormComponent } from './components/auth/registration-page/registration-form/registration-form.component';
+import { StoreModule } from '@ngrx/store';
 
 const routes: Routes = [
   {
@@ -116,6 +117,7 @@ const routes: Routes = [
     MatIconModule,
     BrowserAnimationsModule,
     FormsModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [],
   bootstrap: [AppComponent],
