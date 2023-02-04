@@ -1,26 +1,16 @@
 <footer class="footer">
-    <div class="footer__container">
-      <div class="footer__container--row">
-        <div class="footer__container--col">
-          <ul>
-            <li>Icon</li>
-          </ul>
-        </div>
-        <div class="footer__container--col">
-          <ul>
-            <li>Icon</li>
-          </ul>
-        </div>
-        <div class="footer__container--col">
-          <ul>
-            <li>Icon</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__container--info">
-        <div class="footer__container--info__col">
-          &copy;All rights reserved
-        </div>
+  <div class="footer__container">
+    <div class="footer__container--row">
+      <div class="footer__container--col" *ngFor="let row of footerData.rows">
+        <ul *ngFor="let link of row">
+          <li>
+            <a [href]="link.href">{{ link.textContent }}</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </footer>
+    <div class="footer__container--info">
+      <div class="footer__container--info__col">&copy;All rights reserved</div>
+    </div>
+  </div>
+</footer>
