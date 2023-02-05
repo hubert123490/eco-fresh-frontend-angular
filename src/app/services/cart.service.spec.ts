@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import Product from '../main-page/products/product/Product';
+import Product from '../components/main-page/products/product/Product';
 
 import { CartService } from './cart.service';
 

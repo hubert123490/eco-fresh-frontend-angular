@@ -2,46 +2,38 @@
   <div class="header__content">
     <a
       class="header__content--logo"
-      routerLink="/landing-page"
+      [routerLink]="navData.logo.routerLink"
       routerLinkActive="active"
       ariaCurrentWhenActive="page"
     >
-      Eco Fresh
+      {{navData.logo.content}}
     </a>
 
     <nav [ngClass]="getNavType()">
       <ul>
-        <li>
+        <li *ngFor="let link of navData.links">
           <a
             (click)="menuToggleHandler()"
-            routerLink="/products"
+            [routerLink]="link.routerLink"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
           >
-            Order
-          </a>
-        </li>
-        <li>
-          <a
-            (click)="menuToggleHandler()"
-            routerLink="/shopping-cart"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >
-            <mat-icon>shopping_cart</mat-icon>
+            <span *ngIf="link.isIcon"><mat-icon>{{link.content}}</mat-icon></span>
+            <span *ngIf="!link.isIcon">{{link.content}}</span>
           </a>
         </li>
       </ul>
       <button
         class="button"
         (click)="menuToggleHandler()"
-        routerLink="/login-page"
+        [routerLink]="navData.buttonLink.routerLink"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
       >
-        Sign in
+        {{navData.buttonLink.content}}
       </button>
     </nav>
+    <!-- burger for small screens -->
     <div class="header__content--toggle">
       <a
         *ngIf="!isMenuOpen"

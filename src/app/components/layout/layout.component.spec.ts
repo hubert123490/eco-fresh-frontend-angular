@@ -1,4 +1,4 @@
-import { Component, DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FooterComponent } from './footer/footer.component';
@@ -12,38 +12,38 @@ import { LayoutComponent } from './layout.component';
 class TestComponent {}
 
 describe('LayoutComponent', () => {
-  let component: LayoutComponent;
+  let sut: LayoutComponent;
   let fixture: ComponentFixture<LayoutComponent>;
   let testFixture : ComponentFixture<TestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LayoutComponent, HeaderComponent, FooterComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LayoutComponent);
     testFixture = TestBed.createComponent(TestComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create layout component', () => {
-    expect(component).toBeTruthy();
+  it('creates layout component', () => {
+    expect(sut).toBeTruthy();
   });
 
-  it('should render header, custom content and footer', () => {
-    const fixture = TestBed.createComponent(LayoutComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
+  it('renders header, custom content and footer', () => {
+    // given
+    const component = fixture.nativeElement as HTMLElement;
 
-    const de: DebugElement = testFixture.debugElement.query(
+    // when
+    const element: Element = testFixture.debugElement.query(
       By.css('.test')
-    );
-    const el: Element = de.nativeElement;
+    ).nativeElement;
 
-    expect(compiled.querySelector('app-header')).toBeTruthy();
-    expect(compiled.querySelector('app-footer')).toBeTruthy();
-    expect(el.textContent).toContain('Hello World');
+    // then
+    expect(component.querySelector('app-header')).toBeTruthy();
+    expect(component.querySelector('app-footer')).toBeTruthy();
+    expect(element.textContent).toContain('Hello World');
   });
 });
