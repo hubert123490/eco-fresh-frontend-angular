@@ -5,7 +5,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { HeaderComponent } from './header.component';
 import { RouterModule } from '@angular/router';
-import { navData } from 'src/app/configs/navigation/nav.config';
+import { navData } from 'src/app/configs/nav.config';
 
 describe('HeaderComponent', () => {
   let sut: HeaderComponent;
@@ -41,12 +41,14 @@ describe('HeaderComponent', () => {
 
   it('closes the menu after resizing to certain width (see header component for value)', () => {
     // given
+    window.resizeTo(300, 300);
     sut.isMenuOpen = true;
 
     // when
+    fixture.detectChanges();
     window.resizeTo(800, 800);
     window.dispatchEvent(new Event('resize'));
-    fixture.detectChanges();
+    fixture.whenStable();
 
     // then
     expect(sut.isMenuOpen).toBe(false);
