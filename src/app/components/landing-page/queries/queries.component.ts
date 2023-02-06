@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { QueriesData } from '../data-types.interface';
 
 @Component({
   selector: 'app-queries',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./queries.component.scss']
 })
 export class QueriesComponent implements OnInit {
+  @Input() queries? : QueriesData;
 
   constructor() { }
 

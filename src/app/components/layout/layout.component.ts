@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationData } from './data-types.interface';
-import { navData } from '../../configs/navigation/nav.config';
+import { navData } from '../../configs/nav.config';
 
 @Component({
   selector: 'app-layout',

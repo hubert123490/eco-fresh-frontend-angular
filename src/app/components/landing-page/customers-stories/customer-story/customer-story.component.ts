@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CustomerStory } from '../../data-types.interface';
 
 @Component({
   selector: 'app-customer-story',
@@ -6,24 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./customer-story.component.scss'],
 })
 export class CustomerStoryComponent implements OnInit {
-  @Input() isEven: boolean;
-  @Input() customerName: string;
-  @Input() customerBio: string;
-  @Input() src: string;
-  @Input() alt: string;
+  @Input() isOdd?: boolean;
+  @Input() customerData? : CustomerStory
 
-  constructor() {
-    this.isEven = false;
-    this.customerName = '';
-    this.customerBio = '';
-    this.src = '';
-    this.alt = '';
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 
   getAlignmentStyle(): object {
-    if (this.isEven) return { 'story__info--rightAlign': true };
+    if (this.isOdd) return { 'story__info--rightAlign': true };
     return { 'story__info--leftAlign': true };
   }
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ImageData } from '../../../data-types.interface';
 
 @Component({
   selector: 'app-customer-image',
@@ -6,14 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./customer-image.component.scss']
 })
 export class CustomerImageComponent implements OnInit {
-  @Input() src : string;
-  @Input() alt : string;
+  @Input() imageData? : ImageData;
 
-
-  constructor() { 
-    this.src = "";
-    this.alt = "";
-  }
+  constructor() {}
 
   ngOnInit(): void {
   }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CustomersStoriesData } from '../data-types.interface';
 
 @Component({
   selector: 'app-customers-stories',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customers-stories.component.scss'],
 })
 export class CustomersStoriesComponent implements OnInit {
+  @Input() customersStories? : CustomersStoriesData;
   
   constructor() {}
 

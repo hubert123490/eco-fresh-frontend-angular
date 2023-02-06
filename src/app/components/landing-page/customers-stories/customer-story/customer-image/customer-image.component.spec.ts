@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CustomerImageComponent } from './customer-image.component';
 
 describe('CustomerImageComponent', () => {
-  let component: CustomerImageComponent;
+  let sut: CustomerImageComponent;
   let fixture: ComponentFixture<CustomerImageComponent>;
 
   beforeEach(async () => {
@@ -13,20 +13,27 @@ describe('CustomerImageComponent', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(CustomerImageComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create customer image component', () => {
-    expect(component).toBeTruthy();
+  it('creates customer image component', () => {
+    expect(sut).toBeTruthy();
   });
 
-  it('should set src and alt properties to img', () => {
-    component.src = 'test';
-    component.alt = 'test alt';
+  it('sets src and alt properties to img', () => {
+    // given
+    sut.imageData = {
+      src: "test",
+      alt: "test"
+    }
+
+    // when
+    fixture.detectChanges();
     const img = fixture.nativeElement.querySelector('img');
-    fixture.detectChanges();
-    expect(img.alt).toEqual('test alt');
+
+    // then
+    expect(img.alt).toEqual('test');
     expect(img.src).toContain('test');
   });
 });

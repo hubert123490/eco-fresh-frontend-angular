@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
 import { QueryButtonComponent } from './query-button.component';
 
 describe('QueryButtonComponent', () => {
-  let component: QueryButtonComponent;
+  let sut: QueryButtonComponent;
   let fixture: ComponentFixture<QueryButtonComponent>;
 
   beforeEach(async () => {
@@ -13,25 +12,25 @@ describe('QueryButtonComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(QueryButtonComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create query button component', () => {
-    expect(component).toBeTruthy();
+  it('creates query button component', () => {
+    expect(sut).toBeTruthy();
   });
 
   it('should display custom text', () => {
-    component.text = 'test';
-    const text = fixture.nativeElement.querySelector('.text');
-    fixture.detectChanges();
-    expect(text.textContent).toEqual('test');
-  });
+    // given
+    sut.text = 'test';
+    let result;
+    let expectedResult = "test";
 
-  it('should display custom content', () => {
-    component.text = 'test';
-    const text = fixture.nativeElement.querySelector('.text');
+    // when
     fixture.detectChanges();
-    expect(text.textContent).toEqual('test');
+    result = fixture.nativeElement.querySelector('.text').textContent;
+
+    // then
+    expect(result).toEqual(expectedResult);
   });
 });

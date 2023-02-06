@@ -1,4 +1,4 @@
-import { NavigationData } from '../../components/layout/data-types.interface';
+import { NavigationData } from '../components/layout/data-types.interface';
 
 export const navData: NavigationData = {
   headerData: {
