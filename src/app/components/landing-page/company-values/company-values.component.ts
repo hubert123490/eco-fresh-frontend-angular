@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CompanyValuesData } from '../data-types.interface';
 
 @Component({
   selector: 'app-company-values',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./company-values.component.scss']
 })
 export class CompanyValuesComponent implements OnInit {
+  @Input() companyValues? : CompanyValuesData
 
   constructor() { }
 

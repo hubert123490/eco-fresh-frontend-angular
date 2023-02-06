@@ -1,22 +1,22 @@
 <div class="queries">
-  <h1 class="queries__label">So what do you think?</h1>
+  <h1 class="queries__label">{{queries?.header}}</h1>
   <div class="queries__container">
     <div class="queries__container--query">
-      <h2>Sounds good?</h2>
+      <h2>{{queries?.queryHeader}}</h2>
       <div class="queries__container--query__options">
         <div>
-          <a routerLink="/products">
-            <app-query-button [text]="'Order a delivery!'"></app-query-button>
+          <a routerLink="queries?.queryButton?.routerLink">
+            <app-query-button [text]="queries?.queryButton!.textContent"></app-query-button>
           </a>
         </div>
       </div>
     </div>
 
     <div class="queries__container--query">
-      <h2>Need more info?</h2>
+      <h2>{{queries?.socialMediaHeader}}</h2>
       <div class="queries__container--query__options">
         <div>
-          <a href="#">
+          <a [href]="queries?.facebookButton?.href">
             <app-query-button>
               <app-facebook-svg></app-facebook-svg
             ></app-query-button>

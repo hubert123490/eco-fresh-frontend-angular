@@ -1,9 +1,9 @@
 <div class="story">
-  <app-customer-image *ngIf="isEven" [alt]="alt" [src]="src" class="even--image"></app-customer-image>
+  <app-customer-image *ngIf="isOdd" [imageData]="customerData?.imageData" class="even--image"></app-customer-image>
   <div [ngClass]="getAlignmentStyle()">
-    <h1 class="story__customer">{{customerName}}</h1>
-    <h2 class="story__subtitle">{{customerBio}}</h2>
+    <h1 class="story__customer">{{customerData?.customerName}}</h1>
+    <h2 class="story__subtitle">{{customerData?.customerBio}}</h2>
     <p class="project__text"><ng-content></ng-content></p>
   </div>
-  <app-customer-image *ngIf="!isEven" [alt]="alt" [src]="src" class="odd--image"></app-customer-image>
+  <app-customer-image *ngIf="!isOdd" [imageData]="customerData?.imageData" class="odd--image"></app-customer-image>
 </div>

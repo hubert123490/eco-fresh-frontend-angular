@@ -1,13 +1,12 @@
 <article class="welcome">
   <section class="welcome__section">
-    <h1>Eco Fresh provides fresh ingredients delivery.</h1>
+    <h1>{{welcomeData?.header}}</h1>
     <h2>
-      Get top notch ingredients at any time. You choose how much and what you
-      order.
+      {{welcomeData?.description}}
     </h2>
     <div class="welcome__section--link">
-      <a routerLink="/products">Order a delivery!</a>
+      <a [routerLink]="welcomeData?.buttonRouterLink">{{welcomeData?.buttonText}}</a>
     </div>
   </section>
-  <div class="welcome__image--container" [style.background-image]="'url(assets/landing-page/welcome.jpg)'"></div>
+  <div class="welcome__image--container" [style.background-image]="'url('+ welcomeData?.imageUrl + ')'"></div>
 </article>

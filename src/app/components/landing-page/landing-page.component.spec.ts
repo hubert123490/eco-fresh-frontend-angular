@@ -1,5 +1,6 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { landingPageData } from 'src/app/configs/landing-page.config';
 import { CompanyValuesComponent } from './company-values/company-values.component';
 import { CustomersStoriesComponent } from './customers-stories/customers-stories.component';
 
@@ -8,7 +9,7 @@ import { QueriesComponent } from './queries/queries.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 describe('LandingPageComponent', () => {
-  let component: LandingPageComponent;
+  let sut: LandingPageComponent;
   let fixture: ComponentFixture<LandingPageComponent>;
 
   beforeEach(async () => {
@@ -20,26 +21,25 @@ describe('LandingPageComponent', () => {
         CustomersStoriesComponent,
         QueriesComponent,
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LandingPageComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
+    sut.landingPageData = landingPageData
     fixture.detectChanges();
   });
 
-  it('should create landing page component', () => {
-    expect(component).toBeTruthy();
+  it('creates landing page component', () => {
+    expect(sut).toBeTruthy();
   });
 
-  it('should render welcome, company values, customer stories and app queries in no particular order', () => {
-    const fixture = TestBed.createComponent(LandingPageComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
+  it('renders welcome, company values, customer stories and app queries in no particular order', () => {
+    const component = fixture.nativeElement as HTMLElement;
 
-    expect(compiled.querySelector('app-welcome')).toBeTruthy();
-    expect(compiled.querySelector('app-company-values')).toBeTruthy();
-    expect(compiled.querySelector('app-customers-stories')).toBeTruthy();
-    expect(compiled.querySelector('app-queries')).toBeTruthy();
+    expect(component.querySelector('app-welcome')).toBeTruthy();
+    expect(component.querySelector('app-company-values')).toBeTruthy();
+    expect(component.querySelector('app-customers-stories')).toBeTruthy();
+    expect(component.querySelector('app-queries')).toBeTruthy();
   });
 });

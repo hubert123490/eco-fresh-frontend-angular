@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { WelcomeComponent } from './welcome.component';
 
 describe('WelcomeComponent', () => {
-  let component: WelcomeComponent;
+  let sut: WelcomeComponent;
   let fixture: ComponentFixture<WelcomeComponent>;
 
   beforeEach(async () => {
@@ -13,11 +13,11 @@ describe('WelcomeComponent', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(WelcomeComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create welcome component', () => {
-    expect(component).toBeTruthy();
+  it('creates welcome component', () => {
+    expect(sut).toBeTruthy();
   });
 });

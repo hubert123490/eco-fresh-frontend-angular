@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { landingPageData } from 'src/app/configs/landing-page.config';
 
 import { CompanyValuesComponent } from './company-values.component';
 
 describe('CompanyValuesComponent', () => {
-  let component: CompanyValuesComponent;
+  let sut: CompanyValuesComponent;
   let fixture: ComponentFixture<CompanyValuesComponent>;
 
   beforeEach(async () => {
@@ -13,11 +14,12 @@ describe('CompanyValuesComponent', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(CompanyValuesComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
+    sut.companyValues = landingPageData.companyValues
     fixture.detectChanges();
   });
 
-  it('should create company values component', () => {
-    expect(component).toBeTruthy();
+  it('creates company values component', () => {
+    expect(sut).toBeTruthy();
   });
 });
