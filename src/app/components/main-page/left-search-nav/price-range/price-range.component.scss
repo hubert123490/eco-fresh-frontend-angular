@@ -61,6 +61,12 @@
   
     &--range {
       position: relative;
+
+      &__min {
+        &:hover {
+          cursor: pointer;
+        }
+      }
   
       & input {
         position: absolute;
