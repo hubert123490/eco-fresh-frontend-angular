@@ -1,4 +1,4 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -6,76 +6,118 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopSearchNavComponent } from './top-search-nav.component';
 
 describe('TopSearchNavComponent', () => {
-  let component: TopSearchNavComponent;
+  let sut: TopSearchNavComponent;
   let fixture: ComponentFixture<TopSearchNavComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TopSearchNavComponent],
       imports: [BrowserAnimationsModule],
-      schemas: [NO_ERRORS_SCHEMA],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TopSearchNavComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create top search nav component', () => {
-    expect(component).toBeTruthy();
+  it('creates top search nav component', () => {
+    expect(sut).toBeTruthy();
   });
 
-  it('should render categories when menuIsOpen is set to true', () => {
-    const component = fixture.componentInstance;
-    component.isMenuOpen = true;
+  it('renders categories when menuIsOpen is set to true', () => {
+    // given
+    sut.isMenuOpen = true;
+
+    // when
     fixture.detectChanges();
+
+    // then
     expect(fixture.debugElement.query(By.css('.nav--category'))).not.toBeNull();
   });
 
-  it('should not render categories when menuIsOpen is set to true', () => {
-    const component = fixture.componentInstance;
-    component.isMenuOpen = false;
+  it('does not render categories when menuIsOpen is set to true', () => {
+    // given
+    sut.isMenuOpen = false;
+
+    // when
     fixture.detectChanges();
+
+    // then
     expect(fixture.debugElement.query(By.css('.nav--category'))).toBeNull();
   });
 
-  it('should toggle menu when arrow button is clicked', () => {
-    const component = fixture.componentInstance;
-    component.toggleMenu();
-    expect(component.isMenuOpen).toBe(true);
-    component.toggleMenu();
-    expect(component.isMenuOpen).toBe(false);
+  it('toggles menu when toggleMenu() function is called', () => {
+    // given
+    const expectedResult: Array<boolean> = [true, false];
+    let result: Array<boolean> = [];
+
+    // when
+    for (let attempt in expectedResult) {
+      fixture.detectChanges();
+      sut.toggleMenu();
+      result.push(sut.isMenuOpen);
+    }
+
+    // then
+    expect(result).toEqual(expectedResult);
   });
 
-  it('check displayFilter() function', () => {
-    const component = fixture.componentInstance;
-    component.width = 500;
-    expect(component.displayFilter()).toBe(true);
-    component.width = 800;
-    expect(component.displayFilter()).toBe(false);
+  it('checks displayFilter() function', () => {
+    [
+      { expectedResult: true, width: 500 },
+      { expectedResult: false, width: 800 },
+    ].forEach(({ expectedResult, width }) => {
+      // given
+      sut.width = width;
+      let result;
 
+      // when
+      fixture.detectChanges();
+      result = sut.displayFilter();
+
+      // then
+      expect(result).toEqual(expectedResult);
+    });
   });
-  
 
-  it('should display filter button on small screens', () => {
-    const component = fixture.componentInstance;
-    component.width = 500;
+  it('displays filter button on small screens', () => {
+    // given
+    sut.width = 500;
+
+    // when
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.nav--form__filter'))).not.toBeNull();
+
+    // then
+    expect(
+      fixture.debugElement.query(By.css('button.nav--form__filter--button'))
+    ).not.toBeNull();
   });
 
-  it('should not display filter button on wider screens', () => {
-    const component = fixture.componentInstance;
-    component.width = 800;
+  it('does not display filter button on wider screens', () => {
+    // given
+    sut.width = 800;
+
+    // when
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.nav--form__filter'))).toBeNull();
+
+    // then
+    expect(
+      fixture.debugElement.query(By.css('button.nav--form__filter--button'))
+    ).toBeNull();
   });
 
-  it('should display filter button with filter icon', () => {
-    const component = fixture.componentInstance;
-    component.width = 500;
-    component.isFilterOpen = false;
+  it('displays filter button with filter icon', () => {
+    // given
+    sut.width = 500;
+    sut.isFilterOpen = false;
+
+    // when
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.nav--form__filter mat-icon'))).toBeDefined();
+
+    // then
+    expect(
+      fixture.debugElement.query(By.css('.nav--form__filter mat-icon'))
+    ).toBeDefined();
   });
 });
