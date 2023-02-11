@@ -1,89 +1,141 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { PriceRangeComponent } from './price-range.component';
 
 describe('PriceRangeComponent', () => {
-  let component: PriceRangeComponent;
+  let sut: PriceRangeComponent;
   let fixture: ComponentFixture<PriceRangeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PriceRangeComponent],
       imports: [FormsModule],
-      schemas: [NO_ERRORS_SCHEMA],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PriceRangeComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create price range component', () => {
-    expect(component).toBeTruthy();
+  it('creates price range component', () => {
+    expect(sut).toBeTruthy();
   });
 
-  it('should set currMinPrice', () => {
-    const component = fixture.componentInstance;
+  it('sets currMinPrice', () => {
+    // given
     const event = { target: { value: 50 } };
-    component.minPriceHandler(event);
-    expect(component.currMin).toBe(50);
+    const expectedResult : number = 50;
+    let result : number;
+
+    // when
+    fixture.detectChanges();
+    sut.minPriceHandler(event);
+    fixture.detectChanges();
+    result = sut.currMin;
+
+    // then
+    expect(result).toEqual(expectedResult);
   });
 
-  it('should set currMinPrice to (currMaxPrice - priceGap) when currMinPrice is greater than currMaxPrice', () => {
-    const component = fixture.componentInstance;
-    component.currMax = 500;
+  it('sets currMinPrice to (currMaxPrice - priceGap) when currMinPrice is greater than currMaxPrice', () => {
+    // given
+    sut.currMax = 500;
     const event = { target: { value: 600 } };
-    component.minPriceHandler(event);
+    let result : number;
+    const expectedResult = sut.currMax - sut.priceGap;
 
-    expect(component.currMin).toBe(component.currMax - component.priceGap);
+    // when
+    fixture.detectChanges
+    sut.minPriceHandler(event);
+    fixture.detectChanges();
+    result = sut.currMin;
+
+    // then
+    expect(result).toBe(expectedResult);
   });
 
-  it('should set currMinPrice to minPrice when currMinPrice is lower than minPrice', () => {
-    const component = fixture.componentInstance;
+  it('sets currMinPrice to minPrice when currMinPrice is lower than minPrice', () => {
+    // given
     const event = { target: { value: -100 } };
-    component.minPriceHandler(event);
+    let result : number;
+    const expectedResult : number = sut.minPrice;
 
-    expect(component.currMin).toBe(component.minPrice);
+    // when
+    fixture.detectChanges();
+    sut.minPriceHandler(event);
+    fixture.detectChanges();
+    result = sut.currMin
+
+    // then
+    expect(result).toBe(expectedResult);
   });
 
-  it('should set currMaxPrice', () => {
-    const component = fixture.componentInstance;
+  it('sets currMaxPrice', () => {
+    // given
     const event = { target: { value: 800 } };
-    component.maxPriceHandler(event);
-    expect(component.currMax).toBe(800);
+    const expectedResult : number = event.target.value;
+    let result : number;
+
+    // when
+    fixture.detectChanges();
+    sut.maxPriceHandler(event);
+    fixture.detectChanges();
+    result = sut.currMax;
+
+    // then
+    expect(result).toEqual(expectedResult);
   });
 
-  it('should set currMaxPrice to (currMaxPrice + priceGap) when currMaxPrice is lower than currMinPrice', () => {
-    const component = fixture.componentInstance;
-    component.currMin = 400;
+  it('sets currMaxPrice to (currMaxPrice + priceGap) when currMaxPrice is lower than currMinPrice', () => {
+    // given
+    sut.currMin = 400;
     const event = { target: { value: 300 } };
-    component.maxPriceHandler(event);
+    const expectedResult : number = sut.currMin + sut.priceGap;
+    let result;
 
-    expect(component.currMax).toBe(component.currMin + component.priceGap);
+    // when
+    fixture.detectChanges();
+    sut.maxPriceHandler(event);
+    fixture.detectChanges();
+    result = sut.currMax;
+
+    // then
+    expect(result).toBe(expectedResult);
   });
 
-  it('should set currMaxPrice to maxPrice when currMaxPrice is higher than maxPrice', () => {
-    const component = fixture.componentInstance;
-    component.maxPrice = 1000;
+  it('sets currMaxPrice to maxPrice when currMaxPrice is higher than maxPrice', () => {
+    // given
+    sut.maxPrice = 1000;
     const event = { target: { value: 1500 } };
-    component.maxPriceHandler(event);
+    const expectedResult : number = sut.maxPrice;
+    let result;
 
-    expect(component.currMax).toBe(component.maxPrice);
+    // when
+    fixture.detectChanges();
+    sut.maxPriceHandler(event);
+    fixture.detectChanges();
+    result = sut.currMax;
+
+    // then
+    expect(result).toBe(expectedResult);
   });
 
-  it('should check if sliderProgress is updated', () => {
-    const component = fixture.componentInstance;
-    component.currMin = 300;
-    component.currMax = 600;
-    const styles = component.sliderProgress();
+  it('checks if sliderProgress is updated', () => {
+    // given
+    sut.currMin = 300;
+    sut.currMax = 600;
+    const styles = sut.sliderProgress();
 
+    // when
+    fixture.detectChanges();
+
+    // then
     expect(styles).toEqual({
-      left: (component.currMin / component.maxPrice) * 100 + '%',
-      right: 100 - (component.currMax / component.maxPrice) * 100 + '%',
+      left: (sut.currMin / sut.maxPrice) * 100 + '%',
+      right: 100 - (sut.currMax / sut.maxPrice) * 100 + '%',
     });
   });
-
-  
 });

@@ -1,4 +1,4 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -7,77 +7,109 @@ import { MainPageComponent } from './main-page.component';
 import { TopSearchNavComponent } from './top-search-nav/top-search-nav.component';
 
 describe('MainPageComponent', () => {
-  let component: MainPageComponent;
+  let sut: MainPageComponent;
   let fixture: ComponentFixture<MainPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ MainPageComponent, TopSearchNavComponent ],
       imports: [BrowserAnimationsModule],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(MainPageComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create main page component', () => {
-    expect(component).toBeTruthy();
+  it('creates main page component', () => {
+    expect(sut).toBeTruthy();
   });
 
-  it('should trigger onResize function on window resize', () => {
-    const component = fixture.componentInstance;
-    const spyOnResize = spyOn(component, 'onResize');
+  it('triggers onResize function on window resize', () => {
+    // given
+    const spyOnResize = spyOn(sut, 'onResize');
+
+    // when
     window.dispatchEvent(new Event('resize'));
+
+    // then
     expect(spyOnResize).toHaveBeenCalled();
   });
 
-  it('should set isFilterOpen while onResize function is called for wider screens', () => {
-    const component = fixture.componentInstance;
+  it('sets isFilterOpen while onResize function is called for wider screens', () => {
+    // given
     window.innerWidth = 800;
-    component.isFilterOpen = false;
-    window.dispatchEvent(new Event('resize'));
-    expect(component.isFilterOpen).toBe(true);
-  });
+    sut.isFilterOpen = false;
 
-  it('check filterToggleHandler() function (smaller screens)', () => {
-    const component = fixture.componentInstance;
-    component.isFilterOpen = false;
-    component.width = 500;
-    component.filterToggleHandler();
-    expect(component.isFilterOpen).toBe(true);
-    component.filterToggleHandler();
-    expect(component.isFilterOpen).toBe(false);
-  });
-
-  it('check filterToggleHandler() function (wider screens)', () => {
-    const component = fixture.componentInstance;
-    component.isFilterOpen = true;
-    component.width = 900;
-    expect(component.isFilterOpen).toBe(true);
-
-    component.filterToggleHandler();
-    expect(component.isFilterOpen).toBe(true);
-    component.filterToggleHandler();
-    expect(component.isFilterOpen).toBe(true);
-  });
-
-  it('should render left-search-nav when isFilterOpen is set to true', () => {
-    const component = fixture.componentInstance;
-    component.isFilterOpen = true;
+    // when
     fixture.detectChanges();
+    window.dispatchEvent(new Event('resize'));
+
+    // then
+    expect(sut.isFilterOpen).toBe(true);
+  });
+
+  it('checks filterToggleHandler() function (smaller screens)', () => {
+    // given
+    sut.isFilterOpen = false;
+    sut.width = 500;
+    const expectedResult : Array<boolean> = [true, false]
+    let result : Array<boolean> = [];
+
+    // when
+    for(let attempt in expectedResult) {
+      fixture.detectChanges();
+      sut.filterToggleHandler();
+      result.push(sut.isFilterOpen);
+    }
+
+    // then
+    expect(result).toEqual(expectedResult);
+  });
+
+  it('checks filterToggleHandler() function (wider screens)', () => {
+    // given
+    sut.isFilterOpen = true;
+    sut.width = 900;
+    const expectedResult : Array<boolean> = [true, true, true]
+    let result : Array<boolean> = [];
+
+    // when
+    for(let attempt in expectedResult) {
+      fixture.detectChanges();
+      result.push(sut.isFilterOpen);
+      sut.filterToggleHandler();
+    }
+
+    // then
+    expect(result).toEqual(expectedResult);
+  });
+
+  it('renders left-search-nav when isFilterOpen is set to true', () => {
+    // given
+    sut.isFilterOpen = true;
+
+    // when
+    fixture.detectChanges();
+
+    // then
     expect(
       fixture.debugElement.query(By.css('app-left-search-nav'))
     ).not.toBeNull();
   });
 
-  it('test constructor', () => {
+  it('tests constructor', () => {
+    // given
     window.innerWidth = 500;
+
+    // when
+    fixture.detectChanges();
     const newFixture = TestBed.createComponent(MainPageComponent);
     const newComponent = newFixture.componentInstance;
+
+    // then
     expect(newComponent.isFilterOpen).toBe(false);
-    
   });
 });

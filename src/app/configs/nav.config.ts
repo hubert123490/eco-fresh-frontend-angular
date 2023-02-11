@@ -6,6 +6,7 @@ export const navData: NavigationData = {
       content: 'Eco Fresh',
       routerLink: '/landing-page',
     },
+    // if isIcon is true, provide icon name in "content"
     links: [
       {
         content: 'order',
