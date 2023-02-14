@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import Product from './product/Product';
+import { Product } from 'src/app/store/models/Product';
+import { Store } from '@ngrx/store';
+import { selectProducts } from 'src/app/store/selectors/products.selectors';
+import { ProductsApiActions } from 'src/app/store/actions/products.actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -7,95 +11,12 @@ import Product from './product/Product';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  products: Product[];
+  products$ : Observable<readonly Product[]> = this.store.select(selectProducts);
 
-  productId: number | undefined;
-  productName: string = '';
-  productDescription: string = '';
-  productPrice: number = 0;
-  productCategory: string = '';
-  productCertificate: string = '';
-  productProducer: string = '';
-  productKcal: number = 0;
-  productImages: string = '';
-
-  constructor() {
-    this.products = [
-      new Product({
-        productId: 0,
-        productName: 'Chicken Soup',
-        productDescription: `
-      Everyone has their own favorite chicken soup recipe, but rarely have so few ingredients added up to so much comfort. This version has classic flavors and, thanks to a simplified method, cooks more quickly than traditional chicken soups (the dish is ready in a little over an hour). There's no need to make a separate stock; the vegetables and meat form their own satisfying broth.`,
-        productPrice: 50.0,
-        productCategory: 'Soups',
-        productCertificate: 'ECO',
-        productProducer: 'Blods',
-        productKcal: [2000, 3000],
-        productImages: '',
-      }),
-      new Product({
-        productId: 0,
-        productName: 'Chicken Soup',
-        productDescription: `
-      Everyone has their own favorite chicken soup recipe, but rarely have so few ingredients added up to so much comfort. This version has classic flavors and, thanks to a simplified method, cooks more quickly than traditional chicken soups (the dish is ready in a little over an hour). There's no need to make a separate stock; the vegetables and meat form their own satisfying broth.`,
-        productPrice: 50.0,
-        productCategory: 'Soups',
-        productCertificate: 'ECO',
-        productProducer: 'Blods',
-        productKcal: [2000, 3000],
-        productImages: '',
-      }),
-      new Product({
-        productId: 0,
-        productName: 'Chicken Soup',
-        productDescription: `
-      Everyone has their own favorite chicken soup recipe, but rarely have so few ingredients added up to so much comfort. This version has classic flavors and, thanks to a simplified method, cooks more quickly than traditional chicken soups (the dish is ready in a little over an hour). There's no need to make a separate stock; the vegetables and meat form their own satisfying broth.`,
-        productPrice: 50.0,
-        productCategory: 'Soups',
-        productCertificate: 'ECO',
-        productProducer: 'Blods',
-        productKcal: [2000, 3000],
-        productImages: '',
-      }),
-      new Product({
-        productId: 0,
-        productName: 'Chicken Soup',
-        productDescription: `
-      Everyone has their own favorite chicken soup recipe, but rarely have so few ingredients added up to so much comfort. This version has classic flavors and, thanks to a simplified method, cooks more quickly than traditional chicken soups (the dish is ready in a little over an hour). There's no need to make a separate stock; the vegetables and meat form their own satisfying broth.`,
-        productPrice: 50.0,
-        productCategory: 'Soups',
-        productCertificate: 'ECO',
-        productProducer: 'Blods',
-        productKcal: [2000, 3000],
-        productImages: '',
-      }),
-      new Product({
-        productId: 0,
-        productName: 'Chicken Soup',
-        productDescription: `
-      Everyone has their own favorite chicken soup recipe, but rarely have so few ingredients added up to so much comfort. This version has classic flavors and, thanks to a simplified method, cooks more quickly than traditional chicken soups (the dish is ready in a little over an hour). There's no need to make a separate stock; the vegetables and meat form their own satisfying broth.`,
-        productPrice: 50.0,
-        productCategory: 'Soups',
-        productCertificate: 'ECO',
-        productProducer: 'Blods',
-        productKcal: [2000, 3000],
-        productImages: '',
-      }),
-      new Product({
-        productId: 0,
-        productName: 'Chicken Soup',
-        productDescription: `
-      Everyone has their own favorite chicken soup recipe, but rarely have so few ingredients added up to so much comfort. This version has classic flavors and, thanks to a simplified method, cooks more quickly than traditional chicken soups (the dish is ready in a little over an hour). There's no need to make a separate stock; the vegetables and meat form their own satisfying broth.`,
-        productPrice: 50.0,
-        productCategory: 'Soups',
-        productCertificate: 'ECO',
-        productProducer: 'Blods',
-        productKcal: [2000, 3000],
-        productImages: '',
-      }),
-      
-    ];
+  constructor(private store : Store) {
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+      this.store.dispatch(ProductsApiActions.loadProductList())
+  }
 }

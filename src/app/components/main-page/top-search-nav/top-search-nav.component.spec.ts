@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ResponsiveFilter } from '../search-nav';
 
 import { TopSearchNavComponent } from './top-search-nav.component';
 
@@ -18,6 +19,7 @@ describe('TopSearchNavComponent', () => {
 
     fixture = TestBed.createComponent(TopSearchNavComponent);
     sut = fixture.componentInstance;
+    sut.responsiveFilter = new ResponsiveFilter();
     fixture.detectChanges();
   });
 
@@ -27,7 +29,7 @@ describe('TopSearchNavComponent', () => {
 
   it('renders categories when menuIsOpen is set to true', () => {
     // given
-    sut.isMenuOpen = true;
+    sut.filter.isFilterOpen = true;
 
     // when
     fixture.detectChanges();
@@ -38,7 +40,7 @@ describe('TopSearchNavComponent', () => {
 
   it('does not render categories when menuIsOpen is set to true', () => {
     // given
-    sut.isMenuOpen = false;
+    sut.filter.isFilterOpen = false;
 
     // when
     fixture.detectChanges();
@@ -55,8 +57,8 @@ describe('TopSearchNavComponent', () => {
     // when
     for (let attempt in expectedResult) {
       fixture.detectChanges();
-      sut.toggleMenu();
-      result.push(sut.isMenuOpen);
+      sut.filter.toggleFilter();
+      result.push(sut.filter.isFilterOpen);
     }
 
     // then
@@ -69,12 +71,12 @@ describe('TopSearchNavComponent', () => {
       { expectedResult: false, width: 800 },
     ].forEach(({ expectedResult, width }) => {
       // given
-      sut.width = width;
+      sut.responsiveFilter!.windowWidth = width;
       let result;
 
       // when
       fixture.detectChanges();
-      result = sut.displayFilter();
+      result = sut.responsiveFilter!.displayFilter();
 
       // then
       expect(result).toEqual(expectedResult);
@@ -83,7 +85,7 @@ describe('TopSearchNavComponent', () => {
 
   it('displays filter button on small screens', () => {
     // given
-    sut.width = 500;
+    sut.responsiveFilter!.windowWidth = 500;
 
     // when
     fixture.detectChanges();
@@ -96,7 +98,7 @@ describe('TopSearchNavComponent', () => {
 
   it('does not display filter button on wider screens', () => {
     // given
-    sut.width = 800;
+    sut.responsiveFilter!.windowWidth = 800;
 
     // when
     fixture.detectChanges();
@@ -109,8 +111,8 @@ describe('TopSearchNavComponent', () => {
 
   it('displays filter button with filter icon', () => {
     // given
-    sut.width = 500;
-    sut.isFilterOpen = false;
+    sut.responsiveFilter!.windowWidth = 500;
+    sut.filter.isFilterOpen = false;
 
     // when
     fixture.detectChanges();

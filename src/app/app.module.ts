@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -41,6 +41,9 @@ import { OAuthComponent } from './components/auth/o-auth/o-auth.component';
 import { RegistrationPageComponent } from './components/auth/registration-page/registration-page.component';
 import { RegistrationFormComponent } from './components/auth/registration-page/registration-form/registration-form.component';
 import { StoreModule } from '@ngrx/store';
+import { productsReducer } from './store/reducers/products.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductsEffects } from './store/effects/products.effects';
 
 const routes: Routes = [
   {
@@ -111,13 +114,15 @@ const routes: Routes = [
     RegistrationFormComponent,
   ],
   imports: [
+    HttpClientModule,
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
     BrowserAnimationsModule,
     FormsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({products : productsReducer}),
+    EffectsModule.forRoot([ProductsEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

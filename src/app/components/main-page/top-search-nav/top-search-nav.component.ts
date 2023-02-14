@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ResponsiveFilter, Filter } from '../search-nav';
 
 @Component({
   selector: 'app-top-search-nav',
@@ -19,29 +20,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   ],
 })
 export class TopSearchNavComponent implements OnInit {
-  @Input() width: number;
-  @Input() height: number;
-  categories: string[];
-  isMenuOpen: boolean;
+  @Input() responsiveFilter?: ResponsiveFilter;
   @Output() toggleFilter = new EventEmitter();
-  @Input() isFilterOpen : boolean;
+  filter: Filter = new Filter();
+  categories: string[];
 
   constructor() {
     this.categories = ['meat', 'fruits', 'vegetables', 'crops', 'others'];
-    this.isMenuOpen = false;
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
-    this.isFilterOpen = false;
   }
 
   ngOnInit(): void {}
-
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
-
-  displayFilter(): boolean {
-    if (this.width > 768) return false;
-    return true;
-  }
 }

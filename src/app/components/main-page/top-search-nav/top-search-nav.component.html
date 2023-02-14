@@ -6,22 +6,22 @@
       autocomplete="off"
       placeholder="Find product!"
     />
-    <button class="nav--form__categories--button" type="button" (click)="toggleMenu()">
-      <mat-icon *ngIf="!isMenuOpen">arrow_drop_down</mat-icon>
-      <mat-icon *ngIf="isMenuOpen">arrow_drop_up</mat-icon>
+    <button class="nav--form__categories--button" type="button" (click)="this.filter.toggleFilter()">
+      <mat-icon *ngIf="!this.filter.isFilterOpen">arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="this.filter.isFilterOpen">arrow_drop_up</mat-icon>
     </button>
     <button
       class="nav--form__filter--button"
       type="button"
-      *ngIf="displayFilter()"
+      *ngIf="responsiveFilter?.displayFilter()"
       (click)="toggleFilter.emit()"
     >
-      <mat-icon *ngIf="!isFilterOpen">filter_list</mat-icon>
-      <mat-icon *ngIf="isFilterOpen">arrow_drop_up</mat-icon>
+      <mat-icon *ngIf="!responsiveFilter?.isFilterOpen">filter_list</mat-icon>
+      <mat-icon *ngIf="responsiveFilter?.isFilterOpen">arrow_drop_up</mat-icon>
     </button>
     <button class="nav--form__submit--button" type="button">Search</button>
   </form>
-  <div class="nav--category" *ngIf="isMenuOpen" [@inOutAnimation]>
+  <div class="nav--category" *ngIf="this.filter.isFilterOpen" [@inOutAnimation]>
     <h2 class="nav--category__label">Main Categories</h2>
     <div class="nav--category__items">
       <div *ngFor="let item of categories" class="nav--category__item">

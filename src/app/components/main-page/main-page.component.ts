@@ -1,5 +1,6 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { ResponsiveFilter } from './search-nav';
 
 @Component({
   selector: 'app-main-page',
@@ -19,31 +20,10 @@ import { Component, OnInit } from '@angular/core';
   ],
 })
 export class MainPageComponent implements OnInit {
-  width: number;
-  height: number;
-  isFilterOpen: boolean;
+  responsiveFilter : ResponsiveFilter = new ResponsiveFilter();
 
-  constructor() { 
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
-    this.isFilterOpen = this.width > 768 ? true : false;
-  }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onResize(event: Event): void {
-    this.width = (<Window>event.target).innerWidth;
-    this.height = (<Window>event.target).innerHeight;
-    if (this.width > 768 && !this.isFilterOpen) {
-      this.isFilterOpen = true;
-    }
-  }
-
-  filterToggleHandler(): void {
-    this.isFilterOpen = !this.isFilterOpen;
-    if (this.width > 768) {
-      this.isFilterOpen = true;
-    }
   }
 }

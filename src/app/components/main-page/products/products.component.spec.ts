@@ -1,23 +1,28 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
 
 import { ProductsComponent } from './products.component';
 
 describe('ProductsComponent', () => {
-  let component: ProductsComponent;
+  let sut: ProductsComponent;
   let fixture: ComponentFixture<ProductsComponent>;
+  let store : MockStore;
+  const initialState = { };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductsComponent ]
+      declarations: [ ProductsComponent ],
+      providers: [ provideMockStore({ initialState })]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(ProductsComponent);
-    component = fixture.componentInstance;
+    store = TestBed.inject(MockStore);
+    sut = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('creates ProductsComponent', () => {
+    expect(sut).toBeTruthy();
   });
 });

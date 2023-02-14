@@ -29,7 +29,7 @@ describe('MainPageComponent', () => {
 
   it('triggers onResize function on window resize', () => {
     // given
-    const spyOnResize = spyOn(sut, 'onResize');
+    const spyOnResize = spyOn(sut.responsiveFilter, 'onResize');
 
     // when
     window.dispatchEvent(new Event('resize'));
@@ -41,28 +41,28 @@ describe('MainPageComponent', () => {
   it('sets isFilterOpen while onResize function is called for wider screens', () => {
     // given
     window.innerWidth = 800;
-    sut.isFilterOpen = false;
+    sut.responsiveFilter.isFilterOpen = false;
 
     // when
     fixture.detectChanges();
     window.dispatchEvent(new Event('resize'));
 
     // then
-    expect(sut.isFilterOpen).toBe(true);
+    expect(sut.responsiveFilter.isFilterOpen).toBe(true);
   });
 
   it('checks filterToggleHandler() function (smaller screens)', () => {
     // given
-    sut.isFilterOpen = false;
-    sut.width = 500;
+    sut.responsiveFilter.isFilterOpen = false;
+    sut.responsiveFilter.windowWidth = 500;
     const expectedResult : Array<boolean> = [true, false]
     let result : Array<boolean> = [];
 
     // when
     for(let attempt in expectedResult) {
       fixture.detectChanges();
-      sut.filterToggleHandler();
-      result.push(sut.isFilterOpen);
+      sut.responsiveFilter.toggleFilter();
+      result.push(sut.responsiveFilter.isFilterOpen);
     }
 
     // then
@@ -71,16 +71,16 @@ describe('MainPageComponent', () => {
 
   it('checks filterToggleHandler() function (wider screens)', () => {
     // given
-    sut.isFilterOpen = true;
-    sut.width = 900;
+    sut.responsiveFilter.isFilterOpen = true;
+    sut.responsiveFilter.windowWidth = 900;
     const expectedResult : Array<boolean> = [true, true, true]
     let result : Array<boolean> = [];
 
     // when
     for(let attempt in expectedResult) {
       fixture.detectChanges();
-      result.push(sut.isFilterOpen);
-      sut.filterToggleHandler();
+      result.push(sut.responsiveFilter.isFilterOpen);
+      sut.responsiveFilter.toggleFilter();
     }
 
     // then
@@ -89,7 +89,7 @@ describe('MainPageComponent', () => {
 
   it('renders left-search-nav when isFilterOpen is set to true', () => {
     // given
-    sut.isFilterOpen = true;
+    sut.responsiveFilter.isFilterOpen = true;
 
     // when
     fixture.detectChanges();
@@ -110,6 +110,6 @@ describe('MainPageComponent', () => {
     const newComponent = newFixture.componentInstance;
 
     // then
-    expect(newComponent.isFilterOpen).toBe(false);
+    expect(newComponent.responsiveFilter.isFilterOpen).toBe(false);
   });
 });
