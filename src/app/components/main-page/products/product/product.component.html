@@ -1,6 +1,6 @@
 <div class="product">
     <div class="product--image">
-        <img src="assets/main-page/products/chicken__soup.jpg"/>
+        <img [src]="product.productImage.src" [alt]="product.productImage.alt"/>
     </div>
     <div class="product--label">
         <h2>{{product.productName}}</h2>
@@ -30,7 +30,7 @@
         </div>
         <div class="product--details__info">
             <div class="product--details__info--label">Kcal range:</div>
-            <div class="product--details__info--data">{{product.productKcal[0]}}-{{product.productKcal[1]}}</div>
+            <div class="product--details__info--data">{{product.productKcal.minKcal}}-{{product.productKcal.maxKcal}}</div>
         </div>
     </div>
 </div>
