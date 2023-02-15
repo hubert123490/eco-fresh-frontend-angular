@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -44,6 +44,9 @@ import { StoreModule } from '@ngrx/store';
 import { productsReducer } from './store/reducers/products.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductsEffects } from './store/effects/products.effects';
+import { productDetailsReducer } from './store/reducers/product-details.reducer';
+import { ProductDetailsEffects } from './store/effects/product-details.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 const routes: Routes = [
   {
@@ -121,8 +124,9 @@ const routes: Routes = [
     MatIconModule,
     BrowserAnimationsModule,
     FormsModule,
-    StoreModule.forRoot({products : productsReducer}),
-    EffectsModule.forRoot([ProductsEffects]),
+    StoreModule.forRoot({products : productsReducer, productDetails : productDetailsReducer}),
+    EffectsModule.forRoot([ProductsEffects, ProductDetailsEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],
   bootstrap: [AppComponent],
