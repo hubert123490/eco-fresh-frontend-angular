@@ -10,12 +10,12 @@ export interface Product {
   productImage: ProductImage;
 }
 
-interface ProductImage {
+export interface ProductImage {
   src: string;
   alt: string;
 }
 
-interface KcalRange {
+export interface KcalRange {
   minKcal: number;
   maxKcal: number;
 }
