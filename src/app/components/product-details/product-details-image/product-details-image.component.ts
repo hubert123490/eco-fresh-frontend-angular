@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { SlideInterface } from '../../shared/carousel/carousel.component';
 
 @Component({
   selector: 'app-product-details-image',
@@ -6,14 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-details-image.component.scss']
 })
 export class ProductDetailsImageComponent implements OnInit {
-  slides =[{
-    url: 'assets/main-page/products/chicken__soup.jpg',
-    title: "tmp"
-  },
-  {
-    url: 'assets/landing-page/welcome.jpg',
-    title: "tmp"
-  }]
+  @Input() slides : SlideInterface[] = [];
 
   constructor() { }
 

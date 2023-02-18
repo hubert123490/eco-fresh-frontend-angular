@@ -1,4 +1,4 @@
-<div class="slider">
+<div class="slider" *ngIf="!isSlidesEmpty()">
   <div>
     <div class="leftArrow" (click)="goToPrevious()">&lsaquo;</div>
     <div class="rightArrow" (click)="goToNext()">&rsaquo;</div>

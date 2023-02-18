@@ -1,29 +1,29 @@
 <div class="info">
-  <h2 class="info--label">{{product?.productName}}</h2>
+  <h2 class="info--label">{{productDetails?.productName}}</h2>
   <div class="info--details">
     <div class="info--details__row">
         <div class="label--price">Est. price:</div>
-        <div class="data--price">{{product?.productPrice}}$</div>
+        <div class="data--price">{{productDetails?.productPrice}}$</div>
       </div>
     <div class="info--details__row">
       <div class="label">Main category:</div>
-      <div class="data">{{product?.productCategory}}</div>
+      <div class="data">{{productDetails?.productCategory}}</div>
     </div>
     <div class="info--details__row">
       <div class="label">Certifications:</div>
-      <div class="data">{{product?.productCertificate}}</div>
+      <div class="data">{{productDetails?.productCertificate}}</div>
     </div>
     <div class="info--details__row">
       <div class="label">Provider:</div>
-      <div class="data">{{product?.productProducer}}</div>
+      <div class="data">{{productDetails?.productProducer}}</div>
     </div>
     <div class="info--details__row">
       <div class="label">Kcal range:</div>
-      <div class="data">{{getFirstKcalRange()}} - {{getSecondKcalRange()}}</div>
+      <div class="data">{{productDetails?.productKcal?.minKcal}} - {{productDetails?.productKcal?.maxKcal}}</div>
     </div>
   </div>
   <h2 class="info--label__description">Description</h2>
   <div class="info--description">
-    {{product?.productDescription}}
+    {{productDetails?.productDescription}}
   </div>
 </div>

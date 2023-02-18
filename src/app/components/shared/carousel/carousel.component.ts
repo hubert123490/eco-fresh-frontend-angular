@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent implements OnInit {
-  @Input() slides: SlideInterface[] = [];
+  @Input() slides: SlideInterface[] | undefined = [];
   currentIndex: number = 0;
 
   constructor() {}
@@ -14,11 +14,11 @@ export class CarouselComponent implements OnInit {
   ngOnInit(): void {}
 
   getCurrentSlideUrl(): string {
-    return `url('${this.slides[this.currentIndex].url}')`;
+    return `url('${this.slides![this.currentIndex].url}')`;
   }
 
   goToNext(): void {
-    const isLastSlide = this.currentIndex === this.slides.length - 1;
+    const isLastSlide = this.currentIndex === this.slides!.length - 1;
     const newIndex = isLastSlide ? 0 : this.currentIndex + 1;
     this.currentIndex = newIndex;
   }
@@ -26,7 +26,7 @@ export class CarouselComponent implements OnInit {
   goToPrevious(): void {
     const isFirstSlide = this.currentIndex === 0;
     const newIndex = isFirstSlide
-      ? this.slides.length - 1
+      ? this.slides!.length - 1
       : this.currentIndex - 1;
     this.currentIndex = newIndex;
   }
@@ -34,9 +34,13 @@ export class CarouselComponent implements OnInit {
   goToSlide(slideIndex: number): void {
     this.currentIndex = slideIndex;
   }
+
+  isSlidesEmpty() : boolean {
+    if(!this.slides) return true;
+    return this.slides.length == 0;
+  }
 }
 
-interface SlideInterface {
+export interface SlideInterface {
   url: string;
-  title: string;
 }
