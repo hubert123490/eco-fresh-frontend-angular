@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import Product from 'src/app/components/main-page/products/product/Product';
+import { ProductDetails } from 'src/app/store/models/ProductDetails';
 
 @Component({
   selector: 'app-product-details-info',
@@ -7,21 +7,9 @@ import Product from 'src/app/components/main-page/products/product/Product';
   styleUrls: ['./product-details-info.component.scss'],
 })
 export class ProductDetailsInfoComponent implements OnInit {
-  @Input() product: Product | undefined;
+  @Input() productDetails?: ProductDetails | null;
 
-  constructor() {
-    this.product = new Product();
-  }
+  constructor() {}
 
   ngOnInit(): void {}
-
-  getFirstKcalRange(): string {
-    let first =  this.product?.productKcal != undefined ? this.product.productKcal[0] : 0;
-    return first.toString();
-  }
-
-  getSecondKcalRange(): string {
-    let second =  this.product?.productKcal != undefined ? this.product.productKcal[1] : 0;
-    return second.toString();
-  }
 }

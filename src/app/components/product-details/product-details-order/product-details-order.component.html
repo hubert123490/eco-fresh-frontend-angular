@@ -1,13 +1,11 @@
 <div class="order">
   <div class="order--label"><h2>Fill your order</h2></div>
   <form>
-    <input type="hidden" [value]="product?.productId" />
+    <input type="hidden" [value]="productDetails?.productId" />
     <div class="kcal">
       <label for="kcal--select" class="kcal--label">Kcal of meal:</label>
       <select id="kcal--select" class="kcal--select">
-        <option class="kcal--select__option" value="2000">2000 (small)</option>
-        <option class="kcal--select__option" value="2500">2500 (medium)</option>
-        <option class="kcal--select__option" value="3000">3000 (large)</option>
+        <option *ngFor="let kcalChoice of productDetails?.orderInput?.kcalChoices" value="kcalChoice">{{kcalChoice}}</option>
       </select>
     </div>
     <div class="quantity">
@@ -15,19 +13,16 @@
         >Number of meals:</label
       >
       <select id="quantity--select" class="quantity--select">
-        <option class="quantity--select__option" value="1">1</option>
-        <option class="quantity--select__option" value="2">2</option>
-        <option class="quantity--select__option" value="3">3</option>
-        <option class="quantity--select__option" value="4">4</option>
+        <option *ngFor="let mealAmount of productDetails?.orderInput?.mealsAmount" value="mealAmount">{{mealAmount}}</option>
       </select>
     </div>
   </form>
   <div class="order--price">
     <div class="order--price__label">Total price:</div>
-    <div class="order--price__data">33.33$</div>
+    <div class="order--price__data">{{productDetails?.orderSummary?.totalPrice}} $</div>
   </div>
   <div class="order--actions">
     <div class="order--actions__return"><button class="submit" >Go back</button></div>
-    <div class="order--actions__submit"><button class="return" (click)="addToCart()">Add to cart</button></div>
+    <div class="order--actions__submit"><button class="return">Add to cart</button></div>
   </div>
 </div>
