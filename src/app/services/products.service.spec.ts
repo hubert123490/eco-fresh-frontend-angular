@@ -1,8 +1,7 @@
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ProductsService } from './products.service';
-import { Product } from '../store/models/Product';
-import { firstValueFrom, of } from 'rxjs';
+import { Product, ProductsSize } from '../store/models/Product';
 
 describe('ProductsService', () => {
   let sut: ProductsService;
@@ -30,16 +29,33 @@ describe('ProductsService', () => {
     const expectedResult : Product[] = mockedProducts
 
     // when
-    sut.getProducts().subscribe(result => {
+    sut.getProducts(0).subscribe(result => {
       // then
       expect(result).toEqual(expectedResult);
     })
     
     // then
-    const req = httpMock.expectOne('/assets/data/products.json');
+    const req = httpMock.expectOne('/assets/data/products.json?page=0');
     expect(req.request.method).toBe('GET');
     
     req.flush(mockedProducts);
+  });
+
+  it('makes a GET request to retrieve pagination data', async () => {
+    // given
+    const expectedResult : ProductsSize = {productsSize : 37}
+
+    // when
+    sut.getProductsSize().subscribe(result => {
+      // then
+      expect(result).toEqual(expectedResult);
+    })
+    
+    // then
+    const req = httpMock.expectOne('/assets/data/products-size.json');
+    expect(req.request.method).toBe('GET');
+    
+    req.flush({productsSize : 37});
   });
 });
 
