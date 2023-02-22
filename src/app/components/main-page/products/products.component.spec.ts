@@ -7,7 +7,9 @@ describe('ProductsComponent', () => {
   let sut: ProductsComponent;
   let fixture: ComponentFixture<ProductsComponent>;
   let store : MockStore;
-  const initialState = { };
+  const initialState = { 
+    productsSize: {productsSize : 36}
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

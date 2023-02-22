@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../store/models/Product';
+import { Product, ProductsSize } from '../store/models/Product';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,11 @@ export class ProductsService {
     private http : HttpClient
   ) { }
 
-  getProducts() : Observable<Array<Product>> {
-    return this.http.get<Product[]>('/assets/data/products.json');
+  getProducts(page : number) : Observable<Array<Product>> {
+    return this.http.get<Product[]>('/assets/data/products.json', {params: {page : page}});
+  }
+
+  getProductsSize() : Observable<ProductsSize> {
+    return this.http.get<ProductsSize>('/assets/data/products-size.json');
   }
 }

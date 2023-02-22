@@ -47,6 +47,9 @@ import { ProductsEffects } from './store/effects/products.effects';
 import { productDetailsReducer } from './store/reducers/product-details.reducer';
 import { ProductDetailsEffects } from './store/effects/product-details.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { PaginationComponent } from './components/shared/pagination/pagination.component';
+import { paginationReducer } from './store/reducers/pagination.reducer';
+
 
 const routes: Routes = [
   {
@@ -115,6 +118,7 @@ const routes: Routes = [
     OAuthComponent,
     RegistrationPageComponent,
     RegistrationFormComponent,
+    PaginationComponent,
   ],
   imports: [
     HttpClientModule,
@@ -124,7 +128,7 @@ const routes: Routes = [
     MatIconModule,
     BrowserAnimationsModule,
     FormsModule,
-    StoreModule.forRoot({products : productsReducer, productDetails : productDetailsReducer}),
+    StoreModule.forRoot({products : productsReducer, productDetails : productDetailsReducer, productsSize : paginationReducer}),
     EffectsModule.forRoot([ProductsEffects, ProductDetailsEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
