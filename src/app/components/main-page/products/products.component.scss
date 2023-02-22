@@ -1,6 +1,7 @@
 @import "../../../../variables.scss";
 
 .products {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
 
@@ -11,4 +12,11 @@
   @media (min-width: 80em) {
     grid-template-columns: 1fr 1fr 1fr;
   }
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

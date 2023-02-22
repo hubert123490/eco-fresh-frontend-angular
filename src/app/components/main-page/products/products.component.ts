@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/store/models/Product';
+import { Product, ProductsSize } from 'src/app/store/models/Product';
 import { Store } from '@ngrx/store';
-import { selectProducts } from 'src/app/store/selectors/products.selectors';
-import { ProductsApiActions } from 'src/app/store/actions/products.actions';
+import { selectProducts, selectProductsSize } from 'src/app/store/selectors/products.selectors';
 import { Observable } from 'rxjs';
+import { PaginationApiActions } from 'src/app/store/actions/pagination.actions';
 
 @Component({
   selector: 'app-products',
@@ -12,11 +12,12 @@ import { Observable } from 'rxjs';
 })
 export class ProductsComponent implements OnInit {
   products$ : Observable<readonly Product[]> = this.store.select(selectProducts);
+  productsSize$ : Observable<ProductsSize> = this.store.select(selectProductsSize);
 
   constructor(private store : Store) {
   }
 
   ngOnInit(): void {
-      this.store.dispatch(ProductsApiActions.loadProductList())
+      this.store.dispatch(PaginationApiActions.loadProductsSize())
   }
 }
