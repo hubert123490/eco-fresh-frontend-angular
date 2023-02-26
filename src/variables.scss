@@ -34,4 +34,10 @@ $footer-height: 5rem;
       @content;
     }
   }
+  @if $point == lg {
+    // 1200px
+    @media (min-width: 75em) {
+      @content;
+    }
+  }
 }

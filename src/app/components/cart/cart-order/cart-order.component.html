@@ -1,31 +1,22 @@
 <div class="order">
-  <table class="order--table">
-    <tr class="order--table__header">
-      <td>Product</td>
-      <td>Brief details</td>
-      <td>Price</td>
-    </tr>
-    <tr class="order--table__body">
-      <td>Chicken soup</td>
-      <td>200g meat</td>
-      <td>33.33$</td>
-    </tr>
-    <tr class="order--table__body">
-      <td>Chicken soup</td>
-      <td>200g meat</td>
-      <td>33.33$</td>
-    </tr>
-    <tr class="order--table__body">
-      <td>Chicken soup</td>
-      <td>200g meat</td>
-      <td>33.33$</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td><strong>99.99$</strong></td>
-    </tr>
-  </table>
+  <div class="order--summary">
+    <div class="order--summary__info">
+      <span class="order--summary__info--start">Sub total:</span
+      ><span class="order--summary__info--end">233.23 $</span>
+    </div>
+    <div class="order--summary__info">
+      <span class="order--summary__info--start">Shipping:</span
+      ><span class="order--summary__info--end">20 $</span>
+    </div>
+    <div class="order--summary__info">
+      <span class="order--summary__info--start">Tax(23%):</span
+      ><span class="order--summary__info--end">45 $</span>
+    </div>
+    <div class="order--summary__info">
+      <span class="order--summary__info--start">Total:</span
+      ><span class="order--summary__info--end">232.45 $</span>
+    </div>
+  </div>
   <div class="order--submit">
     <button class="order--submit__button" (click)="submitOrder()">
       Checkout

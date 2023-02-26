@@ -2,32 +2,21 @@
 
 .order {
   display: block;
-  padding: 0.5rem;
+  padding: 1rem;
   width: 100%;
 
-  &--table {
-    width: 100%;
+  &--summary {
+    &__info {
+      display: flex;
+      justify-content: space-between;
 
-    & tr {
-      display: grid;
-      grid-template-columns: 0.5fr 1fr 0.5fr;
-      text-align: center;
-
-      & td {
-        border: 0.5px solid rgb(138, 122, 122);
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      &--start {
+        color: rgb(148, 140, 140)
       }
-    }
 
-    &__header {
-      background-color: rgb(108, 143, 143, 0.2);
-    }
-
-    &__body {
-      background-color: bisque;
+      &--end {
+        font-weight: bold;
+      }
     }
   }
 
@@ -37,6 +26,8 @@
     text-align: end;
 
     & button {
+      color: white;
+      width: 100%;
       font-weight: 700;
       font-size: large;
       border-radius: $border-radius;
@@ -44,7 +35,7 @@
       padding: 0.5rem 2rem;
       transition: 0.1s;
       cursor: pointer;
-      background-color: limegreen;
+      background-color: black;
 
       & span {
         display: flex;
@@ -54,7 +45,8 @@
       }
 
       &:hover {
-        color: $light;
+        color: black;
+        background-color: white;
       }
     }
   }
