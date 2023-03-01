@@ -22,7 +22,8 @@
     <div class="order--price__data">{{productDetails?.orderSummary?.totalPrice}} $</div>
   </div>
   <div class="order--actions">
-    <div class="order--actions__return"><button class="submit" >Go back</button></div>
-    <div class="order--actions__submit"><button class="return">Add to cart</button></div>
+    <div class="order--actions__return"><button class="submit">Go back</button></div>
+    <div class="order--actions__submit"><button class="return" (click)="openModal()">Add to cart</button></div>
   </div>
+  <app-modal #modal></app-modal>
 </div>

@@ -49,6 +49,7 @@ import { ProductDetailsEffects } from './store/effects/product-details.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
 import { paginationReducer } from './store/reducers/pagination.reducer';
+import { ModalComponent } from './components/shared/modal/modal.component';
 
 
 const routes: Routes = [
@@ -119,6 +120,7 @@ const routes: Routes = [
     RegistrationPageComponent,
     RegistrationFormComponent,
     PaginationComponent,
+    ModalComponent,
   ],
   imports: [
     HttpClientModule,
