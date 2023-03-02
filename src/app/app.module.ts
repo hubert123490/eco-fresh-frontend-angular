@@ -50,6 +50,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
 import { paginationReducer } from './store/reducers/pagination.reducer';
 import { ModalComponent } from './components/shared/modal/modal.component';
+import { OrderEffects } from './store/effects/order.effects';
 
 
 const routes: Routes = [
@@ -131,7 +132,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     StoreModule.forRoot({products : productsReducer, productDetails : productDetailsReducer, productsSize : paginationReducer}),
-    EffectsModule.forRoot([ProductsEffects, ProductDetailsEffects]),
+    EffectsModule.forRoot([ProductsEffects, ProductDetailsEffects, OrderEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],

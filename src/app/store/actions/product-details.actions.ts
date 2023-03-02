@@ -6,7 +6,7 @@ export const ProductDetailsApiActions = createActionGroup({
   events: {
     'Load Product Details': props<{ productId: string }>(),
     'Load Product Details Success': props<{
-      productDetails: ProductDetails | {};
+      productDetails: ProductDetails;
     }>(),
   },
 });
