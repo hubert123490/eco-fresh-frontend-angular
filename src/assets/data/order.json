@@ -1,0 +1,27 @@
+{
+  "totalPrice": 100,
+  "mealAmount": 3,
+  "mealKcal": 2500,
+  "ingredientsDetails": [
+    {
+      "ingredientName": "Chicken wing (300g)",
+      "ingredientAmount": "2"
+    },
+    {
+      "ingredientName": "Avocado oil",
+      "ingredientAmount": "30g"
+    },
+    {
+      "ingredientName": "Clove of garilc",
+      "ingredientAmount": "6"
+    },
+    {
+      "ingredientName": "Onion",
+      "ingredientAmount": "1"
+    },
+    {
+      "ingredientName": "Large carrot",
+      "ingredientAmount": "2"
+    }
+  ]
+}
