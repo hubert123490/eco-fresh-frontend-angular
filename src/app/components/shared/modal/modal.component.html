@@ -1,0 +1,11 @@
+<dialog #modal class="modal" id="modal">
+  <span class="modal--hide" (click)="closeModal()"
+    ><mat-icon>clear</mat-icon></span
+  >
+  <h2 class="modal--title">{{ title }}</h2>
+  <div>{{description}}</div>
+  <div class="modal--options">
+    <button class="modal--options__cancel" (click)="closeModal()">{{cancelText}}</button>
+    <button class="modal--options__confirm" (click)="confirmModal()">{{confirmText}}</button>
+  </div>
+</dialog>

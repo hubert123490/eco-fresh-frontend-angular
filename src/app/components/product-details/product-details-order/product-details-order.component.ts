@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import Product from 'src/app/components/main-page/products/product/Product';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { ProductDetails } from 'src/app/store/models/ProductDetails';
+import { ModalComponent } from '../../shared/modal/modal.component';
 
 @Component({
   selector: 'app-product-details-order',
@@ -11,10 +11,14 @@ import { ProductDetails } from 'src/app/store/models/ProductDetails';
 export class ProductDetailsOrderComponent implements OnInit {
   @Input() productDetails?: ProductDetails | null;
   @Output() addToCartEvent : EventEmitter<ProductDetails> = new EventEmitter();
+  @ViewChild('modal') modal!: ModalComponent;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  openModal() {
+    this.modal.showModal();
+  }
 }
