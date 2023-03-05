@@ -69,13 +69,13 @@ describe('ModalComponent', () => {
     sut.showModal();
     fixture.detectChanges();
     result.push(dialogHtmlElement.getAttribute('open') != null)
-    sut.confirmModal(dummyMethod);
+    sut.confirmModal();
     fixture.detectChanges();
     result.push(dialogHtmlElement.getAttribute('open') != null)
 
     // then
     expect(expectedResult).toEqual(result);
-    expect(confirmSpy).toHaveBeenCalledWith(dummyMethod);
+    expect(confirmSpy).toHaveBeenCalledWith();
     expect(closeSpy).toHaveBeenCalledOnceWith();
   });
 
