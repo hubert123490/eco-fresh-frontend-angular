@@ -4,26 +4,56 @@
     <input type="hidden" [value]="productDetails?.productId" />
     <div class="kcal">
       <label for="kcal--select" class="kcal--label">Kcal of meal:</label>
-      <select id="kcal--select" class="kcal--select">
-        <option *ngFor="let kcalChoice of productDetails?.orderInput?.kcalChoices" value="kcalChoice">{{kcalChoice}}</option>
+      <select
+        id="kcal--select"
+        class="kcal--select"
+        [(ngModel)]="kcalChoice"
+        [ngModelOptions]="{ standalone: true }"
+        (ngModelChange)="onOptionsChange()"
+      >
+        <option value="" selected>Choose an option</option>
+        <option
+          *ngFor="let kcalChoice of productDetails?.orderInput?.kcalChoices"
+          value="kcalChoice"
+        >
+          {{ kcalChoice }}
+        </option>
       </select>
     </div>
     <div class="quantity">
       <label for="quantity--select" class="quantity--label"
         >Number of meals:</label
       >
-      <select id="quantity--select" class="quantity--select">
-        <option *ngFor="let mealAmount of productDetails?.orderInput?.mealsAmount" value="mealAmount">{{mealAmount}}</option>
+      <select
+        id="quantity--select"
+        class="quantity--select"
+        [(ngModel)]="selectedMealAmount"
+        [ngModelOptions]="{ standalone: true }"
+        (ngModelChange)="onOptionsChange()"
+      >
+      <option value=0 selected>Choose an option</option>
+        <option
+          *ngFor="let mealAmount of productDetails?.orderInput?.mealsAmount"
+          value="mealAmount"
+        >
+          {{ mealAmount }}
+        </option>
       </select>
     </div>
   </form>
   <div class="order--price">
     <div class="order--price__label">Total price:</div>
-    <div class="order--price__data">{{productDetails?.orderSummary?.totalPrice}} $</div>
+    <div class="order--price__data">
+      {{ productDetails?.orderSummary?.totalPrice }} $
+    </div>
   </div>
   <div class="order--actions">
-    <div class="order--actions__return"><button class="submit">Go back</button></div>
-    <div class="order--actions__submit"><button class="return" (click)="openModal()">Add to cart</button></div>
+    <div class="order--actions__return">
+      <button class="submit">Go back</button>
+    </div>
+    <div class="order--actions__submit">
+      <button class="return" (click)="openModal()">Add to cart</button>
+    </div>
   </div>
   <app-modal #modal></app-modal>
 </div>
