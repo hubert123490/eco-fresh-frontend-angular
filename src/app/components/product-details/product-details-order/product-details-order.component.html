@@ -11,7 +11,6 @@
         [ngModelOptions]="{ standalone: true }"
         (ngModelChange)="onOptionsChange()"
       >
-        <option value="" selected>Choose an option</option>
         <option
           *ngFor="let kcalChoice of productDetails?.orderInput?.kcalChoices"
           value="kcalChoice"
@@ -31,7 +30,6 @@
         [ngModelOptions]="{ standalone: true }"
         (ngModelChange)="onOptionsChange()"
       >
-      <option value=0 selected>Choose an option</option>
         <option
           *ngFor="let mealAmount of productDetails?.orderInput?.mealsAmount"
           value="mealAmount"
