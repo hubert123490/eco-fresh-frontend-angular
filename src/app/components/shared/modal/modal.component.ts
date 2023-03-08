@@ -11,10 +11,13 @@ export class ModalComponent{
   @Input() confirmText : string = "Yes"
   @Input() cancelText : string = "No"
   @ViewChild('modal', {static: false}) modal!: ElementRef;
+
+  callback : Function = () => {}
   
   constructor() {}
 
-  public showModal() {
+  public showModal(callback : Function = () => {}) {
+    this.callback = callback;
     this.modal.nativeElement.showModal()
   }
 
@@ -22,8 +25,8 @@ export class ModalComponent{
     this.modal.nativeElement.close();
   }
 
-  public confirmModal(callback : Function = () => {}) {
-    callback();
+  public confirmModal() {
+    this.callback();
     this.closeModal();
   }
 }
