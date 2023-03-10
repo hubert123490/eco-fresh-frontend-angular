@@ -35,6 +35,7 @@ export class ProductDetailsOrderComponent implements OnInit {
       this.store.dispatch(
         OrderApiActions.loadOrder({
           orderRequest: {
+            productId: this.productDetails!.productId,
             kcalChoice: this.kcalChoice,
             mealsAmountChoice: this.selectedMealAmount,
           },

@@ -13,6 +13,7 @@ export class OrderService {
   getOrderSummary(orderRequest: OrderRequest): Observable<OrderSummary> {
     return this.http.get<OrderSummary>('/assets/data/order.json', {
       params: {
+        productId: orderRequest.productId,
         kcalChoice: orderRequest.kcalChoice,
         mealsAmountChoice: orderRequest.mealsAmountChoice,
       },

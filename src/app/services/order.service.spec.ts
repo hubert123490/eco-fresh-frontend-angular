@@ -33,6 +33,7 @@ describe('OrderService', () => {
     // given
     const expectedResult: OrderSummary = mockedOrderSummary;
     const orderRequest : OrderRequest = {
+      productId: "1",
       kcalChoice : "2000 (small)",
       mealsAmountChoice : 1
     }
@@ -45,7 +46,7 @@ describe('OrderService', () => {
 
     // then
     const req = httpMock.expectOne(
-      '/assets/data/order.json?kcalChoice=2000%20(small)&mealsAmountChoice=1'
+      '/assets/data/order.json?productId=1&kcalChoice=2000%20(small)&mealsAmountChoice=1'
     );
     expect(req.request.method).toBe('GET');
 
