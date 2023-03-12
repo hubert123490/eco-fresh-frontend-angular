@@ -10,8 +10,8 @@ export class OrderEffects {
   loadOrder$ = createEffect(() =>
     this.actions$.pipe(
       ofType(OrderApiActions.loadOrder),
-      mergeMap(({ orderRequest }) =>
-        this.orderService.getOrderSummary(orderRequest).pipe(
+      mergeMap(({ productId, orderRequest }) =>
+        this.orderService.getOrderSummary(productId, orderRequest).pipe(
           map((orderSummary) =>
             OrderApiActions.loadOrderSuccess({
                 orderSummary

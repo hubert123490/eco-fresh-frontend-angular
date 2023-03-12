@@ -43,8 +43,8 @@ describe('ProductDetailsOrderComponent', () => {
     // then
     expect(store.dispatch).toHaveBeenCalledWith(
       OrderApiActions.loadOrder({
+        productId: "0",
         orderRequest: {
-          productId: "0",
           kcalChoice: '2000',
           mealsAmountChoice: 3,
         },

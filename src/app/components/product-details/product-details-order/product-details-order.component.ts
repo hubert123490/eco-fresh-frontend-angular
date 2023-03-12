@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { CartApiActions } from 'src/app/store/actions/cart.actions';
 import { OrderApiActions } from 'src/app/store/actions/order.actions';
 import { ProductDetails } from 'src/app/store/models/ProductDetails';
 import { ModalComponent } from '../../shared/modal/modal.component';
@@ -34,8 +35,8 @@ export class ProductDetailsOrderComponent implements OnInit {
     if (this.kcalChoice && this.selectedMealAmount) {
       this.store.dispatch(
         OrderApiActions.loadOrder({
+          productId : this.productDetails!.productId,
           orderRequest: {
-            productId: this.productDetails!.productId,
             kcalChoice: this.kcalChoice,
             mealsAmountChoice: this.selectedMealAmount,
           },

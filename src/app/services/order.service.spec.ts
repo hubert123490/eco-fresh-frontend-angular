@@ -33,13 +33,13 @@ describe('OrderService', () => {
     // given
     const expectedResult: OrderSummary = mockedOrderSummary;
     const orderRequest : OrderRequest = {
-      productId: "1",
       kcalChoice : "2000 (small)",
       mealsAmountChoice : 1
     }
+    const productId : string = "1";
 
     // when
-    sut.getOrderSummary(orderRequest).subscribe((result) => {
+    sut.getOrderSummary(productId, orderRequest).subscribe((result) => {
       // then
       expect(result).toEqual(expectedResult);
     });
