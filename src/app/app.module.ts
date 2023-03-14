@@ -51,6 +51,8 @@ import { PaginationComponent } from './components/shared/pagination/pagination.c
 import { paginationReducer } from './store/reducers/pagination.reducer';
 import { ModalComponent } from './components/shared/modal/modal.component';
 import { OrderEffects } from './store/effects/order.effects';
+import { cartReducer } from './store/reducers/cart.reducer';
+import { CartEffects } from './store/effects/cart.effects';
 
 
 const routes: Routes = [
@@ -131,8 +133,8 @@ const routes: Routes = [
     MatIconModule,
     BrowserAnimationsModule,
     FormsModule,
-    StoreModule.forRoot({products : productsReducer, productDetails : productDetailsReducer, productsSize : paginationReducer}),
-    EffectsModule.forRoot([ProductsEffects, ProductDetailsEffects, OrderEffects]),
+    StoreModule.forRoot({products : productsReducer, productDetails : productDetailsReducer, productsSize : paginationReducer, cart : cartReducer}),
+    EffectsModule.forRoot([ProductsEffects, ProductDetailsEffects, OrderEffects, CartEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],

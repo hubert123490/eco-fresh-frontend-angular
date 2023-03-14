@@ -1,4 +1,5 @@
 import { OrderRequest } from "./Order";
+import { ProductImage } from "./Product";
 
 export interface Cart {
     cartItems: Array<CartItem> | [];
@@ -8,7 +9,8 @@ export interface Cart {
 export interface CartItem {
     productId: string;
     orderRequest : OrderRequest;
-    productPrice: number;
+    productPrice?: number;
+    productImage? : ProductImage
 }
 
 export interface CartSummary {
@@ -20,5 +22,16 @@ export interface CartSummary {
 
 export interface CartItemAddRequest {
     productId : string;
+    orderRequest : OrderRequest;
+}
+
+
+export interface CartItemRemoveRequest {
+    productId : string;
+    orderRequest : OrderRequest;
+}
+
+export interface CartItemQuantityChangeRequest {
+    productId: string;
     orderRequest : OrderRequest;
 }
