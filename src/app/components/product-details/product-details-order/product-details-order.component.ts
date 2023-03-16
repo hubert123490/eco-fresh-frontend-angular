@@ -28,14 +28,26 @@ export class ProductDetailsOrderComponent implements OnInit {
   }
 
   modalHandler = () => {
-    // TODO
+    if (this.kcalChoice && this.selectedMealAmount) {
+      this.store.dispatch(
+        CartApiActions.addItem({
+          request: {
+            productId: this.productDetails!.productId,
+            orderRequest: {
+              kcalChoice: this.kcalChoice,
+              mealsAmountChoice: this.selectedMealAmount,
+            },
+          },
+        })
+      );
+    }
   };
 
   onOptionsChange() {
     if (this.kcalChoice && this.selectedMealAmount) {
       this.store.dispatch(
         OrderApiActions.loadOrder({
-          productId : this.productDetails!.productId,
+          productId: this.productDetails!.productId,
           orderRequest: {
             kcalChoice: this.kcalChoice,
             mealsAmountChoice: this.selectedMealAmount,
