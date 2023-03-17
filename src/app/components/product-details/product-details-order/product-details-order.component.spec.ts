@@ -1,8 +1,11 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { Store, StoreModule } from '@ngrx/store';
+import { CartApiActions } from 'src/app/store/actions/cart.actions';
 import { OrderApiActions } from 'src/app/store/actions/order.actions';
 import { ProductDetails } from 'src/app/store/models/ProductDetails';
+import { ModalComponent } from '../../shared/modal/modal.component';
 
 import { ProductDetailsOrderComponent } from './product-details-order.component';
 
@@ -10,11 +13,13 @@ describe('ProductDetailsOrderComponent', () => {
   let sut: ProductDetailsOrderComponent;
   let fixture: ComponentFixture<ProductDetailsOrderComponent>;
   let store : Store;
+  let modal: ModalComponent;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [ModalComponent],
       imports: [StoreModule.forRoot({})],
-      declarations: [ ProductDetailsOrderComponent ],
+      declarations: [ ProductDetailsOrderComponent, ModalComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
@@ -22,6 +27,7 @@ describe('ProductDetailsOrderComponent', () => {
     fixture = TestBed.createComponent(ProductDetailsOrderComponent);
     sut = fixture.componentInstance;
     store = TestBed.inject(Store);
+    modal = TestBed.inject(ModalComponent);
     spyOn(store, 'dispatch').and.callThrough();
     fixture.detectChanges();
   });
@@ -64,6 +70,31 @@ describe('ProductDetailsOrderComponent', () => {
 
     // then
     expect(store.dispatch).not.toHaveBeenCalled();
+  });
+
+  it('dispatches an action when modalHandler is called', () => {
+    // given
+    const productDetails: ProductDetails = mockedProductDetails
+    sut.productDetails = productDetails;
+    sut.kcalChoice = '2000';
+    sut.selectedMealAmount = 2;
+    const expectedAction = CartApiActions.addItem({
+      request: {
+        productId: sut.productDetails.productId,
+        orderRequest: {
+          kcalChoice: sut.kcalChoice,
+          mealsAmountChoice: sut.selectedMealAmount,
+        },
+      },
+    });
+
+    // when
+    sut.openModal();
+    // click modal's yes button
+    fixture.debugElement.query(By.css(".modal--options__confirm")).nativeElement.click();
+
+    // then
+    expect(store.dispatch).toHaveBeenCalledWith(expectedAction);
   });
 });
 
