@@ -88,7 +88,7 @@ describe('Cart Reducer', () => {
       request: changeCartItemRequestExisting,
     });
     const state = cartReducer({ ...cartState }, action);
-    const expectedResult: number = 4;
+    const expectedResult: number = 3;
 
     expect(state.cartItems[0].orderRequest.mealsAmountChoice).toEqual(expectedResult);
   });

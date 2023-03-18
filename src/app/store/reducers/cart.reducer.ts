@@ -44,5 +44,16 @@ export const cartReducer = createReducer(
     if(product) product.orderRequest.mealsAmountChoice += 1;
 
     return result;
+  }),
+  on(CartApiActions.reduceItemQuantity, (_state, {request}) => {
+    let result : Cart = {..._state};
+
+    const product = result.cartItems.find(item => item.productId === request.productId && item.orderRequest.kcalChoice === request.orderRequest.kcalChoice)
+    if(product) product.orderRequest.mealsAmountChoice = product.orderRequest.mealsAmountChoice > 1 ? product.orderRequest.mealsAmountChoice - 1 : 1;
+
+    return result;
+  }),
+  on(CartApiActions.loadCart, (_state, { cart }) => {
+    return cart;
   })
 );
