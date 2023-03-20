@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Store, StoreModule } from '@ngrx/store';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { CartApiActions } from 'src/app/store/actions/cart.actions';
 import { OrderApiActions } from 'src/app/store/actions/order.actions';
 import { ProductDetails } from 'src/app/store/models/ProductDetails';
@@ -12,13 +12,13 @@ import { ProductDetailsOrderComponent } from './product-details-order.component'
 describe('ProductDetailsOrderComponent', () => {
   let sut: ProductDetailsOrderComponent;
   let fixture: ComponentFixture<ProductDetailsOrderComponent>;
-  let store : Store;
+  let store : MockStore;
   let modal: ModalComponent;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      providers: [ModalComponent],
-      imports: [StoreModule.forRoot({})],
+      imports: [],
+      providers: [ModalComponent, provideMockStore({})],
       declarations: [ ProductDetailsOrderComponent, ModalComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
@@ -26,7 +26,7 @@ describe('ProductDetailsOrderComponent', () => {
 
     fixture = TestBed.createComponent(ProductDetailsOrderComponent);
     sut = fixture.componentInstance;
-    store = TestBed.inject(Store);
+    store = TestBed.inject(MockStore);
     modal = TestBed.inject(ModalComponent);
     spyOn(store, 'dispatch').and.callThrough();
     fixture.detectChanges();
