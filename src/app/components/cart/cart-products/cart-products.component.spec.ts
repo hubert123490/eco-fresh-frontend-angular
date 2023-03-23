@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CartProductsComponent } from './cart-products.component';
 
 describe('CartProductsComponent', () => {
-  let component: CartProductsComponent;
+  let sut: CartProductsComponent;
   let fixture: ComponentFixture<CartProductsComponent>;
 
   beforeEach(async () => {
@@ -13,11 +13,11 @@ describe('CartProductsComponent', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(CartProductsComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('creates CartProducts', () => {
+    expect(sut).toBeTruthy();
   });
 });
