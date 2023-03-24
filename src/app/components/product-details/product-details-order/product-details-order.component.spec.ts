@@ -1,27 +1,33 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Store, StoreModule } from '@ngrx/store';
+import { By } from '@angular/platform-browser';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { CartApiActions } from 'src/app/store/actions/cart.actions';
 import { OrderApiActions } from 'src/app/store/actions/order.actions';
 import { ProductDetails } from 'src/app/store/models/ProductDetails';
+import { ModalComponent } from '../../shared/modal/modal.component';
 
 import { ProductDetailsOrderComponent } from './product-details-order.component';
 
 describe('ProductDetailsOrderComponent', () => {
   let sut: ProductDetailsOrderComponent;
   let fixture: ComponentFixture<ProductDetailsOrderComponent>;
-  let store : Store;
+  let store : MockStore;
+  let modal: ModalComponent;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StoreModule.forRoot({})],
-      declarations: [ ProductDetailsOrderComponent ],
+      imports: [],
+      providers: [ModalComponent, provideMockStore({})],
+      declarations: [ ProductDetailsOrderComponent, ModalComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(ProductDetailsOrderComponent);
     sut = fixture.componentInstance;
-    store = TestBed.inject(Store);
+    store = TestBed.inject(MockStore);
+    modal = TestBed.inject(ModalComponent);
     spyOn(store, 'dispatch').and.callThrough();
     fixture.detectChanges();
   });
@@ -43,6 +49,7 @@ describe('ProductDetailsOrderComponent', () => {
     // then
     expect(store.dispatch).toHaveBeenCalledWith(
       OrderApiActions.loadOrder({
+        productId: "0",
         orderRequest: {
           kcalChoice: '2000',
           mealsAmountChoice: 3,
@@ -63,6 +70,31 @@ describe('ProductDetailsOrderComponent', () => {
 
     // then
     expect(store.dispatch).not.toHaveBeenCalled();
+  });
+
+  it('dispatches an action when modalHandler is called', () => {
+    // given
+    const productDetails: ProductDetails = mockedProductDetails
+    sut.productDetails = productDetails;
+    sut.kcalChoice = '2000';
+    sut.selectedMealAmount = 2;
+    const expectedAction = CartApiActions.addItem({
+      request: {
+        productId: sut.productDetails.productId,
+        orderRequest: {
+          kcalChoice: sut.kcalChoice,
+          mealsAmountChoice: sut.selectedMealAmount,
+        },
+      },
+    });
+
+    // when
+    sut.openModal();
+    // click modal's yes button
+    fixture.debugElement.query(By.css(".modal--options__confirm")).nativeElement.click();
+
+    // then
+    expect(store.dispatch).toHaveBeenCalledWith(expectedAction);
   });
 });
 

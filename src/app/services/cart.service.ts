@@ -1,26 +1,29 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import Product from './../components/main-page/products/product/Product';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Cart } from '../store/models/Cart';
+import { selectCartItems } from '../store/selectors/cart.selectors';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  items: Product[] = [];
+  constructor(private http: HttpClient, private store: Store) {}
 
-  constructor() {
-    this.items = [];
+  public getCartData(): Observable<Cart> {
+    return this.http.get<Cart>('/assets/data/cart.json', {
+      params: {
+        cartItems: this.getCartItems(),
+      },
+    });
   }
 
-  addToCart(product: Product) {
-    this.items.push(product);
-  }
-
-  getItems() {
-    return this.items;
-  }
-
-  clearCart() {
-    this.items = [];
-    return this.items;
+  private getCartItems() {
+    let cartItems: any;
+    this.store.select(selectCartItems).subscribe((items) => {
+      cartItems = items;
+    });
+    return cartItems;
   }
 }

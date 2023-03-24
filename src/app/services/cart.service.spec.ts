@@ -1,41 +1,77 @@
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import Product from '../components/main-page/products/product/Product';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { Cart } from '../store/models/Cart';
+import { cartState } from '../store/reducers/cart.reducer';
 
 import { CartService } from './cart.service';
 
 describe('CartService', () => {
-  let service: CartService;
+  let sut: CartService;
+  let httpMock: HttpTestingController;
+  let store: MockStore;
+  let initialState = { cart: { ...cartState } };
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(CartService);
-    service.items = [];
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [CartService, provideMockStore({ initialState })],
+    });
+    sut = TestBed.inject(CartService);
+    httpMock = TestBed.inject(HttpTestingController);
+    store = TestBed.inject(MockStore);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  afterEach(() => {
+    httpMock.verify();
   });
 
-  it('should add item to the cart', () => {
-    const product = new Product();
-    service.addToCart(product);
-    expect(service.items).toEqual([product]);
+  it('creates CartService', () => {
+    expect(sut).toBeTruthy();
   });
 
-  it('should get items from the cart', () => {
-    const product1 = new Product();
-    const product2 = new Product();
-    service.items = [product1, product2];
-    const arr = service.getItems();
-    const expected = [product1, product2];
-    expect(arr).toEqual(expected);
-  });
+  it('makes a GET request to retrieve cart items', async () => {
+    // given
+    const expectedResult: Cart = mockedCart;
 
-  it('should clear cart', () => {
-    const product1 = new Product();
-    const product2 = new Product();
-    service.items = [product1, product2];
-    service.clearCart();
-    expect(service.items).toEqual([]);
+    // when
+    sut.getCartData().subscribe((result) => {
+      // then
+      expect(result).toEqual(expectedResult);
+    });
+
+     // then
+     const req = httpMock.expectOne(
+      '/assets/data/cart.json'
+    );
+    expect(req.request.method).toBe('GET');
+
+    req.flush(mockedCart);
   });
 });
+
+const mockedCart: Cart = {
+  cartItems: [
+    {
+      productId: "0",
+      orderRequest: {
+        kcalChoice: '2000',
+        mealsAmountChoice: 3,
+      },
+      productPrice: 32.23,
+      productImage: {
+        src: 'assets/main-page/products/chicken__soup.jpg',
+        alt: 'chicken soup',
+      },
+    },
+  ],
+  cartSummary: {
+    totalPrice: 20.99,
+    subTotal: 5,
+    shipping: 5,
+    tax: 10,
+  },
+};

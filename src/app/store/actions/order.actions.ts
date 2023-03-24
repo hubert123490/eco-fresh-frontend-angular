@@ -6,8 +6,9 @@ export const OrderApiActions = createActionGroup({
   source: 'Order API',
   events: {
     'Load Order': props<{
+      productId : string,
       orderRequest: OrderRequest;
     }>(),
-    'Load Order Success': props<{orderSummary : OrderSummary}>(),
+    'Load Order Success': props<{ orderSummary : OrderSummary}>(),
   },
 });

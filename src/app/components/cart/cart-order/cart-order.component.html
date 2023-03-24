@@ -2,24 +2,28 @@
   <div class="order--summary">
     <div class="order--summary__info">
       <span class="order--summary__info--start">Sub total:</span
-      ><span class="order--summary__info--end">233.23 $</span>
+      ><span class="order--summary__info--end"
+        >{{ cartSummary!.subTotal }} $</span
+      >
     </div>
     <div class="order--summary__info">
       <span class="order--summary__info--start">Shipping:</span
-      ><span class="order--summary__info--end">20 $</span>
+      ><span class="order--summary__info--end"
+        >{{ cartSummary!.shipping }} $</span
+      >
     </div>
     <div class="order--summary__info">
       <span class="order--summary__info--start">Tax(23%):</span
-      ><span class="order--summary__info--end">45 $</span>
+      ><span class="order--summary__info--end">{{ cartSummary!.tax }} $</span>
     </div>
     <div class="order--summary__info">
       <span class="order--summary__info--start">Total:</span
-      ><span class="order--summary__info--end">232.45 $</span>
+      ><span class="order--summary__info--end"
+        >{{ cartSummary!.totalPrice }} $</span
+      >
     </div>
   </div>
   <div class="order--submit">
-    <button class="order--submit__button" (click)="submitOrder()">
-      Checkout
-    </button>
+    <button class="order--submit__button">Checkout</button>
   </div>
 </div>

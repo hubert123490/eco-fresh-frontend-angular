@@ -34,6 +34,7 @@
   &--content {
  
    &__description {
+    position: relative;
     display: grid;
     grid-template-rows: 1fr 1fr;
     padding: 0.5rem;
@@ -56,6 +57,21 @@
         justify-content: space-between;
         text-align: center;
         padding: 0 1rem;
+
+        &__quantities {
+          display: flex;
+          margin: 0;
+          
+          & span {
+            margin: 0 0.5rem;
+          }
+        }
+
+        & i {
+          &:hover {
+            color: rgb(179, 110, 54);
+          }
+        }
       }
 
       &--price {
@@ -64,6 +80,20 @@
         text-align: center;
         padding: 0 1rem;
         font-weight: bold;
+      }
+
+      &--icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        font-size: 1rem;
+        cursor: pointer;
+        color: rgba(0, 0, 0, 1);
+    
+        &:hover {
+          color: rgba(247, 21, 21, 1);
+        }
       }
    }
   }

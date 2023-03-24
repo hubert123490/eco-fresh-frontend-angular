@@ -1,0 +1,22 @@
+{
+  "cartItems": [
+    {
+      "productId" : "0",
+      "orderRequest" : {
+        "kcalChoice" : "2000",
+        "mealsAmountChoice" : 3
+      },
+      "productPrice" : 32.23,
+      "productImage" : {
+        "src" : "assets/main-page/products/chicken__soup.jpg",
+        "alt" : "chicken soup"
+      }
+    }
+  ],
+  "cartSummary": {
+    "totalPrice": 20.99,
+    "subTotal": 5,
+    "shipping": 5,
+    "tax": 10
+  }
+}

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CartSummary } from 'src/app/store/models/Cart';
 
 @Component({
   selector: 'app-cart-order',
@@ -6,13 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-order.component.scss']
 })
 export class CartOrderComponent implements OnInit {
+  @Input() cartSummary : CartSummary | undefined;
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  submitOrder() : void {
-    alert("You submitted order!")
   }
 }

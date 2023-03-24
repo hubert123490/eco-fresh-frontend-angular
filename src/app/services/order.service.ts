@@ -10,9 +10,10 @@ import { OrderSummary } from '../store/models/ProductDetails';
 export class OrderService {
   constructor(private http: HttpClient) {}
 
-  getOrderSummary(orderRequest: OrderRequest): Observable<OrderSummary> {
+  getOrderSummary(productId : string, orderRequest: OrderRequest): Observable<OrderSummary> {
     return this.http.get<OrderSummary>('/assets/data/order.json', {
       params: {
+        productId: productId,
         kcalChoice: orderRequest.kcalChoice,
         mealsAmountChoice: orderRequest.mealsAmountChoice,
       },

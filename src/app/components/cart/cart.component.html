@@ -1,8 +1,7 @@
 <div class="cart">
   <h1 class="cart--label">Summary</h1>
   <div class="cart--content">
-    <app-cart-products></app-cart-products>
-    <app-cart-order></app-cart-order>
+    <app-cart-products [cartItems]="(cart$ | async)!.cartItems"></app-cart-products>
+    <app-cart-order [cartSummary]="(cart$ | async)!.cartSummary"></app-cart-order>
   </div>
-  
 </div>
