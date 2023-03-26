@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { CartApiActions } from '../actions/cart.actions';
-import { Cart } from '../models/Cart';
+import { Cart, CartItem } from '../models/Cart';
 
 export const cartState: Cart = {
   cartItems: [],
@@ -37,21 +37,45 @@ export const cartReducer = createReducer(
 
     return result;
   }),
-  on(CartApiActions.addItemQuantity, (_state, {request}) => {
-    let result : Cart = {..._state};
+  on(CartApiActions.addItemQuantity, (_state, { request }) => {
+    const updatedCartItems: CartItem[] = _state.cartItems.map(item => {
+      if (item.productId === request.productId && item.orderRequest.kcalChoice === request.orderRequest.kcalChoice) {
+        return {
+          ...item,
+          orderRequest: {
+            ...item.orderRequest,
+            mealsAmountChoice: item.orderRequest.mealsAmountChoice + 1
+          }
+        };
+      } else {
+        return item;
+      }
+    });
 
-    const product = result.cartItems.find(item => item.productId === request.productId && item.orderRequest.kcalChoice === request.orderRequest.kcalChoice)
-    if(product) product.orderRequest.mealsAmountChoice += 1;
-
-    return result;
+    return {
+      ..._state,
+      cartItems: updatedCartItems,
+    };
   }),
   on(CartApiActions.reduceItemQuantity, (_state, {request}) => {
-    let result : Cart = {..._state};
+    const updatedCartItems: CartItem[] = _state.cartItems.map(item => {
+      if (item.productId === request.productId && item.orderRequest.kcalChoice === request.orderRequest.kcalChoice && item.orderRequest.mealsAmountChoice > 0) {
+        return {
+          ...item,
+          orderRequest: {
+            ...item.orderRequest,
+            mealsAmountChoice: item.orderRequest.mealsAmountChoice - 1
+          }
+        };
+      } else {
+        return item;
+      }
+    });
 
-    const product = result.cartItems.find(item => item.productId === request.productId && item.orderRequest.kcalChoice === request.orderRequest.kcalChoice)
-    if(product) product.orderRequest.mealsAmountChoice = product.orderRequest.mealsAmountChoice > 1 ? product.orderRequest.mealsAmountChoice - 1 : 1;
-
-    return result;
+    return {
+      ..._state,
+      cartItems: updatedCartItems,
+    };
   }),
   on(CartApiActions.loadCart, (_state, { cart }) => {
     return cart;
