@@ -1,0 +1,11 @@
+<div class="area">
+  <ng-content
+    *ngIf="!(this.errorHandler?.componentErrorDetected$ | async)"
+  ></ng-content>
+  <div
+    class="area--error"
+    *ngIf="this.errorHandler?.componentErrorDetected$ | async"
+  >
+    <div>{{ errorHandler?.errorMessage }}</div>
+  </div>
+</div>
