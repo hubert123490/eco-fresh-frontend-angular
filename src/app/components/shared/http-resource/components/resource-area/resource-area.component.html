@@ -1,0 +1,5 @@
+<app-error-area [errorHandler]="httpResource?.errorHandler">
+  <app-loading-area [loadingHandler]="httpResource?.loadingHandler">
+    <ng-content></ng-content>
+  </app-loading-area>
+</app-error-area>

@@ -1,6 +1,17 @@
+<app-resource-area
+  [httpResource]="httpResourceService.httpResources['productsResource']"
+>
 <section>
-    <a class="products">
-        <app-product [product]="product" *ngFor="let product of products$ | async" [routerLink]="['/products', product.productId]"></app-product>
-    </a>
-    <app-pagination *ngIf="(productsSize$ | async)!.productsSize > 0" [total]="(productsSize$ | async)!.productsSize"></app-pagination>
+  <a class="products">
+    <app-product
+      [product]="product"
+      *ngFor="let product of products$ | async"
+      [routerLink]="['/products', product.productId]"
+    ></app-product>
+  </a>
+  <app-pagination
+    *ngIf="(productsSize$ | async)!.productsSize > 0"
+    [total]="(productsSize$ | async)!.productsSize"
+  ></app-pagination>
 </section>
+</app-resource-area>

@@ -1,0 +1,6 @@
+<div class="area">
+  <ng-content *ngIf="!(isLoading() | async)"></ng-content>
+  <div class="area--spinner">
+    <app-spinner *ngIf="isLoading() | async"></app-spinner>
+  </div>
+</div>

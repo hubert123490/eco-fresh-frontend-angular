@@ -1,7 +1,7 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -53,7 +53,11 @@ import { ModalComponent } from './components/shared/modal/modal.component';
 import { OrderEffects } from './store/effects/order.effects';
 import { cartReducer } from './store/reducers/cart.reducer';
 import { CartEffects } from './store/effects/cart.effects';
-
+import { ResourceAreaComponent } from './components/shared/http-resource/components/resource-area/resource-area.component';
+import { ErrorAreaComponent } from './components/shared/http-resource/components/resource-area/error-area/error-area.component';
+import { LoadingAreaComponent } from './components/shared/http-resource/components/resource-area/loading-area/loading-area.component';
+import { SpinnerComponent } from './components/shared/http-resource/components/resource-area/loading-area/spinner/spinner.component';
+import { HttpResourceInterceptor } from './components/shared/http-resource/http-resource-handler/http-resource.interceptor';
 
 const routes: Routes = [
   {
@@ -124,6 +128,10 @@ const routes: Routes = [
     RegistrationFormComponent,
     PaginationComponent,
     ModalComponent,
+    ResourceAreaComponent,
+    ErrorAreaComponent,
+    LoadingAreaComponent,
+    SpinnerComponent,
   ],
   imports: [
     HttpClientModule,
@@ -133,11 +141,27 @@ const routes: Routes = [
     MatIconModule,
     BrowserAnimationsModule,
     FormsModule,
-    StoreModule.forRoot({products : productsReducer, productDetails : productDetailsReducer, productsSize : paginationReducer, cart : cartReducer}),
-    EffectsModule.forRoot([ProductsEffects, ProductDetailsEffects, OrderEffects, CartEffects]),
+    StoreModule.forRoot({
+      products: productsReducer,
+      productDetails: productDetailsReducer,
+      productsSize: paginationReducer,
+      cart: cartReducer,
+    }),
+    EffectsModule.forRoot([
+      ProductsEffects,
+      ProductDetailsEffects,
+      OrderEffects,
+      CartEffects,
+    ]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpResourceInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

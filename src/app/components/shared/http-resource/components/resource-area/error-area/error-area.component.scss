@@ -1,0 +1,16 @@
+.area {
+    width: 100%;
+    height: 100%;
+}
+
+.area--error {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    white-space: pre-wrap;
+    color: red;
+}
