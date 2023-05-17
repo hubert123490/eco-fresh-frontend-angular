@@ -19,7 +19,3 @@ export interface KcalRange {
   minKcal: number;
   maxKcal: number;
 }
-
-export interface ProductsSize {
-  productsSize : number;
-}
