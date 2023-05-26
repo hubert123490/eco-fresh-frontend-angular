@@ -48,7 +48,6 @@ import { productDetailsReducer } from './store/reducers/product-details.reducer'
 import { ProductDetailsEffects } from './store/effects/product-details.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
-import { paginationReducer } from './store/reducers/pagination.reducer';
 import { ModalComponent } from './components/shared/modal/modal.component';
 import { OrderEffects } from './store/effects/order.effects';
 import { cartReducer } from './store/reducers/cart.reducer';
@@ -144,7 +143,6 @@ const routes: Routes = [
     StoreModule.forRoot({
       products: productsReducer,
       productDetails: productDetailsReducer,
-      productsSize: paginationReducer,
       cart: cartReducer,
     }),
     EffectsModule.forRoot([
