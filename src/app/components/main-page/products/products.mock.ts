@@ -1,0 +1,182 @@
+export const mockedProducts = [
+  {
+    productId: '0',
+    productName: 'Chicken Soup',
+    productDescription:
+      'Everyone has their own favorite chicken soup recipe, but rarely have so few ingredients added up to so much comfort.',
+    productPrice: 50.0,
+    productCategory: 'Soups',
+    productCertificate: 'ECO',
+    productProducer: 'Blods',
+    productKcal: {
+      minKcal: 2000,
+      maxKcal: 3000,
+    },
+    productImage: {
+      src: 'assets/main-page/products/chicken__soup.jpg',
+      alt: 'chicken soup',
+    },
+  },
+  {
+    productId: '1',
+    productName: 'Chicken Soup',
+    productDescription:
+      "Everyone has their own favorite chicken soup recipe, but rarely have so few ingredients added up to so much comfort. This version has classic flavors and, thanks to a simplified method, cooks more quickly than traditional chicken soups (the dish is ready in a little over an hour). There's no need to make a separate stock; the vegetables and meat form their own satisfying broth.",
+    productPrice: 50.0,
+    productCategory: 'Soups',
+    productCertificate: 'ECO',
+    productProducer: 'Blods',
+    productKcal: {
+      minKcal: 2000,
+      maxKcal: 3000,
+    },
+    productImage: {
+      src: 'assets/main-page/products/chicken__soup.jpg',
+      alt: 'chicken soup',
+    },
+  },
+  {
+    productId: '3',
+    productName: 'Chicken Soup',
+    productDescription:
+      "Everyone has their own favorite chicken soup recipe, but rarely have so few ingredients added up to so much comfort. This version has classic flavors and, thanks to a simplified method, cooks more quickly than traditional chicken soups (the dish is ready in a little over an hour). There's no need to make a separate stock; the vegetables and meat form their own satisfying broth.",
+    productPrice: 50.0,
+    productCategory: 'Soups',
+    productCertificate: 'ECO',
+    productProducer: 'Blods',
+    productKcal: {
+      minKcal: 2000,
+      maxKcal: 3000,
+    },
+    productImage: {
+      src: 'assets/main-page/products/chicken__soup.jpg',
+      alt: 'chicken soup',
+    },
+  },
+  {
+    productId: '4',
+    productName: 'Tomato Soup',
+    productDescription:
+      'A classic tomato soup with rich flavors and a smooth texture. Made from ripe tomatoes and seasoned with herbs and spices.',
+    productPrice: 40.0,
+    productCategory: 'Soups',
+    productCertificate: 'ECO',
+    productProducer: 'Blods',
+    productKcal: {
+      minKcal: 1500,
+      maxKcal: 2500,
+    },
+    productImage: {
+      src: 'assets/main-page/products/chicken__soup.jpg',
+      alt: 'chicken soup',
+    },
+  },
+  {
+    productId: '5',
+    productName: 'Tomato Soup',
+    productDescription:
+      'A classic tomato soup with rich flavors and a smooth texture. Made from ripe tomatoes and seasoned with herbs and spices.',
+    productPrice: 40.0,
+    productCategory: 'Soups',
+    productCertificate: 'ECO',
+    productProducer: 'Blods',
+    productKcal: {
+      minKcal: 1500,
+      maxKcal: 2500,
+    },
+    productImage: {
+      src: 'assets/main-page/products/chicken__soup.jpg',
+      alt: 'chicken soup',
+    },
+  },
+  {
+    productId: '6',
+    productName: 'Vegetable Curry',
+    productDescription:
+      'A delicious and aromatic vegetable curry made with a blend of spices, fresh vegetables, and coconut milk. Perfect for vegans and curry lovers.',
+    productPrice: 60.0,
+    productCategory: 'Curries',
+    productCertificate: 'ORG',
+    productProducer: 'Spice Delight',
+    productKcal: {
+      minKcal: 1800,
+      maxKcal: 2800,
+    },
+    productImage: {
+      src: 'assets/main-page/products/chicken__soup.jpg',
+      alt: 'chicken soup',
+    },
+  },
+  {
+    productId: '7',
+    productName: 'Chocolate Cake',
+    productDescription:
+      'Indulge in the rich and moist chocolate cake with layers of decadent chocolate ganache. Perfect for any celebration or as a sweet treat.',
+    productPrice: 70.0,
+    productCategory: 'Cakes',
+    productCertificate: 'N/A',
+    productProducer: 'Sweet Delights',
+    productKcal: {
+      minKcal: 2500,
+      maxKcal: 3500,
+    },
+    productImage: {
+      src: 'assets/main-page/products/chicken__soup.jpg',
+      alt: 'chicken soup',
+    },
+  },
+  {
+    productId: '8',
+    productName: 'Beef Stew',
+    productDescription:
+      'A hearty and flavorful beef stew made with tender chunks of beef, root vegetables, and aromatic herbs. Slow-cooked to perfection for a comforting meal.',
+    productPrice: 65.0,
+    productCategory: 'Stews',
+    productCertificate: 'ORG',
+    productProducer: 'Farm Fresh Meats',
+    productKcal: {
+      minKcal: 2200,
+      maxKcal: 3200,
+    },
+    productImage: {
+      src: 'assets/main-page/products/chicken__soup.jpg',
+      alt: 'chicken soup',
+    },
+  },
+  {
+    productId: '9',
+    productName: 'Spinach Salad',
+    productDescription:
+      'A refreshing spinach salad packed with fresh baby spinach leaves, cherry tomatoes, sliced almonds, and a tangy vinaigrette dressing.',
+    productPrice: 35.0,
+    productCategory: 'Salads',
+    productCertificate: 'N/A',
+    productProducer: 'Greens & More',
+    productKcal: {
+      minKcal: 800,
+      maxKcal: 1200,
+    },
+    productImage: {
+      src: 'assets/main-page/products/chicken__soup.jpg',
+      alt: 'chicken soup',
+    },
+  },
+  {
+    productId: '10',
+    productName: 'Blueberry Muffins',
+    productDescription:
+      'Delicious and moist blueberry muffins with a burst of fresh blueberries in every bite. Perfect for breakfast or as a tasty snack.',
+    productPrice: 20.0,
+    productCategory: 'Bakery',
+    productCertificate: 'ORG',
+    productProducer: "Baker's Delight",
+    productKcal: {
+      minKcal: 1500,
+      maxKcal: 2000,
+    },
+    productImage: {
+      src: 'assets/main-page/products/chicken__soup.jpg',
+      alt: 'chicken soup',
+    },
+  },
+];
