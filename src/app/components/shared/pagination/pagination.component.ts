@@ -1,6 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { ProductsApiActions } from 'src/app/store/actions/products.actions';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -10,13 +8,12 @@ import { ProductsApiActions } from 'src/app/store/actions/products.actions';
 export class PaginationComponent implements OnInit {
   @Input() currentPage: number = 1;
   @Input() total: number = 0;
-  @Input() limit: number = 9;
+  @Input() limit: number = 6;
+  @Output() changePage = new EventEmitter<number>();
   
   pages: number[] = []
 
-  constructor(private store : Store) {
-    this.store.dispatch(ProductsApiActions.loadProductList({page : 0}))
-  }
+  constructor() {}
 
   ngOnInit() : void {
     const pagesCount = Math.ceil(this.total / this.limit);
@@ -25,10 +22,5 @@ export class PaginationComponent implements OnInit {
   
   range(start: number, end: number) : number[] {
     return [...Array(end).keys()].map((el) => el + start);
-  }
-
-  changePage(page : number) {
-    this.currentPage = page;
-    this.store.dispatch(ProductsApiActions.loadProductList({page : page}))
   }
 }

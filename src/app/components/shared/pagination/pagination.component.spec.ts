@@ -6,15 +6,13 @@ import { PaginationComponent } from './pagination.component';
 describe('PaginationComponent', () => {
   let sut: PaginationComponent;
   let fixture: ComponentFixture<PaginationComponent>;
-  const initialState = { 
-  };
+  const initialState = {};
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaginationComponent ],
-      providers: [ provideMockStore({ initialState })]
-    })
-    .compileComponents();
+      declarations: [PaginationComponent],
+      providers: [provideMockStore({ initialState })],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PaginationComponent);
     sut = fixture.componentInstance;
@@ -27,32 +25,16 @@ describe('PaginationComponent', () => {
 
   it('range(start, end) returns array of numbers', () => {
     // given
-    const expectedResult = [1,2,3,4];
+    const expectedResult = [1, 2, 3, 4, 5, 6];
     sut.total = 36;
     let result;
 
     // when
     sut.ngOnInit();
     fixture.detectChanges();
-    result = sut.pages
+    result = sut.pages;
 
     // then
-    expect(result).toEqual(expectedResult)
-  });
-
-  it('changePage(page) works', () => {
-    // given
-    const expectedResult = 2;
-    sut.total = 36;
-    let result;
-
-    // when
-    sut.ngOnInit();
-    sut.changePage(2);
-    fixture.detectChanges();
-    result = sut.currentPage;
-    
-    // then
-    expect(result).toEqual(expectedResult)
+    expect(result).toEqual(expectedResult);
   });
 });

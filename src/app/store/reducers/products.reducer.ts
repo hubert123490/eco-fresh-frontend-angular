@@ -6,5 +6,5 @@ export const productsState: ReadonlyArray<Product> = [];
 
 export const productsReducer = createReducer(
   productsState,
-  on(ProductsApiActions.loadProductListSuccess, (_state, { products }) => (products)),
+  on(ProductsApiActions.loadProductsSuccess, (_state, { products }) => (products)),
 );
