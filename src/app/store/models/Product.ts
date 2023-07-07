@@ -2,20 +2,9 @@ export interface Product {
   productId: string;
   productName: string;
   productDescription: string;
-  productPrice: number;
+  productPrice: string;
   productCategory: string;
   productCertificate: string;
-  productProducer: string;
-  productKcal: KcalRange;
-  productImage: ProductImage;
-}
-
-export interface ProductImage {
-  src: string;
-  alt: string;
-}
-
-export interface KcalRange {
-  minKcal: number;
-  maxKcal: number;
+  productKcal: string;
+  productImage: string[];
 }
