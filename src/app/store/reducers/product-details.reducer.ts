@@ -11,10 +11,7 @@ export const productDetailsState: ProductDetails = {
   productCategory: '',
   productCertificate: '',
   productProducer: '',
-  productKcal: {
-    minKcal: 0,
-    maxKcal: 0
-  },
+  productKcal: '0',
   productImages: [],
   orderInput: {
     kcalChoices : [],
