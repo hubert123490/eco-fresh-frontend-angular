@@ -55,10 +55,7 @@ const mockedProductDetails: ProductDetails = {
   productCategory: 'Soups',
   productCertificate: 'ECO',
   productProducer: 'Blods',
-  productKcal: {
-    minKcal: 2000,
-    maxKcal: 3000,
-  },
+  productKcal: '2000',
   productImages: [
     {
       url: 'assets/main-page/products/chicken__soup.jpg',
