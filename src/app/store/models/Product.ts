@@ -6,5 +6,5 @@ export interface Product {
   productCategory: string;
   productCertificate: string;
   productKcal: string;
-  productImage: string[];
+  productImage: string;
 }

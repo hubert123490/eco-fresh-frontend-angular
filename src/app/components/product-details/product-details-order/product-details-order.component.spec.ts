@@ -12,17 +12,16 @@ import { ProductDetailsOrderComponent } from './product-details-order.component'
 describe('ProductDetailsOrderComponent', () => {
   let sut: ProductDetailsOrderComponent;
   let fixture: ComponentFixture<ProductDetailsOrderComponent>;
-  let store : MockStore;
+  let store: MockStore;
   let modal: ModalComponent;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [],
       providers: [ModalComponent, provideMockStore({})],
-      declarations: [ ProductDetailsOrderComponent, ModalComponent ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
+      declarations: [ProductDetailsOrderComponent, ModalComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ProductDetailsOrderComponent);
     sut = fixture.componentInstance;
@@ -38,7 +37,7 @@ describe('ProductDetailsOrderComponent', () => {
 
   it('dispatches loadOrder action when kcalChoice and selectedMealAmount are truthy', () => {
     // given
-    const productDetails: ProductDetails = mockedProductDetails
+    const productDetails: ProductDetails = mockedProductDetails;
     sut.productDetails = productDetails;
     sut.kcalChoice = '2000';
     sut.selectedMealAmount = 3;
@@ -49,7 +48,7 @@ describe('ProductDetailsOrderComponent', () => {
     // then
     expect(store.dispatch).toHaveBeenCalledWith(
       OrderApiActions.loadOrder({
-        productId: "0",
+        productId: '0',
         orderRequest: {
           kcalChoice: '2000',
           mealsAmountChoice: 3,
@@ -60,7 +59,7 @@ describe('ProductDetailsOrderComponent', () => {
 
   it('dispatches loadOrder action when kcalChoice or selectedMealAmount are falsy', () => {
     // given
-    const productDetails: ProductDetails = mockedProductDetails
+    const productDetails: ProductDetails = mockedProductDetails;
     sut.productDetails = productDetails;
     sut.kcalChoice = '';
     sut.selectedMealAmount = 0;
@@ -74,7 +73,7 @@ describe('ProductDetailsOrderComponent', () => {
 
   it('dispatches an action when modalHandler is called', () => {
     // given
-    const productDetails: ProductDetails = mockedProductDetails
+    const productDetails: ProductDetails = mockedProductDetails;
     sut.productDetails = productDetails;
     sut.kcalChoice = '2000';
     sut.selectedMealAmount = 2;
@@ -91,7 +90,9 @@ describe('ProductDetailsOrderComponent', () => {
     // when
     sut.openModal();
     // click modal's yes button
-    fixture.debugElement.query(By.css(".modal--options__confirm")).nativeElement.click();
+    fixture.debugElement
+      .query(By.css('.modal--options__confirm'))
+      .nativeElement.click();
 
     // then
     expect(store.dispatch).toHaveBeenCalledWith(expectedAction);
@@ -107,15 +108,8 @@ const mockedProductDetails: ProductDetails = {
   productCategory: 'Soups',
   productCertificate: 'ECO',
   productProducer: 'Blods',
-  productKcal: {
-    minKcal: 2000,
-    maxKcal: 3000,
-  },
-  productImages: [
-    {
-      url: 'assets/main-page/products/chicken__soup.jpg',
-    },
-  ],
+  productKcal: '2000',
+  productImages: [{ url: 'assets/main-page/products/chicken__soup.jpg' }],
   orderInput: {
     kcalChoices: ['2000 (small)', '2500 (medium)', '3000 (large)'],
     mealsAmount: [1, 2, 3, 4],
