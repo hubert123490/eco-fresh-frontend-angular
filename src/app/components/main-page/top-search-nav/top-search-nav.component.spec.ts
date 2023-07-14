@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResponsiveFilter } from '../search-nav';
 
 import { TopSearchNavComponent } from './top-search-nav.component';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('TopSearchNavComponent', () => {
   let sut: TopSearchNavComponent;
@@ -15,6 +16,7 @@ describe('TopSearchNavComponent', () => {
       declarations: [TopSearchNavComponent],
       imports: [BrowserAnimationsModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [provideMockStore({})]
     }).compileComponents();
 
     fixture = TestBed.createComponent(TopSearchNavComponent);
