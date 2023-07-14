@@ -1,6 +1,6 @@
 <div class="product">
     <div class="product--image">
-        <img [src]="product.productImage.src" [alt]="product.productImage.alt"/>
+        <img [src]="product.productImage" [alt]="product.productImage"/>
     </div>
     <div class="product--label">
         <h2>{{product.productName}}</h2>
@@ -14,7 +14,7 @@
     <div class="product--details">
         <div class="product--details__info">
             <div class="product--details__info--label">Price per meal:</div>
-            <div class="product--details__info--data">{{product.productPrice}}$</div>
+            <div class="product--details__info--data">{{product.productPrice | price}}$</div>
         </div>
         <div class="product--details__info">
             <div class="product--details__info--label">Main category:</div>
@@ -25,12 +25,8 @@
             <div class="product--details__info--data">{{product.productCertificate}}</div>
         </div>
         <div class="product--details__info">
-            <div class="product--details__info--label">Provider:</div>
-            <div class="product--details__info--data">{{product.productProducer}}</div>
-        </div>
-        <div class="product--details__info">
-            <div class="product--details__info--label">Kcal range:</div>
-            <div class="product--details__info--data">{{product.productKcal.minKcal}}-{{product.productKcal.maxKcal}}</div>
+            <div class="product--details__info--label">Kcal:</div>
+            <div class="product--details__info--data">{{product.productKcal}}</div>
         </div>
     </div>
 </div>
