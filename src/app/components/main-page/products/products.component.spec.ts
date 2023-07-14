@@ -6,6 +6,7 @@ import { mockedProducts } from './products.mock';
 import { PaginationComponent } from '../../shared/pagination/pagination.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent } from './product/product.component';
+import { PricePipe } from 'src/app/shared/pipes/price-pipe.pipe';
 
 describe('ProductsComponent', () => {
   let sut: ProductsComponent;
@@ -18,7 +19,7 @@ describe('ProductsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [BrowserAnimationsModule],
-      declarations: [ProductsComponent, PaginationComponent, ProductComponent],
+      declarations: [ProductsComponent, PaginationComponent, ProductComponent, PricePipe],
       providers: [provideMockStore({ initialState })],
     }).compileComponents();
 

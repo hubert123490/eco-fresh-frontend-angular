@@ -75,7 +75,7 @@ describe('PriceRangeComponent', () => {
 
   it('sets currMaxPrice', () => {
     // given
-    const event = { target: { value: 800 } };
+    const event = { target: { value: 200 } };
     const expectedResult : number = event.target.value;
     let result : number;
 
