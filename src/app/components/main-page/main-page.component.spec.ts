@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MainPageComponent } from './main-page.component';
 import { TopSearchNavComponent } from './top-search-nav/top-search-nav.component';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('MainPageComponent', () => {
   let sut: MainPageComponent;
@@ -14,7 +15,8 @@ describe('MainPageComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ MainPageComponent, TopSearchNavComponent ],
       imports: [BrowserAnimationsModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [provideMockStore({})]
     })
     .compileComponents();
 
