@@ -2,7 +2,6 @@ import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -57,6 +56,8 @@ import { ErrorAreaComponent } from './components/shared/http-resource/components
 import { LoadingAreaComponent } from './components/shared/http-resource/components/resource-area/loading-area/loading-area.component';
 import { SpinnerComponent } from './components/shared/http-resource/components/resource-area/loading-area/spinner/spinner.component';
 import { HttpResourceInterceptor } from './components/shared/http-resource/http-resource-handler/http-resource.interceptor';
+import { PricePipe } from './shared/pipes/price-pipe.pipe';
+import { filterReducer } from './store/reducers/filter.reducer';
 
 const routes: Routes = [
   {
@@ -131,12 +132,12 @@ const routes: Routes = [
     ErrorAreaComponent,
     LoadingAreaComponent,
     SpinnerComponent,
+    PricePipe
   ],
   imports: [
     HttpClientModule,
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
     BrowserModule,
-    AppRoutingModule,
     MatIconModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -144,6 +145,7 @@ const routes: Routes = [
       products: productsReducer,
       productDetails: productDetailsReducer,
       cart: cartReducer,
+      filter: filterReducer
     }),
     EffectsModule.forRoot([
       ProductsEffects,
