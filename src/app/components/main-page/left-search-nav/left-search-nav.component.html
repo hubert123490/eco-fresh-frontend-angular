@@ -1,47 +1,37 @@
 <nav>
   <h1 class="label">Filter</h1>
-  <form>
+  <form (ngSubmit)="onSubmit()">
     <div class="categories">
       <label for="categories--select" class="categories--label"
         >Categories:</label
       >
-      <select id="categories--select" class="categories--select">
+      <select id="categories--select" class="categories--select" name="categories" [(ngModel)]="selectedCategory">
         <option
           class="categories--select__option"
           *ngFor="let category of categories; let i = index"
-          value="category"
+          [value]="category"
         >
           {{ category }}
         </option>
       </select>
     </div>
-    <app-price-range></app-price-range>
     <div class="certifications">
       <label for="certifications--select" class="certifications--label"
         >Certifications:</label
       >
-      <select id="certifications--select" class="certifications--select">
+      <select id="certifications--select" class="certifications--select" name="certifications" [(ngModel)]="selectedCertification">
         <option
           class="certifications--select__option"
           *ngFor="let certification of certifications; let i = index"
-          value="certification"
+          [value]="certification"
         >
           {{ certification }}
         </option>
       </select>
     </div>
-    <div class="producers">
-      <label for="producers--select" class="producers--label">Producers:</label>
-      <select id="producers--select" class="producers--select">
-        <option
-          class="producers--select__option"
-          *ngFor="let producer of producers; let i = index"
-          value="producer"
-        >
-          {{ producer }}
-        </option>
-      </select>
-    </div>
+    <app-price-range  (currMinChange)="onCurrMinChange($event)"
+    (currMaxChange)="onCurrMaxChange($event)"></app-price-range>
+
     <div class="submit">
       <button class="submit--search">search</button>
     </div>

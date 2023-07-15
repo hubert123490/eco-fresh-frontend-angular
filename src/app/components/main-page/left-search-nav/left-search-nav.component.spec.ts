@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LeftSearchNavComponent } from './left-search-nav.component';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('LeftSearchNavComponent', () => {
   let sut: LeftSearchNavComponent;
@@ -10,7 +11,8 @@ describe('LeftSearchNavComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LeftSearchNavComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [provideMockStore({})]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LeftSearchNavComponent);
