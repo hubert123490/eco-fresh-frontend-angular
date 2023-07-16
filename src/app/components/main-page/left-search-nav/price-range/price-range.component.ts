@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-price-range',
@@ -6,6 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./price-range.component.scss'],
 })
 export class PriceRangeComponent implements OnInit {
+  @Output() currMinChange = new EventEmitter<number>();
+  @Output() currMaxChange = new EventEmitter<number>();
   @Input() minPrice: number;
   @Input() maxPrice: number;
   currMin: number;
@@ -14,10 +16,10 @@ export class PriceRangeComponent implements OnInit {
 
   constructor() {
     this.minPrice = 0;
-    this.maxPrice = 1000;
+    this.maxPrice = 200;
     this.currMin = 0;
-    this.currMax = 1000;
-    this.priceGap = 50;
+    this.currMax = 200;
+    this.priceGap = 10;
   }
 
   ngOnInit(): void {}
@@ -30,6 +32,7 @@ export class PriceRangeComponent implements OnInit {
     } else {
       this.currMin = parseInt(event.target.value);
     }
+    this.currMinChange.emit(this.currMin);
   }
 
   maxPriceHandler(event: any): void {
@@ -40,6 +43,7 @@ export class PriceRangeComponent implements OnInit {
     } else {
       this.currMax = parseInt(event.target.value);
     }
+    this.currMaxChange.emit(this.currMax);
   }
 
   sliderProgress(): object {

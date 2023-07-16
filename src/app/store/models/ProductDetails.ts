@@ -1,5 +1,4 @@
 import { SlideInterface } from "src/app/components/shared/carousel/carousel.component";
-import { KcalRange } from "./Product";
 
 export interface ProductDetails {
     productId: string;
@@ -9,7 +8,7 @@ export interface ProductDetails {
     productCategory: string;
     productCertificate: string;
     productProducer: string;
-    productKcal: KcalRange;
+    productKcal: string;
     productImages: Array<SlideInterface>;
     orderInput : OrderInput;
     orderSummary : OrderSummary;

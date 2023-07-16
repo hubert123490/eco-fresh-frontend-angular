@@ -3,6 +3,7 @@ import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { Product } from 'src/app/store/models/Product';
 
 import { ProductComponent } from './product.component';
+import { PricePipe } from 'src/app/shared/pipes/price-pipe.pipe';
 
 describe('ProductComponent', () => {
   let sut: ProductComponent;
@@ -12,7 +13,7 @@ describe('ProductComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductComponent],
+      declarations: [ProductComponent, PricePipe],
       providers: [provideMockStore({ initialState })],
     }).compileComponents();
 
@@ -34,16 +35,9 @@ const mockedProduct: Product = {
   productName: 'Chicken Soup',
   productDescription:
     "Everyone has their own favorite chicken soup recipe, but rarely have so few ingredients added up to so much comfort. This version has classic flavors and, thanks to a simplified method, cooks more quickly than traditional chicken soups (the dish is ready in a little over an hour). There's no need to make a separate stock; the vegetables and meat form their own satisfying broth.",
-  productPrice: 50.0,
+  productPrice: '5000',
   productCategory: 'Soups',
   productCertificate: 'ECO',
-  productProducer: 'Blods',
-  productKcal: {
-    minKcal: 2000,
-    maxKcal: 3000,
-  },
-  productImage: {
-    src: 'assets/main-page/products/chicken__soup.jpg',
-    alt: 'chicken soup',
-  },
+  productKcal: '2000',
+  productImage: 'assets/main-page/products/chicken__soup.jpg'
 };

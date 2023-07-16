@@ -62,10 +62,7 @@ const mockedCart: Cart = {
         mealsAmountChoice: 3,
       },
       productPrice: 32.23,
-      productImage: {
-        src: 'assets/main-page/products/chicken__soup.jpg',
-        alt: 'chicken soup',
-      },
+      productImage: 'assets/main-page/products/chicken__soup.jpg'
     },
   ],
   cartSummary: {
