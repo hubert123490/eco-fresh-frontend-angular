@@ -29,28 +29,6 @@ describe('TopSearchNavComponent', () => {
     expect(sut).toBeTruthy();
   });
 
-  it('renders categories when menuIsOpen is set to true', () => {
-    // given
-    sut.filter.isFilterOpen = true;
-
-    // when
-    fixture.detectChanges();
-
-    // then
-    expect(fixture.debugElement.query(By.css('.nav--category'))).not.toBeNull();
-  });
-
-  it('does not render categories when menuIsOpen is set to true', () => {
-    // given
-    sut.filter.isFilterOpen = false;
-
-    // when
-    fixture.detectChanges();
-
-    // then
-    expect(fixture.debugElement.query(By.css('.nav--category'))).toBeNull();
-  });
-
   it('toggles menu when toggleMenu() function is called', () => {
     // given
     const expectedResult: Array<boolean> = [true, false];

@@ -8,10 +8,6 @@
       name="productNamePrefix"
       [(ngModel)]="productNamePrefix"
     />
-    <button class="nav--form__categories--button" type="button" (click)="this.filter.toggleFilter()">
-      <mat-icon *ngIf="!this.filter.isFilterOpen">arrow_drop_down</mat-icon>
-      <mat-icon *ngIf="this.filter.isFilterOpen">arrow_drop_up</mat-icon>
-    </button>
     <button
       class="nav--form__filter--button"
       type="button"
@@ -23,12 +19,4 @@
     </button>
     <button class="nav--form__submit--button" type="submit">Search</button>
   </form>
-  <div class="nav--category" *ngIf="this.filter.isFilterOpen" [@inOutAnimation]>
-    <h2 class="nav--category__label">Main Categories</h2>
-    <div class="nav--category__items">
-      <div *ngFor="let item of categories" class="nav--category__item">
-        {{ item }}
-      </div>
-    </div>
-  </div>
 </nav>
