@@ -40,9 +40,9 @@ export class HttpResourceInterceptor implements HttpInterceptor {
             if (error.error instanceof ErrorEvent) {
               // client-side error
               errorMessage = `Client Side Error: ${error.error.message}`;
-              console.log(errorMessage);
+              console.error(errorMessage);
             } else {
-              console.log(error);
+              console.error(error);
               // server-side error
               errorMessage = `Server Side Error, Code ${error.status}\nMessage: ${error.message}`;
             }
