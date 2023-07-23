@@ -8,14 +8,13 @@ import { HttpResource } from './http-resource/HttpResource';
 export class HttpResourceHandlerService {
   public httpResources: { [key: string]: HttpResource } = {
     productsResource: new ProductsResource([
-        '/assets/data/products.json'
+        'http://localhost:8080/products'
     ])
   };
 }
 
 class ProductsResource extends HttpResource {
     validationHandler(request: HttpRequest<unknown>, url: string): boolean {
-        return request.url === url;
+        return request.url.includes(url);
     }
-    
 }

@@ -1,7 +1,7 @@
 <app-resource-area
   [httpResource]="httpResourceService.httpResources['productsResource']"
 >
-  <section>
+  <section *ngIf="(productsLength$ | async)! > 0">
     <a class="products">
       <app-product
         [product]="product"
@@ -12,8 +12,8 @@
     <app-pagination
       (changePage)="changePage($event)"
       [currentPage]="currentPage"
-      *ngIf="(productsLength$ | async)! > 0"
       [total]="(productsLength$ | async)!"
     ></app-pagination>
   </section>
+  <div *ngIf="(productsLength$ | async)! === 0" class="not-found">Nothing found</div>
 </app-resource-area>
