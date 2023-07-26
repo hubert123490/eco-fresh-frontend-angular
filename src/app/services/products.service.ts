@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Product } from '../store/models/Product';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -23,15 +23,18 @@ export class ProductsService {
   private getFiltersHttpParams(filters: FilterRequest) {
     let params = new HttpParams();
 
-    if(filters.productNamePrefix) params = params.set('productNamePrefix', filters.productNamePrefix);
-    if(filters.priceFrom) params = params.set('priceFrom', filters.priceFrom);
-    if(filters.priceTo) params = params.set('priceTo', filters.priceTo);
-    if(filters.categories) filters.categories.forEach((category) => {
-      params = params.append('categories', category);
-    });
-    if(filters.certifications) filters.certifications.forEach((certification) => {
-      params = params.append('certifications', certification);
-    });
+    if (filters.productNamePrefix)
+      params = params.set('productNamePrefix', filters.productNamePrefix);
+    if (filters.priceFrom) params = params.set('priceFrom', filters.priceFrom);
+    if (filters.priceTo) params = params.set('priceTo', filters.priceTo);
+    if (filters.categories)
+      filters.categories.forEach((category) => {
+        params = params.append('categories', category);
+      });
+    if (filters.certifications)
+      filters.certifications.forEach((certification) => {
+        params = params.append('certifications', certification);
+      });
 
     return params;
   }
