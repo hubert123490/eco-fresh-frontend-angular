@@ -8,12 +8,23 @@
   }
 
   &--main {
-
     @include breakpoint(md) {
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
   }
+
+  &--top {
+    min-height: 30rem;
+  }
+
+  &--info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--bottom {
+    background-color: bisque;
+  }
 }
-
-
