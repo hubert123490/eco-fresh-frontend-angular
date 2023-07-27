@@ -1,6 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ProductDetailsImageComponent } from './product-details-image.component';
 
 describe('ProductDetailsImageComponent', () => {
@@ -16,10 +15,12 @@ describe('ProductDetailsImageComponent', () => {
 
     fixture = TestBed.createComponent(ProductDetailsImageComponent);
     sut = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('creates ProductDetailsImage component', () => {
+    sut.slide = 'url'
+    sut.ngOnInit()
+    fixture.detectChanges();
     expect(sut).toBeTruthy();
   });
 });
