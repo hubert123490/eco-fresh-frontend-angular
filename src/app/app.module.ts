@@ -48,7 +48,6 @@ import { ProductDetailsEffects } from './store/effects/product-details.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
 import { ModalComponent } from './components/shared/modal/modal.component';
-import { OrderEffects } from './store/effects/order.effects';
 import { cartReducer } from './store/reducers/cart.reducer';
 import { CartEffects } from './store/effects/cart.effects';
 import { ResourceAreaComponent } from './components/shared/http-resource/components/resource-area/resource-area.component';
@@ -144,14 +143,13 @@ const routes: Routes = [
     StoreModule.forRoot({
       products: productsReducer,
       productDetails: productDetailsReducer,
-      cart: cartReducer,
+      // cart: cartReducer,
       filter: filterReducer
     }),
     EffectsModule.forRoot([
       ProductsEffects,
       ProductDetailsEffects,
-      OrderEffects,
-      CartEffects,
+      // CartEffects,
     ]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
