@@ -9,6 +9,9 @@ export class HttpResourceHandlerService {
   public httpResources: { [key: string]: HttpResource } = {
     productsResource: new ProductsResource([
         'http://localhost:8080/products'
+    ]),
+    productDetailsResource : new ProductDetailsResource([
+      'http://localhost:8080/products'
     ])
   };
 }
@@ -17,4 +20,10 @@ class ProductsResource extends HttpResource {
     validationHandler(request: HttpRequest<unknown>, url: string): boolean {
         return request.url.includes(url);
     }
+}
+
+class ProductDetailsResource extends HttpResource {
+  validationHandler(request: HttpRequest<unknown>, url: string): boolean {
+      return request.url.includes(url);
+  }
 }
