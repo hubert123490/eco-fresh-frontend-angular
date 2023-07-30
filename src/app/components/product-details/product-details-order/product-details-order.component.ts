@@ -2,7 +2,6 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CartApiActions } from 'src/app/store/actions/cart.actions';
-import { OrderApiActions } from 'src/app/store/actions/order.actions';
 import { ProductDetails } from 'src/app/store/models/ProductDetails';
 import { ModalComponent } from '../../shared/modal/modal.component';
 
@@ -16,44 +15,36 @@ export class ProductDetailsOrderComponent implements OnInit {
   @Output() addToCartEvent: EventEmitter<ProductDetails> = new EventEmitter();
   @ViewChild('modal') modal!: ModalComponent;
 
-  kcalChoice: string = '';
-  selectedMealAmount: number = 0;
+  selectedMealAmount: number = 1;
+
+  mealAmountArr: number[] = [1,2,3,4,5]
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {}
 
   openModal() {
-    this.modal.showModal(this.modalHandler);
+    // this.modal.showModal(this.modalHandler);
   }
 
-  modalHandler = () => {
-    if (this.kcalChoice && this.selectedMealAmount) {
-      this.store.dispatch(
-        CartApiActions.addItem({
-          request: {
-            productId: this.productDetails!.productId,
-            orderRequest: {
-              kcalChoice: this.kcalChoice,
-              mealsAmountChoice: this.selectedMealAmount,
-            },
-          },
-        })
-      );
-    }
-  };
+  // modalHandler = () => {
+  //   if (this.selectedMealAmount) {
+  //     this.store.dispatch(
+  //       CartApiActions.addItem({
+  //         request: {
+  //           productId: this.productDetails!.productId,
+  //           orderRequest: {
+  //             mealsAmountChoice: this.selectedMealAmount,
+  //           },
+  //         },
+  //       })
+  //     );
+  //   }
+  // };
 
-  onOptionsChange() {
-    if (this.kcalChoice && this.selectedMealAmount) {
-      this.store.dispatch(
-        OrderApiActions.loadOrder({
-          productId: this.productDetails!.productId,
-          orderRequest: {
-            kcalChoice: this.kcalChoice,
-            mealsAmountChoice: this.selectedMealAmount,
-          },
-        })
-      );
-    }
+  getTotalPrice() {
+    return this.productDetails?.productPrice
+      ? (+this.productDetails.productPrice * this.selectedMealAmount).toString()
+      : '';
   }
 }

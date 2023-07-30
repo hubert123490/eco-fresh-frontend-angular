@@ -33,13 +33,13 @@ describe('ProductDetailsService', () => {
     const expectedResult: ProductDetails = mockedProductDetails;
 
     // when
-    sut.getProductDetails('1').subscribe((result) => {
+    sut.getProductDetails('0').subscribe((result) => {
       // then
       expect(result).toEqual(expectedResult);
     });
 
     // then
-    const req = httpMock.expectOne('/assets/data/product-details.json?productId=1');
+    const req = httpMock.expectOne('http://localhost:8080/products/0');
     expect(req.request.method).toBe('GET');
 
     req.flush(mockedProductDetails);
@@ -49,47 +49,34 @@ describe('ProductDetailsService', () => {
 const mockedProductDetails: ProductDetails = {
   productId: '0',
   productName: 'Chicken Soup',
-  productDescription:
+  productDetailedDescription:
     "Everyone has their own favorite chicken soup recipe, but rarely have so few ingredients added up to so much comfort. This version has classic flavors and, thanks to a simplified method, cooks more quickly than traditional chicken soups (the dish is ready in a little over an hour). There's no need to make a separate stock; the vegetables and meat form their own satisfying broth.",
-  productPrice: 50.0,
+  productPrice: '5000',
   productCategory: 'Soups',
   productCertificate: 'ECO',
-  productProducer: 'Blods',
   productKcal: '2000',
-  productImages: [
-    {
-      url: 'assets/main-page/products/chicken__soup.jpg',
+  productImage: 'assets/main-page/products/chicken__soup.jpg',
+  ingredients: {
+    chicken: {
+      name: 'Chicken wing (300g)',
+      value: '2',
     },
-  ],
-  orderInput: {
-    kcalChoices: ['2000 (small)', '2500 (medium)', '3000 (large)'],
-    mealsAmount: [1, 2, 3, 4],
-  },
-  orderSummary: {
-    totalPrice: 50.99,
-    mealAmount: 1,
-    mealKcal: 2000,
-    ingredientsDetails: [
-      {
-        ingredientName: 'Chicken wing (300g)',
-        ingredientAmount: '2',
-      },
-      {
-        ingredientName: 'Avocado oil',
-        ingredientAmount: '30g',
-      },
-      {
-        ingredientName: 'Clove of garilc',
-        ingredientAmount: '6',
-      },
-      {
-        ingredientName: 'Onion',
-        ingredientAmount: '1',
-      },
-      {
-        ingredientName: 'Large carrot',
-        ingredientAmount: '2',
-      },
-    ],
+    oil: {
+      name: 'Avocado oil',
+      value: '30g',
+    },
+    garlic: {
+      name: 'Clove of garilc',
+      value: '6',
+    },
+    onion: {
+      name: 'Onion',
+      value: '1',
+    },
+    largeCarrot: {
+      name: 'Large carrot',
+      value: '2',
+    },
   },
 };
+

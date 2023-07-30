@@ -9,7 +9,9 @@ import { ProductDetails } from '../store/models/ProductDetails';
 export class ProductDetailsService {
   constructor(private http: HttpClient) {}
 
-  getProductDetails(productId : string) : Observable<ProductDetails> {
-    return this.http.get<ProductDetails>('/assets/data/product-details.json', {params: {productId : productId}});
+  getProductDetails(productId: string): Observable<ProductDetails> {
+    return this.http.get<ProductDetails>(
+      `http://localhost:8080/products/${productId}`
+    );
   }
 }

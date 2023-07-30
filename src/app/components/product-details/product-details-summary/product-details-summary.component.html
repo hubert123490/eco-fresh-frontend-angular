@@ -1,22 +1,14 @@
 <div class="summary">
-  <div class="summary--label"><h2>Order summary</h2></div>
-  <div class="summary--info">
-    <div class="summary--info__row">
-      <div class="summary--info__row--label"><b>Total price:</b></div>
-      <div class="summary--info__row--data"><b>{{productDetails?.orderSummary?.totalPrice}} $</b></div>
+  <h3 class="summary--info__ingredients">Ingredients</h3>
+  <div
+    class="summary--info__row"
+    *ngFor="let ingredientDetails of productDetails?.ingredients | keyvalue"
+  >
+    <div class="summary--info__row--label">
+      {{ ingredientDetails.value.name }}
     </div>
-    <div class="summary--info__row">
-      <div class="summary--info__row--label">Portions (meals):</div>
-      <div class="summary--info__row--data">{{productDetails?.orderSummary?.mealAmount}}</div>
-    </div>
-    <div class="summary--info__row">
-      <div class="summary--info__row--label">Kcal per meal:</div>
-      <div class="summary--info__row--data">{{productDetails?.orderSummary?.mealKcal}}</div>
-    </div>
-    <h3 class="summary--info__ingredients">Ingredients</h3>
-    <div class="summary--info__row" *ngFor="let ingredientDetails of productDetails?.orderSummary?.ingredientsDetails">
-      <div class="summary--info__row--label">{{ingredientDetails.ingredientName}}</div>
-      <div class="summary--info__row--data">{{ingredientDetails.ingredientAmount}}</div>
+    <div class="summary--info__row--data">
+      {{ ingredientDetails.value.value }}
     </div>
   </div>
 </div>
