@@ -1,6 +1,6 @@
 <div class="order">
   <div class="order--summary">
-    <div class="order--summary__info">
+    <!-- <div class="order--summary__info">
       <span class="order--summary__info--start">Sub total:</span
       ><span class="order--summary__info--end"
         >{{ cartSummary!.subTotal }} $</span
@@ -21,9 +21,9 @@
       ><span class="order--summary__info--end"
         >{{ cartSummary!.totalPrice }} $</span
       >
-    </div>
+    </div> -->
   </div>
   <div class="order--submit">
-    <button class="order--submit__button">Checkout</button>
+    <button class="order--submit__button" (click)="pay()">Checkout</button>
   </div>
 </div>
