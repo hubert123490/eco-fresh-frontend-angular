@@ -24,10 +24,7 @@ export class CartProductComponent implements OnInit {
   increaseCartItemQuantity = () => {
     this.store.dispatch(
       CartApiActions.addItemQuantity({
-        request: {
-          productId: this.cartItem!.productId,
-          orderRequest: this.cartItem!.orderRequest,
-        },
+        productId: this.cartItem!.id,
       })
     );
   };
@@ -35,10 +32,7 @@ export class CartProductComponent implements OnInit {
   reduceCartItemQuantity = () => {
     this.store.dispatch(
       CartApiActions.reduceItemQuantity({
-        request: {
-          productId: this.cartItem!.productId,
-          orderRequest: this.cartItem!.orderRequest,
-        },
+        productId: this.cartItem!.id,
       })
     );
   };
@@ -46,10 +40,7 @@ export class CartProductComponent implements OnInit {
   removeCartItem = () => {
     this.store.dispatch(
       CartApiActions.removeItem({
-        request: {
-          productId: this.cartItem!.productId,
-          orderRequest: this.cartItem!.orderRequest,
-        },
+        productId: this.cartItem!.id,
       })
     );
   };

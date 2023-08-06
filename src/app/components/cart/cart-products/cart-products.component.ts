@@ -7,7 +7,7 @@ import { CartItem } from 'src/app/store/models/Cart';
   styleUrls: ['./cart-products.component.scss']
 })
 export class CartProductsComponent implements OnInit {
-  @Input() cartItems : Array<CartItem> = [];
+  @Input() cartItems : CartItem[] = [];
 
   constructor() { }
 

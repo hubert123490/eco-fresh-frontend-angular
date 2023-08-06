@@ -5,17 +5,17 @@
   <div class="product--content">
     <div class="product--content__description">
       <div class="product--content__description--label">Chicken soup</div>
-      <div class="product--content__description--kcal">
+      <!-- <div class="product--content__description--kcal">
         <span>Kcal:</span><span>{{cartItem!.orderRequest.kcalChoice}}</span>
-      </div>
+      </div> -->
       <div class="product--content__description--amount">
         <span>Portions:</span>
         <div class="product--content__description--amount__quantities">
-          <i class="material-icons" id="reduce" (click)="reduceCartItemQuantity()">remove_circle_outline</i><span>{{cartItem!.orderRequest.mealsAmountChoice}}</span
+          <i class="material-icons" id="reduce" (click)="reduceCartItemQuantity()">remove_circle_outline</i><span>{{cartItem?.quantity}}</span
           ><i class="material-icons" id="increase" (click)="increaseCartItemQuantity()">add_circle_outline</i>
         </div>
       </div>
-      <div class="product--content__description--price">{{cartItem!.productPrice}}$</div>
+      <!-- <div class="product--content__description--price">{{cartItem!.productPrice}}$</div> -->
       <div class="product--content__description--icon">
         <i class="material-icons" (click)="openModal()">close</i>
       </div>
