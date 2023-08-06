@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CartOrderComponent } from './cart-order.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CartOrderComponent', () => {
   let sut: CartOrderComponent;
@@ -14,12 +15,12 @@ describe('CartOrderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [CartOrderComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CartOrderComponent);
     sut = fixture.componentInstance;
-    sut.cartSummary = cartSummary;
     fixture.detectChanges();
   });
 

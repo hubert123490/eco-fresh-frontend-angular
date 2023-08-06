@@ -48,8 +48,6 @@ import { ProductDetailsEffects } from './store/effects/product-details.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
 import { ModalComponent } from './components/shared/modal/modal.component';
-import { cartReducer } from './store/reducers/cart.reducer';
-import { CartEffects } from './store/effects/cart.effects';
 import { ResourceAreaComponent } from './components/shared/http-resource/components/resource-area/resource-area.component';
 import { ErrorAreaComponent } from './components/shared/http-resource/components/resource-area/error-area/error-area.component';
 import { LoadingAreaComponent } from './components/shared/http-resource/components/resource-area/loading-area/loading-area.component';
@@ -57,6 +55,9 @@ import { SpinnerComponent } from './components/shared/http-resource/components/r
 import { HttpResourceInterceptor } from './components/shared/http-resource/http-resource-handler/http-resource.interceptor';
 import { PricePipe } from './shared/pipes/price-pipe.pipe';
 import { filterReducer } from './store/reducers/filter.reducer';
+import { cartReducer } from './store/reducers/cart.reducer';
+import { CheckoutSuccessPageComponent } from './components/checkout-success-page/checkout-success-page.component';
+import { CheckoutCancelPageComponent } from './components/checkout-cancel-page/checkout-cancel-page.component';
 
 const routes: Routes = [
   {
@@ -83,6 +84,8 @@ const routes: Routes = [
     path: 'registration-page',
     component: RegistrationPageComponent,
   },
+  { path: 'cancel', component: CheckoutCancelPageComponent },
+  { path: 'success', component: CheckoutSuccessPageComponent },
   {
     path: '**',
     component: MainPageComponent,
@@ -131,7 +134,9 @@ const routes: Routes = [
     ErrorAreaComponent,
     LoadingAreaComponent,
     SpinnerComponent,
-    PricePipe
+    PricePipe,
+    CheckoutSuccessPageComponent,
+    CheckoutCancelPageComponent
   ],
   imports: [
     HttpClientModule,
@@ -143,13 +148,12 @@ const routes: Routes = [
     StoreModule.forRoot({
       products: productsReducer,
       productDetails: productDetailsReducer,
-      // cart: cartReducer,
+      cart: cartReducer,
       filter: filterReducer
     }),
     EffectsModule.forRoot([
       ProductsEffects,
       ProductDetailsEffects,
-      // CartEffects,
     ]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],

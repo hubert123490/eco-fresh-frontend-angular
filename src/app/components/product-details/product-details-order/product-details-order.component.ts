@@ -24,23 +24,17 @@ export class ProductDetailsOrderComponent implements OnInit {
   ngOnInit(): void {}
 
   openModal() {
-    // this.modal.showModal(this.modalHandler);
+    this.modal.showModal(this.modalHandler);
   }
 
-  // modalHandler = () => {
-  //   if (this.selectedMealAmount) {
-  //     this.store.dispatch(
-  //       CartApiActions.addItem({
-  //         request: {
-  //           productId: this.productDetails!.productId,
-  //           orderRequest: {
-  //             mealsAmountChoice: this.selectedMealAmount,
-  //           },
-  //         },
-  //       })
-  //     );
-  //   }
-  // };
+  modalHandler = () => {
+      this.store.dispatch(
+        CartApiActions.addItem({
+            productId: this.productDetails!.productId,
+            quantity: +this.selectedMealAmount
+        })
+      );
+  };
 
   getTotalPrice() {
     return this.productDetails?.productPrice
