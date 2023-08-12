@@ -2,19 +2,29 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ModalComponent } from './modal.component';
+import { Router } from '@angular/router';
+
+class MockRouter {
+  navigateByUrl(url: string) { return url; }
+}
 
 describe('ModalComponent', () => {
   let sut: ModalComponent;
   let fixture: ComponentFixture<ModalComponent>;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalComponent ]
+      declarations: [ ModalComponent ],
+      providers: [
+        { provide: Router, useClass: MockRouter }
+    ]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(ModalComponent);
     sut = fixture.componentInstance;
+    router = TestBed.inject(Router);
     fixture.detectChanges();
   });
 
@@ -99,5 +109,21 @@ describe('ModalComponent', () => {
     expect(expectedResult).toEqual(result);
     expect(confirmSpy).toHaveBeenCalledWith();
     expect(closeSpy).toHaveBeenCalledOnceWith();
+  });
+
+  it('navigates to the desired route when dialog confirmed and afterSuccessNavUrl provided', () => {
+    // given
+    sut.afterSuccessNavUrl = '/test'
+    const navigateSpy = spyOn(router, 'navigateByUrl');
+    const expectedResult = '/test';
+
+    // when
+    sut.showModal();
+    fixture.detectChanges();
+    sut.confirmModal();
+    fixture.detectChanges();
+
+    // then
+    expect(navigateSpy).toHaveBeenCalledWith(expectedResult);
   });
 });
