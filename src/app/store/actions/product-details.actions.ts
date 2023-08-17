@@ -1,4 +1,4 @@
-import { createActionGroup, props } from '@ngrx/store';
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { ProductDetails } from '../models/ProductDetails';
 
 export const ProductDetailsApiActions = createActionGroup({
@@ -8,5 +8,6 @@ export const ProductDetailsApiActions = createActionGroup({
     'Load Product Details Success': props<{
       productDetails: ProductDetails;
     }>(),
+    'Clear Product Details': emptyProps
   },
 });
