@@ -3,6 +3,7 @@
   ><div class="wrapper">
     <div class="wrapper--main wrapper--top" *ngIf="productDetails$ | async">
       <app-product-details-image
+      class="wrapper--image"
         *ngIf="(productDetails$ | async)!.productImage"
         [slide]="(productDetails$ | async)!.productImage"
       ></app-product-details-image>

@@ -31,4 +31,8 @@ export class ProductDetailsComponent implements OnInit {
       })
     );
   }
+
+  ngOnDestroy() : void {
+    this.store.dispatch(ProductDetailsApiActions.clearProductDetails())
+  }
 }
