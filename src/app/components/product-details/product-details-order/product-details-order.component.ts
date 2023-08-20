@@ -31,7 +31,9 @@ export class ProductDetailsOrderComponent implements OnInit {
       this.store.dispatch(
         CartApiActions.addItem({
             productId: this.productDetails!.productId,
-            quantity: +this.selectedMealAmount
+            quantity: +this.selectedMealAmount,
+            name: this.productDetails!.productName,
+            imageUrl: this.productDetails!.productImage
         })
       );
   };
