@@ -3,6 +3,7 @@ import { Product } from '../store/models/Product';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FilterRequest } from '../store/models/Filter';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +14,11 @@ export class ProductsService {
   getProducts(filters?: FilterRequest): Observable<Product[]> {
     if (filters) {
       const params = this.getFiltersHttpParams(filters);
-      return this.http.get<Product[]>('http://localhost:8080/products', {
+      return this.http.get<Product[]>(`${environment.serverUrl}/products`, {
         params: params,
       });
     }
-    return this.http.get<Product[]>('http://localhost:8080/products');
+    return this.http.get<Product[]>(`${environment.serverUrl}/products`);
   }
 
   private getFiltersHttpParams(filters: FilterRequest) {

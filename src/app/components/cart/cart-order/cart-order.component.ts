@@ -19,8 +19,8 @@ export class CartOrderComponent {
     // here we create a payment object
     const payment = {
       checkoutProducts : this.cartItems,
-      cancelUrl: 'https://localhost:4200/cancel',
-      successUrl: 'https://localhost:4200/success',
+      cancelUrl: `${environment.cancelUrl}`,
+      successUrl: `${environment.okUrl}`,
     };
 
     const stripe = await this.stripePromise;

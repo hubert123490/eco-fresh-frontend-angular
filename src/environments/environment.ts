@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   stripe: 'pk_test_51MT3XtKm5P8pm2jnfU7CIJravWrynFcVTVJcILUTnyHe3i7MQtLTrMemNVLKKiLYybxLsuSiVWsrK0XDHCG742vQ007RFtF0Re',
-  serverUrl: 'http://localhost:8080'
+  serverUrl: 'http://localhost:8080',
+  cancelUrl: 'http://localhost:4200',
+  okUrl: 'http://localhost:4200'
 };
 
 /*
