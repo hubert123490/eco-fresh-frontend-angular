@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -10,11 +11,12 @@ export class ModalComponent{
   @Input() description : string = "Do you really want to add this item to cart?";
   @Input() confirmText : string = "Yes"
   @Input() cancelText : string = "No"
+  @Input() afterSuccessNavUrl? : string
   @ViewChild('modal', {static: false}) modal!: ElementRef;
 
   callback : Function = () => {}
   
-  constructor() {}
+  constructor(private router : Router) {}
 
   public showModal(callback : Function = () => {}) {
     this.callback = callback;
@@ -28,5 +30,6 @@ export class ModalComponent{
   public confirmModal() {
     this.callback();
     this.closeModal();
+    if(this.afterSuccessNavUrl) this.router.navigateByUrl(this.afterSuccessNavUrl)
   }
 }

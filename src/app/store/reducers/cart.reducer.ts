@@ -32,7 +32,7 @@ export const cartReducer = createReducer(
     if (existingCartItem) {
       const newCartItem = {
         id: existingCartItem.id,
-        quantity: (existingCartItem.quantity <= 1 ? existingCartItem.quantity : existingCartItem.quantity + 1),
+        quantity: (existingCartItem.quantity < 1 ? existingCartItem.quantity : existingCartItem.quantity + 1),
       };
 
       return [...[...newState.filter((cartItem) => cartItem.id !== productId)], newCartItem];
@@ -49,7 +49,7 @@ export const cartReducer = createReducer(
     if (existingCartItem) {
       const newCartItem = {
         id: existingCartItem.id,
-        quantity: (existingCartItem.quantity > 1 ? existingCartItem.quantity : existingCartItem.quantity - 1),
+        quantity: (existingCartItem.quantity > 1 ? existingCartItem.quantity - 1 : existingCartItem.quantity),
       };
 
       return [...[...newState.filter((cartItem) => cartItem.id !== productId)], newCartItem];

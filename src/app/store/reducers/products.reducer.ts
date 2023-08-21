@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { ProductsApiActions } from '../actions/products.actions';
 import { Product } from '../models/Product';
-import { FilterApiActions } from '../actions/filter.actions';
 
 export const productsState: ReadonlyArray<Product> = [];
 
