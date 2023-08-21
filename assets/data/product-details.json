@@ -1,0 +1,52 @@
+{
+  "productId": "0",
+  "productName": "Chicken Soup",
+  "productDescription": "Everyone has their own favorite chicken soup recipe, but rarely have so few ingredients added up to so much comfort. This version has classic flavors and, thanks to a simplified method, cooks more quickly than traditional chicken soups (the dish is ready in a little over an hour). There's no need to make a separate stock; the vegetables and meat form their own satisfying broth.",
+  "productPrice": 50.99,
+  "productCategory": "Soups",
+  "productCertificate": "ECO",
+  "productProducer": "Blods",
+  "productKcal": {
+    "minKcal": 2000,
+    "maxKcal": 3000
+  },
+  "productImages": [
+    {
+      "url": "assets/main-page/products/chicken__soup.jpg"
+    },
+    {
+      "url": "assets/landing-page/welcome.jpg"
+    }
+  ],
+  "orderInput": {
+    "kcalChoices": ["2000 (small)", "2500 (medium)", "3000 (large)"],
+    "mealsAmount": [1, 2, 3, 4, 5]
+  },
+  "orderSummary": {
+    "totalPrice": 50.99,
+    "mealAmount": 1,
+    "mealKcal": 2000,
+    "ingredientsDetails": [
+      {
+        "ingredientName": "Chicken wing (300g)",
+        "ingredientAmount": "2"
+      },
+      {
+        "ingredientName": "Avocado oil",
+        "ingredientAmount": "30g"
+      },
+      {
+        "ingredientName": "Clove of garilc",
+        "ingredientAmount": "6"
+      },
+      {
+        "ingredientName": "Onion",
+        "ingredientAmount": "1"
+      },
+      {
+        "ingredientName": "Large carrot",
+        "ingredientAmount": "2"
+      }
+    ]
+  }
+}
