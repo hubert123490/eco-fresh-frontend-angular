@@ -19,5 +19,7 @@ export const productDetailsReducer = createReducer(
   on(
     ProductDetailsApiActions.loadProductDetailsSuccess,
     (_state, { productDetails }) => productDetails
-  )
+  ),
+  on(ProductDetailsApiActions.clearProductDetails,
+    (_state) => productDetailsState)
 );

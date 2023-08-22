@@ -1,13 +1,10 @@
 <div class="product">
   <div class="product--image">
-    <img src="assets/main-page/products/chicken__soup.jpg" />
+    <img src="{{cartItem?.imageUrl}}"/>
   </div>
   <div class="product--content">
     <div class="product--content__description">
-      <div class="product--content__description--label">Chicken soup</div>
-      <!-- <div class="product--content__description--kcal">
-        <span>Kcal:</span><span>{{cartItem!.orderRequest.kcalChoice}}</span>
-      </div> -->
+      <div class="product--content__description--label">{{cartItem?.name}}</div>
       <div class="product--content__description--amount">
         <span>Portions:</span>
         <div class="product--content__description--amount__quantities">
@@ -15,7 +12,6 @@
           ><i class="material-icons" id="increase" (click)="increaseCartItemQuantity()">add_circle_outline</i>
         </div>
       </div>
-      <!-- <div class="product--content__description--price">{{cartItem!.productPrice}}$</div> -->
       <div class="product--content__description--icon">
         <i class="material-icons" (click)="openModal()">close</i>
       </div>

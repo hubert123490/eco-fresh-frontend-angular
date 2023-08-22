@@ -6,7 +6,7 @@ export const cartState: CartItem[] = [];
 
 export const cartReducer = createReducer(
   cartState,
-  on(CartApiActions.addItem, (_state, { productId, quantity }) => {
+  on(CartApiActions.addItem, (_state, { productId, quantity, name, imageUrl }) => {
     const newState = [..._state];
     const existingCartItem = newState.find(
       (cartItem) => cartItem.id === productId
@@ -18,7 +18,7 @@ export const cartReducer = createReducer(
       return newState;
     }
 
-    return [...newState, { id: productId, quantity }];
+    return [...newState, { id: productId, quantity, name , imageUrl }];
   }),
   on(CartApiActions.removeItem, (_state, { productId }) =>
     [..._state].filter((cartItem) => cartItem.id !== productId)
@@ -33,6 +33,8 @@ export const cartReducer = createReducer(
       const newCartItem = {
         id: existingCartItem.id,
         quantity: (existingCartItem.quantity < 1 ? existingCartItem.quantity : existingCartItem.quantity + 1),
+        name: existingCartItem.name,
+        imageUrl : existingCartItem.imageUrl
       };
 
       return [...[...newState.filter((cartItem) => cartItem.id !== productId)], newCartItem];
@@ -50,6 +52,8 @@ export const cartReducer = createReducer(
       const newCartItem = {
         id: existingCartItem.id,
         quantity: (existingCartItem.quantity > 1 ? existingCartItem.quantity - 1 : existingCartItem.quantity),
+        name: existingCartItem.name,
+        imageUrl : existingCartItem.imageUrl
       };
 
       return [...[...newState.filter((cartItem) => cartItem.id !== productId)], newCartItem];
