@@ -1,24 +1,48 @@
-<app-resource-area
-  [httpResource]="httpResourceService.httpResources['productDetailsResource']"
-  ><div class="wrapper">
-    <div class="wrapper--main wrapper--top" *ngIf="productDetails$ | async">
-      <app-product-details-image
+<div
+  class="loading-container"
+  *ngIf="
+    (httpResourceService.httpResources['productDetailsResource'].loadingHandler
+      .componentLoading$ | async) ||
+    httpResourceService.httpResources['productDetailsResource'].errorHandler
+      .errorMessage
+  "
+>
+  <app-resource-area
+    [httpResource]="httpResourceService.httpResources['productDetailsResource']"
+  >
+  </app-resource-area>
+</div>
+<div
+  class="wrapper"
+  *ngIf="
+    !(
+      httpResourceService.httpResources['productDetailsResource'].loadingHandler
+        .componentLoading$ | async
+    ) &&
+    !(
+      httpResourceService.httpResources['productDetailsResource'].errorHandler
+        .errorMessage === ''
+    )
+  "
+>
+  <div class="wrapper--main wrapper--top" *ngIf="productDetails$ | async">
+    <app-product-details-image
       class="wrapper--image"
-        *ngIf="(productDetails$ | async)!.productImage"
-        [slide]="(productDetails$ | async)!.productImage"
-      ></app-product-details-image>
-      <app-product-details-info
-        class="wrapper--info"
-        [productDetails]="productDetails$ | async"
-      ></app-product-details-info>
-    </div>
-    <div class="wrapper--main wrapper--bottom">
-      <app-product-details-order
-        [productDetails]="productDetails$ | async"
-      ></app-product-details-order>
-      <app-product-details-summary
-        [productDetails]="productDetails$ | async"
-      ></app-product-details-summary>
-    </div>
+      *ngIf="(productDetails$ | async)!.productImage"
+      [slide]="(productDetails$ | async)!.productImage"
+    >
+    </app-product-details-image>
+    <app-product-details-info
+      class="wrapper--info"
+      [productDetails]="productDetails$ | async"
+    ></app-product-details-info>
   </div>
-</app-resource-area>
+  <div class="wrapper--main wrapper--bottom">
+    <app-product-details-order
+      [productDetails]="productDetails$ | async"
+    ></app-product-details-order>
+    <app-product-details-summary
+      [productDetails]="productDetails$ | async"
+    ></app-product-details-summary>
+  </div>
+</div>

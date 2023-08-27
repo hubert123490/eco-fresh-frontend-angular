@@ -1,5 +1,11 @@
 @import "./../../../variables.scss";
 
+.loading-container {
+  position: absolute;
+  height: 50%;
+  width: 100%;
+}
+
 .wrapper {
   margin: 0 auto;
 
