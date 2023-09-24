@@ -7,23 +7,19 @@ import { HttpResource } from './http-resource/HttpResource';
 })
 export class HttpResourceHandlerService {
   public httpResources: { [key: string]: HttpResource } = {
-    productsResource: new ProductsResource([
-        'http://localhost:8080/products'
-    ]),
-    productDetailsResource : new ProductDetailsResource([
-      'http://localhost:8080/products'
-    ])
+    productsResource: new ProductsResource(['/products']),
+    productDetailsResource: new ProductDetailsResource(['/products']),
   };
 }
 
 class ProductsResource extends HttpResource {
-    validationHandler(request: HttpRequest<unknown>, url: string): boolean {
-        return request.url.includes(url);
-    }
+  validationHandler(request: HttpRequest<unknown>, url: string): boolean {
+    return request.url.includes(url);
+  }
 }
 
 class ProductDetailsResource extends HttpResource {
   validationHandler(request: HttpRequest<unknown>, url: string): boolean {
-      return request.url.includes(url);
+    return request.url.includes(url);
   }
 }
